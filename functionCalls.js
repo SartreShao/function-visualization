@@ -212,12 +212,12 @@ function getAllFunctionCalls(
 // 示例使用
 const jsFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\api.js";
 const vueFilePath =
-  "C:\\Code\\web\\easylink.cc\\src\\views\\home\\HomeView.vue";
+  "C:\\Code\\web\\easylink.cc\\src\\views\\file\\FileView.vue";
 const funcFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\session.js";
 const s3FilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js";
 
 const funcName1 = "uploadFile";
-const funcName2 = "inputFileChanged";
+const funcName2 = "mounted";
 const funcName3 = "generateSessionId";
 const funcName4 = "multipartUploadFile";
 
