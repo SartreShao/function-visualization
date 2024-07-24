@@ -1,0 +1,1063 @@
+{
+  "C:\\Code\\web\\easylink.cc\\src\\model\\api.js": [
+    {
+      "functionName": "fetchIsWebToMpRedirectEnable",
+      "calls": {
+        "system": ["fetch"],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": ["response.json"]
+      }
+    },
+    {
+      "functionName": "getUnlimitedQRCode",
+      "calls": {
+        "system": ["fetch", "JSON.stringify", "console.log"],
+        "userDefined": [],
+        "npm": [],
+        "other": ["response.blob", "URL.createObjectURL"]
+      }
+    },
+    {
+      "functionName": "getUrlScheme",
+      "calls": {
+        "system": ["fetch"],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": ["response.json"]
+      }
+    },
+    {
+      "functionName": "createEasyFile",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "useMid",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": ["easyFile.set", "easyFile.save", "easyFile.toFullJSON"]
+      }
+    },
+    {
+      "functionName": "isEasyFileKeyExist",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": ["query.count"]
+      }
+    },
+    {
+      "functionName": "generateRandomHex",
+      "calls": {
+        "system": ["Math.floor", "Math.random"],
+        "userDefined": [],
+        "npm": [],
+        "other": ["parseInt"]
+      }
+    },
+    {
+      "functionName": "generateRandomUniqueHex",
+      "calls": {
+        "system": ["Math.floor", "Math.random"],
+        "userDefined": [
+          {
+            "name": "generateRandomHex",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          },
+          {
+            "name": "isEasyFileKeyExist",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          },
+          {
+            "name": "generateRandomHex",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          }
+        ],
+        "npm": [],
+        "other": ["parseInt"]
+      }
+    },
+    {
+      "functionName": "getEasyFile",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "upload_s3",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "S3.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\model\\s3.js"
+          },
+          {
+            "name": "createEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "upload_kodo",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Kodo.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\model\\kodo.js"
+          },
+          {
+            "name": "createEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "uploadFile",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "generateRandomUniqueHex",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\model\\tracking.js"
+          },
+          {
+            "name": "S3.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\model\\s3.js"
+          },
+          {
+            "name": "createEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          },
+          {
+            "name": "Kodo.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\model\\kodo.js"
+          },
+          {
+            "name": "createEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          },
+          {
+            "name": "upload_s3",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          },
+          {
+            "name": "upload_kodo",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\model\\tracking.js"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "useMid",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": ["axios.post"],
+        "other": ["localStorage.getItem", "localStorage.setItem"]
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js": [
+    {
+      "functionName": "uploadFile",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "getUploadToken",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils\\index.js"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils\\index.js"
+          }
+        ],
+        "npm": [],
+        "other": ["qiniu.upload", "observable.subscribe", "reject", "resolve"]
+      }
+    },
+    {
+      "functionName": "getUploadToken",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils\\index.js"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils\\index.js"
+          }
+        ],
+        "npm": ["axios.get"],
+        "other": []
+      }
+    },
+    {
+      "functionName": "getCdnUrl",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils\\index.js"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils\\index.js"
+          }
+        ],
+        "npm": ["axios.get"],
+        "other": []
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\model\\oss.js": [
+    {
+      "functionName": "uploadFileByOss",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": ["oss.put"]
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js": [
+    {
+      "functionName": "multipartUploadFile",
+      "calls": {
+        "system": ["Math.min", "Math.ceil", "Math.min", "Promise.all"],
+        "userDefined": [
+          {
+            "name": "ReadFile.readFileAsync",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "client.send",
+          "arrayBuffer.slice",
+          "client.send",
+          "progressCallback",
+          "uploadPromises.push",
+          "uploadResults.map",
+          "client.send"
+        ]
+      }
+    },
+    {
+      "functionName": "changeFileACL2Public",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["client.send"]
+      }
+    },
+    {
+      "functionName": "getOssUrl",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["encodeURIComponent"]
+      }
+    },
+    {
+      "functionName": "uploadFile",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "multipartUploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js"
+          },
+          {
+            "name": "changeFileACL2Public",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js"
+          },
+          {
+            "name": "getOssUrl",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\model\\session.js": [
+    {
+      "functionName": "generateSessionId",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["uuidv4"]
+      }
+    },
+    {
+      "functionName": "getSessionId",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "generateSessionId",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\session.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js": [
+    {
+      "functionName": "send",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "url",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js"
+          },
+          {
+            "name": "referrer",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js"
+          },
+          {
+            "name": "platform",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js"
+          },
+          {
+            "name": "userAgent",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js"
+          },
+          {
+            "name": "Api.useMid",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\model\\api.js"
+          },
+          {
+            "name": "timestamp",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js"
+          },
+          {
+            "name": "session",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\utils"
+          }
+        ],
+        "npm": [],
+        "other": ["tracker.sendImmediate"]
+      }
+    },
+    {
+      "functionName": "session",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "getSessionId",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\model\\session.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "timestamp",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["Date.now"]
+      }
+    },
+    {
+      "functionName": "url",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "referrer",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "platform",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "userAgent",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\store\\global.js": [
+    {
+      "functionName": "fetchWebToMpRedirectEnable",
+      "calls": {
+        "system": ["console.error"],
+        "userDefined": [
+          {
+            "name": "Api.fetchIsWebToMpRedirectEnable",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\store\\model\\api.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\store\\index.js": [
+    {
+      "functionName": "useProvider",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Api.useMid",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\store\\model\\api.js"
+          }
+        ],
+        "npm": [],
+        "other": ["provide", "ref", "provide"]
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\FileVM.js": [
+    {
+      "functionName": "getEasyFile",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Api.getEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\model\\api.js"
+          },
+          {
+            "name": "Kodo.getCdnUrl",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\model\\kodo.js"
+          },
+          {
+            "name": "Kodo.getCdnUrl",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\model\\kodo.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "isInWeChat",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["ua.match"]
+      }
+    },
+    {
+      "functionName": "downloadFile",
+      "calls": {
+        "system": ["console.log", "console.error"],
+        "userDefined": [
+          {
+            "name": "isInWeChat",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\FileVM.js"
+          }
+        ],
+        "npm": [],
+        "other": ["ElMessage", "document.createElement", "a.click"]
+      }
+    },
+    {
+      "functionName": "isDownloadRequest",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["urlParams.get"]
+      }
+    },
+    {
+      "functionName": "openMiniProgram",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Api.getUrlScheme",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\model\\api.js"
+          },
+          {
+            "name": "Api.useMid",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\model\\api.js"
+          }
+        ],
+        "npm": [],
+        "other": ["encodeURIComponent"]
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js": [
+    {
+      "functionName": "getResource",
+      "calls": {
+        "system": ["fetch", "console.log", "console.log"],
+        "userDefined": [
+          {
+            "name": "Kodo.getCdnUrl",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\model\\kodo.js"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "localStorage.getItem",
+          "response.blob",
+          "localStorage.setItem",
+          "reader.readAsDataURL"
+        ]
+      }
+    },
+    {
+      "functionName": "uploadFile",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Api.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\model\\api"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "uploadFileList",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "getUploadButtonText",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "closeLinkListDialog",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["ElMessageBox.confirm"]
+      }
+    },
+    {
+      "functionName": "copyAllUrl",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "linkList.forEach",
+          "useClipboard",
+          "toClipboard",
+          "ElMessage",
+          "ElMessage"
+        ]
+      }
+    },
+    {
+      "functionName": "copyUrl",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["useClipboard", "toClipboard", "ElMessage", "ElMessage"]
+      }
+    },
+    {
+      "functionName": "downloadQRCode",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "generateQRCode",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          }
+        ],
+        "npm": [],
+        "other": ["document.createElement", "link.click"]
+      }
+    },
+    {
+      "functionName": "addHyphenAndSpace",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": ["str.lastIndexOf", "str.slice", "str.slice"]
+      }
+    },
+    {
+      "functionName": "downloadAllQRCode",
+      "calls": {
+        "system": ["Promise.all"],
+        "userDefined": [
+          {
+            "name": "generateQRCode",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          },
+          {
+            "name": "createZipFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          },
+          {
+            "name": "createDownloadLink",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          }
+        ],
+        "npm": [],
+        "other": ["linkList.map", "downloadLink.click"]
+      }
+    },
+    {
+      "functionName": "generateMpQRCode",
+      "calls": {
+        "system": ["console.log", "console.error"],
+        "userDefined": [
+          {
+            "name": "Api.getUnlimitedQRCode",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\model\\api"
+          },
+          {
+            "name": "addHyphenAndSpace",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "document.createElement",
+          "resolve",
+          "canvas.getContext",
+          "context.drawImage",
+          "context.fillRect",
+          "context.fillText",
+          "url.substring",
+          "canvas.toDataURL"
+        ]
+      }
+    },
+    {
+      "functionName": "generateQRCode",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "generateWebQRCode",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "generateWebQRCode",
+      "calls": {
+        "system": ["console.log"],
+        "userDefined": [
+          {
+            "name": "addHyphenAndSpace",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "document.createElement",
+          "QRCode.toDataURL",
+          "resolve",
+          "canvas.getContext",
+          "context.drawImage",
+          "context.fillRect",
+          "context.fillText",
+          "url.substring",
+          "canvas.toDataURL"
+        ]
+      }
+    },
+    {
+      "functionName": "createDownloadLink",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "addHyphenAndSpace",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+          }
+        ],
+        "npm": [],
+        "other": ["document.createElement", "URL.createObjectURL"]
+      }
+    },
+    {
+      "functionName": "createZipFile",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "qrCodeUrlList.forEach",
+          "data.split",
+          "zip.file",
+          "zip.generateAsync"
+        ]
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\views\\file\\FileView.vue": [
+    {
+      "functionName": "formatBytes",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickOpenMiniprogramBtn",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\file\\model\\tracking.js"
+          },
+          {
+            "name": "FileVM.openMiniProgram",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\file\\viewmodels\\index"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickDownloadFile",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\file\\model\\tracking.js"
+          },
+          {
+            "name": "FileVM.downloadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\file\\viewmodels\\index"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\views\\home\\HomeView.vue": [
+    {
+      "functionName": "clickLogo",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickAddFileButton",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\model\\tracking.js"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "inputFileChanged",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\model\\tracking.js"
+          },
+          {
+            "name": "HomeVM.uploadFileList",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\viewmodels\\index"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\LinkItem.vue": [
+    {
+      "functionName": "clickUrl",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\model\\tracking.js"
+          }
+        ],
+        "npm": [],
+        "other": ["window.open"]
+      }
+    },
+    {
+      "functionName": "clickCopyUrl",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\model\\tracking.js"
+          },
+          {
+            "name": "HomeVM.copyUrl",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\viewmodels\\HomeVM"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickDownloadQRCode",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\model\\tracking.js"
+          },
+          {
+            "name": "HomeVM.downloadQRCode",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\viewmodels\\HomeVM"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\LinkListDialog.vue": [
+    {
+      "functionName": "closeDialog",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\model\\tracking.js"
+          },
+          {
+            "name": "HomeVM.closeLinkListDialog",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\viewmodels\\HomeVM"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "copyAllUrl",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\model\\tracking.js"
+          },
+          {
+            "name": "HomeVM.copyAllUrl",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\viewmodels\\HomeVM"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "downloadAllQRCode",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\model\\tracking.js"
+          },
+          {
+            "name": "HomeVM.downloadAllQRCode",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\viewmodels\\HomeVM"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ]
+}
