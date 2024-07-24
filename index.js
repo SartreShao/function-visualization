@@ -3,8 +3,8 @@ const path = require("path");
 const acorn = require("acorn");
 const { parse } = require("@vue/compiler-sfc");
 
-const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
-// const directoryPath = "C:/Code/server/easylink.service"; // 替换为你的项目路径
+const directoryPath = "C:/Code/web/easylink.cc"; 
+// const directoryPath = "C:/Code/server/easylink.service"; 
 const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
 
 // 读取目录中的所有文件
@@ -53,23 +53,28 @@ function extractFunctions(fileContent, filePath) {
   const functions = [];
   walkAST(ast, node => {
     if (node.type === "FunctionDeclaration") {
-      const functionName = node.id.name;
-      const relativeFilePath = path
-        .relative(directoryPath, filePath)
-        .replace(/[\/\\]/g, "_")
-        .replace(/\.[^/.]+$/, "");
-      functions.push(`${relativeFilePath}_${functionName}`);
+      const functionName = node.id && node.id.name;
+      if (functionName) {
+        const relativeFilePath = path
+          .relative(directoryPath, filePath)
+          .replace(/[\/\\]/g, "_")
+          .replace(/\.[^/.]+$/, "");
+        functions.push(`${relativeFilePath}_${functionName}`);
+      }
     } else if (
       node.type === "VariableDeclarator" &&
+      node.init &&
       (node.init.type === "FunctionExpression" ||
         node.init.type === "ArrowFunctionExpression")
     ) {
-      const functionName = node.id.name;
-      const relativeFilePath = path
-        .relative(directoryPath, filePath)
-        .replace(/[\/\\]/g, "_")
-        .replace(/\.[^/.]+$/, "");
-      functions.push(`${relativeFilePath}_${functionName}`);
+      const functionName = node.id && node.id.name;
+      if (functionName) {
+        const relativeFilePath = path
+          .relative(directoryPath, filePath)
+          .replace(/[\/\\]/g, "_")
+          .replace(/\.[^/.]+$/, "");
+        functions.push(`${relativeFilePath}_${functionName}`);
+      }
     }
   });
 
@@ -78,6 +83,7 @@ function extractFunctions(fileContent, filePath) {
 
 // 遍历 AST
 function walkAST(node, callback) {
+  if (!node || typeof node !== "object") return;
   callback(node);
   for (let key in node) {
     if (node[key] && typeof node[key] === "object") {
