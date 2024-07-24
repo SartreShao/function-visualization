@@ -6,12 +6,22 @@ function extractFunctionCalls(filePath, targetFunctionName) {
   // 读取文件内容
   const code = fs.readFileSync(filePath, "utf8");
 
-  // 提取 <script> 标签中的内容
-  const scriptContent = [];
-  const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/gi;
-  let match;
-  while ((match = scriptRegex.exec(code)) !== null) {
-    scriptContent.push(match[1]);
+  let scriptContent = [];
+
+  if (filePath.endsWith(".vue")) {
+    // 提取 <script> 标签中的内容
+    const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/gi;
+    let match;
+    while ((match = scriptRegex.exec(code)) !== null) {
+      scriptContent.push(match[1]);
+    }
+  } else if (filePath.endsWith(".js")) {
+    // 直接处理 .js 文件内容
+    scriptContent.push(code);
+  } else {
+    throw new Error(
+      "Unsupported file type. Only .js and .vue files are supported."
+    );
   }
 
   // 用于存储函数调用的数组
@@ -70,11 +80,17 @@ function extractFunctionCalls(filePath, targetFunctionName) {
 }
 
 // 示例使用
-const filePath = "C:\\Code\\web\\easylink.cc\\src\\views\\home\\HomeView.vue";
-const targetFunctionName = "inputFileChanged";
-const functionCalls = extractFunctionCalls(filePath, targetFunctionName);
-console.log(functionCalls);
+const jsFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\api.js";
+const vueFilePath =
+  "C:\\Code\\web\\easylink.cc\\src\\views\\home\\HomeView.vue";
+const funcName1 = "fetchIsWebToMpRedirectEnable";
+const funcName2 = "inputFileChanged";
 
-module.exports = {
-  extractFunctionCalls
-};
+console.log(
+  "JS File Function Calls:",
+  extractFunctionCalls(jsFilePath, funcName1)
+);
+console.log(
+  "Vue File Function Calls:",
+  extractFunctionCalls(vueFilePath, funcName2)
+);
