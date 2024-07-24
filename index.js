@@ -4,130 +4,109 @@ const acorn = require("acorn");
 const { parse } = require("@vue/compiler-sfc");
 const walk = require("acorn-walk");
 
-const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
-const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
-
-// 读取目录中的所有文件
-async function readDirectory(dir) {
-  let files = await fs.readdir(dir);
-  let allFiles = [];
-  for (let file of files) {
-    let filePath = path.join(dir, file);
-    let stat = await fs.stat(filePath);
-    if (stat.isDirectory()) {
-      if (!ignoreFolders.includes(file)) {
-        allFiles = allFiles.concat(await readDirectory(filePath));
+/**
+ * 读取指定文件夹中的所有 .js 和 .vue 文件中的函数定义
+ * @param {string} directoryPath - 项目的路径
+ * @param {Array<string>} ignoreFolders - 忽略的文件夹
+ * @return {Promise<Array<{name: string, path: string}>>} - 返回所有函数定义的数组
+ */
+async function extractFunctions(directoryPath, ignoreFolders = []) {
+  // 读取目录中的所有文件
+  async function readDirectory(dir) {
+    let files = await fs.readdir(dir);
+    let allFiles = [];
+    for (let file of files) {
+      let filePath = path.join(dir, file);
+      let stat = await fs.stat(filePath);
+      if (stat.isDirectory()) {
+        if (!ignoreFolders.includes(file)) {
+          allFiles = allFiles.concat(await readDirectory(filePath));
+        }
+      } else if (file.endsWith(".js") || file.endsWith(".vue")) {
+        allFiles.push(filePath);
       }
-    } else if (file.endsWith(".js") || file.endsWith(".vue")) {
-      allFiles.push(filePath);
     }
+    return allFiles;
   }
-  return allFiles;
-}
 
-// 提取文件中的函数定义和函数调用
-function extractFunctionsAndCalls(fileContent, filePath) {
-  let ast;
-  try {
-    if (filePath.endsWith(".vue")) {
-      const { descriptor } = parse(fileContent);
-      let scriptContent = "";
-      if (descriptor.script) {
-        scriptContent = descriptor.script.content;
-      } else if (descriptor.scriptSetup) {
-        scriptContent = descriptor.scriptSetup.content;
+  // 提取文件中的函数定义
+  function extractFunctionsFromFile(fileContent, filePath) {
+    let ast;
+    try {
+      if (filePath.endsWith(".vue")) {
+        const { descriptor } = parse(fileContent);
+        let scriptContent = "";
+        if (descriptor.script) {
+          scriptContent = descriptor.script.content;
+        } else if (descriptor.scriptSetup) {
+          scriptContent = descriptor.scriptSetup.content;
+        } else {
+          console.warn(
+            `No <script> or <script setup> content found in ${filePath}`
+          );
+          return [];
+        }
+        ast = acorn.parse(scriptContent, {
+          ecmaVersion: 2020,
+          sourceType: "module"
+        });
       } else {
-        console.warn(
-          `No <script> or <script setup> content found in ${filePath}`
-        );
-        return { functions: [], calls: [] };
+        ast = acorn.parse(fileContent, {
+          ecmaVersion: 2020,
+          sourceType: "module"
+        });
       }
-      console.log(`Parsing script content of ${filePath}`);
-      ast = acorn.parse(scriptContent, {
-        ecmaVersion: 2020,
-        sourceType: "module"
-      });
-    } else {
-      ast = acorn.parse(fileContent, {
-        ecmaVersion: 2020,
-        sourceType: "module"
-      });
+    } catch (error) {
+      console.error(`Error parsing ${filePath}: ${error.message}`);
+      return [];
     }
-  } catch (error) {
-    console.error(`Error parsing ${filePath}: ${error.message}`);
-    return { functions: [], calls: [] };
-  }
 
-  const functions = [];
-  const calls = [];
-  walk.simple(ast, {
-    FunctionDeclaration(node) {
-      const functionName = node.id && node.id.name;
-      if (functionName) {
-        const relativeFilePath = path
-          .relative(directoryPath, filePath)
-          .replace(/[\/\\]/g, "_");
-        functions.push(`${relativeFilePath}.${functionName}`);
-      }
-    },
-    VariableDeclarator(node) {
-      if (
-        node.init &&
-        (node.init.type === "FunctionExpression" ||
-          node.init.type === "ArrowFunctionExpression")
-      ) {
+    const functions = [];
+    walk.simple(ast, {
+      FunctionDeclaration(node) {
         const functionName = node.id && node.id.name;
         if (functionName) {
-          const relativeFilePath = path
-            .relative(directoryPath, filePath)
-            .replace(/[\/\\]/g, "_");
-          functions.push(`${relativeFilePath}.${functionName}`);
+          functions.push({ name: functionName, path: filePath });
+        }
+      },
+      VariableDeclarator(node) {
+        if (
+          node.init &&
+          (node.init.type === "FunctionExpression" ||
+            node.init.type === "ArrowFunctionExpression")
+        ) {
+          const functionName = node.id && node.id.name;
+          if (functionName) {
+            functions.push({ name: functionName, path: filePath });
+          }
         }
       }
-    },
-    CallExpression(node) {
-      if (node.callee.type === "Identifier") {
-        calls.push(node.callee.name);
-      } else if (
-        node.callee.type === "MemberExpression" &&
-        node.callee.property.type === "Identifier"
-      ) {
-        calls.push(node.callee.property.name);
-      }
-    }
-  });
+    });
 
-  return { functions, calls };
-}
+    return functions;
+  }
 
-// 主函数
-async function main() {
   const files = await readDirectory(directoryPath);
   const allFunctions = [];
-  const functionCalls = {};
 
   for (let file of files) {
     const content = await fs.readFile(file, "utf-8");
-    const { functions, calls } = extractFunctionsAndCalls(content, file);
+    const functions = extractFunctionsFromFile(content, file);
     allFunctions.push(...functions);
-    functions.forEach(fn => {
-      functionCalls[fn] = calls;
-    });
   }
 
-  // 过滤出用户自定义的函数调用
-  const userDefinedFunctions = new Set(allFunctions);
-  const result = {};
-  for (const fn in functionCalls) {
-    result[fn] = functionCalls[fn].filter(call => {
-      return Array.from(userDefinedFunctions).some(userFn =>
-        userFn.endsWith(`.${call}`)
-      );
-    });
-  }
-
-  console.log("用户定义的函数调用关系:");
-  console.log(result);
+  return allFunctions;
 }
 
-main().catch(console.error);
+// 示例使用
+const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
+const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
+
+extractFunctions(directoryPath, ignoreFolders)
+  .then(functions => {
+    console.log("所有函数定义:");
+    console.log(functions);
+  })
+  .catch(console.error);
+
+module.exports = { extractFunctions };
