@@ -16,7 +16,7 @@ const systemFunctions = new Set([
   "Math"
 ]);
 
-function extractFunctionCalls(
+function getAllFunctionCalls(
   filePath,
   targetFunctionName,
   baseDir = path.dirname(filePath)
@@ -181,7 +181,7 @@ function extractFunctionCalls(
                   } else if (importedModules.has(objectName)) {
                     const modulePath = importedModules.get(objectName);
                     if (modulePath) {
-                      const subFunctionCalls = extractFunctionCalls(
+                      const subFunctionCalls = getAllFunctionCalls(
                         modulePath,
                         methodName,
                         path.dirname(modulePath)
@@ -223,17 +223,17 @@ const funcName4 = "multipartUploadFile";
 
 console.log(
   "JS File Function Calls:",
-  extractFunctionCalls(jsFilePath, funcName1)
+  getAllFunctionCalls(jsFilePath, funcName1)
 );
 console.log(
   "Vue File Function Calls:",
-  extractFunctionCalls(vueFilePath, funcName2)
+  getAllFunctionCalls(vueFilePath, funcName2)
 );
 console.log(
   "JS File Real Function Calls:",
-  extractFunctionCalls(funcFilePath, funcName3)
+  getAllFunctionCalls(funcFilePath, funcName3)
 );
-console.log("S3 Function Calls:", extractFunctionCalls(s3FilePath, funcName4));
+console.log("S3 Function Calls:", getAllFunctionCalls(s3FilePath, funcName4));
 
 // 导出函数
-module.exports = { extractFunctionCalls };
+module.exports = { getAllFunctionCalls };

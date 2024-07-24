@@ -10,7 +10,7 @@ const walk = require("acorn-walk");
  * @param {Array<string>} ignoreFolders - 忽略的文件夹
  * @return {Promise<Array<{name: string, path: string}>>} - 返回所有函数定义的数组
  */
-async function extractFunctions(directoryPath, ignoreFolders = []) {
+async function getAllDefinedFunctions(directoryPath, ignoreFolders = []) {
   // 读取目录中的所有文件
   async function readDirectory(dir) {
     let files = await fs.readdir(dir);
@@ -30,7 +30,7 @@ async function extractFunctions(directoryPath, ignoreFolders = []) {
   }
 
   // 提取文件中的函数定义
-  function extractFunctionsFromFile(fileContent, filePath) {
+  function getAllDefinedFunctionsFromFile(fileContent, filePath) {
     let ast;
     try {
       if (filePath.endsWith(".vue")) {
@@ -91,7 +91,7 @@ async function extractFunctions(directoryPath, ignoreFolders = []) {
 
   for (let file of files) {
     const content = await fs.readFile(file, "utf-8");
-    const functions = extractFunctionsFromFile(content, file);
+    const functions = getAllDefinedFunctionsFromFile(content, file);
     allFunctions.push(...functions);
   }
 
@@ -102,11 +102,11 @@ async function extractFunctions(directoryPath, ignoreFolders = []) {
 const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
 const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
 
-extractFunctions(directoryPath, ignoreFolders)
+getAllDefinedFunctions(directoryPath, ignoreFolders)
   .then(functions => {
     console.log("所有函数定义:");
     console.log(functions);
   })
   .catch(console.error);
 
-module.exports = { extractFunctions };
+module.exports = { getAllDefinedFunctions };
