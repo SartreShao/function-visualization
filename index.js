@@ -3,8 +3,7 @@ const path = require("path");
 const acorn = require("acorn");
 const { parse } = require("@vue/compiler-sfc");
 
-const directoryPath = "C:/Code/web/easylink.cc"; 
-// const directoryPath = "C:/Code/server/easylink.service"; 
+const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
 const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
 
 // 读取目录中的所有文件
@@ -31,18 +30,24 @@ function extractFunctions(fileContent, filePath) {
   try {
     if (filePath.endsWith(".vue")) {
       const { descriptor } = parse(fileContent);
+      let scriptContent = '';
       if (descriptor.script) {
-        ast = acorn.parse(descriptor.script.content, {
-          ecmaVersion: 2020,
-          sourceType: "module"
-        });
+        scriptContent = descriptor.script.content;
+      } else if (descriptor.scriptSetup) {
+        scriptContent = descriptor.scriptSetup.content;
       } else {
+        console.warn(`No <script> or <script setup> content found in ${filePath}`);
         return [];
       }
+      console.log(`Parsing script content of ${filePath}`);
+      ast = acorn.parse(scriptContent, {
+        ecmaVersion: 2020,
+        sourceType: "module",
+      });
     } else {
       ast = acorn.parse(fileContent, {
         ecmaVersion: 2020,
-        sourceType: "module"
+        sourceType: "module",
       });
     }
   } catch (error) {
@@ -51,14 +56,11 @@ function extractFunctions(fileContent, filePath) {
   }
 
   const functions = [];
-  walkAST(ast, node => {
+  walkAST(ast, (node) => {
     if (node.type === "FunctionDeclaration") {
       const functionName = node.id && node.id.name;
       if (functionName) {
-        const relativeFilePath = path
-          .relative(directoryPath, filePath)
-          .replace(/[\/\\]/g, "_")
-          .replace(/\.[^/.]+$/, "");
+        const relativeFilePath = path.relative(directoryPath, filePath).replace(/[\/\\]/g, "_");
         functions.push(`${relativeFilePath}_${functionName}`);
       }
     } else if (
@@ -69,10 +71,7 @@ function extractFunctions(fileContent, filePath) {
     ) {
       const functionName = node.id && node.id.name;
       if (functionName) {
-        const relativeFilePath = path
-          .relative(directoryPath, filePath)
-          .replace(/[\/\\]/g, "_")
-          .replace(/\.[^/.]+$/, "");
+        const relativeFilePath = path.relative(directoryPath, filePath).replace(/[\/\\]/g, "_");
         functions.push(`${relativeFilePath}_${functionName}`);
       }
     }
