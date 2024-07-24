@@ -1,128 +1,87 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const acorn = require('acorn');
-const walk = require('acorn-walk');
-const glob = require('glob');
+const { parse } = require('@vue/compiler-sfc');
 
-// 配置项
-const projectDir = 'C:\\Code\\web\\easylink.cc'; // 你的项目目录
-const ignorePattern = /node_modules|dist/; // 忽略的文件夹正则表达式
+const directoryPath = 'C:/Code/web/easylink.cc'; // 替换为你的项目路径
+const ignoreFolders = ['node_modules', 'dist']; // 忽略的文件夹
 
-// 存储函数调用关系
-let functions = {};
-let calls = [];
-
-// 移除文件名中的 .js 后缀
-function removeJsExtension(filename) {
-    return filename.replace(/\.js$/, '');
-}
-
-// 遍历项目文件夹，读取所有 JavaScript 文件
-function traverseDirectory(dir) {
-    const files = glob.sync(`${dir}/**/*.js`, { ignore: `${dir}/**/node_modules/**` });
-
-    console.log(`Found ${files.length} JavaScript files`);
-
-    files.forEach(file => {
-        if (!ignorePattern.test(file)) {
-            parseFile(file);
+// 读取目录中的所有文件
+async function readDirectory(dir) {
+    let files = await fs.readdir(dir);
+    let allFiles = [];
+    for (let file of files) {
+        let filePath = path.join(dir, file);
+        let stat = await fs.stat(filePath);
+        if (stat.isDirectory()) {
+            if (!ignoreFolders.includes(file)) {
+                allFiles = allFiles.concat(await readDirectory(filePath));
+            }
+        } else if (file.endsWith('.js') || file.endsWith('.vue')) {
+            allFiles.push(filePath);
         }
-    });
+    }
+    return allFiles;
 }
 
-// 解析 JavaScript 文件
-function parseFile(file) {
-    const content = fs.readFileSync(file, 'utf-8');
-    const ast = acorn.parse(content, { ecmaVersion: 'latest', sourceType: 'module' });
+// 提取文件中的函数定义
+function extractFunctions(fileContent, filePath) {
+    let ast;
+    try {
+        if (filePath.endsWith('.vue')) {
+            const { descriptor } = parse(fileContent);
+            if (descriptor.script) {
+                ast = acorn.parse(descriptor.script.content, { ecmaVersion: 2020, sourceType: 'module' });
+            } else {
+                return [];
+            }
+        } else {
+            ast = acorn.parse(fileContent, { ecmaVersion: 2020, sourceType: 'module' });
+        }
+    } catch (error) {
+        console.error(`Error parsing ${filePath}: ${error.message}`);
+        return [];
+    }
 
-    let currentFile = path.relative(projectDir, file).replace(/\\/g, '/');
-    currentFile = removeJsExtension(currentFile);
-    console.log(`Parsing file: ${currentFile}`);
-
-    walk.ancestor(ast, {
-        FunctionDeclaration(node) {
+    const functions = [];
+    walkAST(ast, node => {
+        if (node.type === 'FunctionDeclaration') {
             const functionName = node.id.name;
-            const fullFunctionName = `${currentFile}_${functionName}`.replace(/\//g, '_');
-            functions[fullFunctionName] = true;
-            console.log(`Found function declaration: ${fullFunctionName}`);
-        },
-        FunctionExpression(node, state, ancestors) {
-            const parent = ancestors[ancestors.length - 2];
-            if (parent && parent.type === 'VariableDeclarator' && parent.id.type === 'Identifier') {
-                const functionName = parent.id.name;
-                const fullFunctionName = `${currentFile}_${functionName}`.replace(/\//g, '_');
-                functions[fullFunctionName] = true;
-                console.log(`Found function expression: ${fullFunctionName}`);
-            }
-        },
-        ArrowFunctionExpression(node, state, ancestors) {
-            const parent = ancestors[ancestors.length - 2];
-            if (parent && parent.type === 'VariableDeclarator' && parent.id.type === 'Identifier') {
-                const functionName = parent.id.name;
-                const fullFunctionName = `${currentFile}_${functionName}`.replace(/\//g, '_');
-                functions[fullFunctionName] = true;
-                console.log(`Found arrow function expression: ${fullFunctionName}`);
-            }
-        },
-        CallExpression(node, state, ancestors) {
-            const parentFunction = ancestors.find(ancestor => ancestor.type === 'FunctionDeclaration' || ancestor.type === 'FunctionExpression' || ancestor.type === 'ArrowFunctionExpression');
-            if (parentFunction) {
-                let parentFunctionName = 'anonymous';
-                if (parentFunction.type === 'FunctionDeclaration') {
-                    parentFunctionName = parentFunction.id.name;
-                } else if (parentFunction.type === 'FunctionExpression' || parentFunction.type === 'ArrowFunctionExpression') {
-                    const grandParent = ancestors[ancestors.indexOf(parentFunction) - 1];
-                    if (grandParent && grandParent.type === 'VariableDeclarator' && grandParent.id.type === 'Identifier') {
-                        parentFunctionName = grandParent.id.name;
-                    }
-                }
-                const fullParentFunctionName = `${currentFile}_${parentFunctionName}`.replace(/\//g, '_');
-
-                if (node.callee.type === 'Identifier') {
-                    const functionName = node.callee.name;
-                    const fullFunctionName = `${currentFile}_${functionName}`.replace(/\//g, '_');
-                    calls.push({ from: fullParentFunctionName, to: fullFunctionName });
-                    console.log(`Found function call: ${fullParentFunctionName} --> ${fullFunctionName}`);
-                }
-            }
+            const relativeFilePath = path.relative(directoryPath, filePath).replace(/[\/\\]/g, '_').replace(/\.[^/.]+$/, "");
+            functions.push(`${relativeFilePath}_${functionName}`);
+        } else if (node.type === 'VariableDeclarator' && (node.init.type === 'FunctionExpression' || node.init.type === 'ArrowFunctionExpression')) {
+            const functionName = node.id.name;
+            const relativeFilePath = path.relative(directoryPath, filePath).replace(/[\/\\]/g, '_').replace(/\.[^/.]+$/, "");
+            functions.push(`${relativeFilePath}_${functionName}`);
         }
     });
+
+    return functions;
 }
 
-// 生成 Mermaid 图
-function generateMermaid() {
-    let mermaid = 'graph TB\n'; // 使用 TB（Top to Bottom）生成纵向图
-
-    const subgraphs = {};
-
-    calls.forEach(call => {
-        const fromFile = call.from.split('_')[0];
-        const toFile = call.to.split('_')[0];
-
-        if (!subgraphs[fromFile]) subgraphs[fromFile] = [];
-        if (!subgraphs[toFile]) subgraphs[toFile] = [];
-
-        subgraphs[fromFile].push(call);
-        subgraphs[toFile].push(call);
-    });
-
-    Object.keys(subgraphs).forEach(file => {
-        mermaid += `  subgraph ${file}\n`;
-        const uniqueCalls = new Set(subgraphs[file].map(call => `${call.from} --> ${call.to}`));
-        uniqueCalls.forEach(call => {
-            mermaid += `    ${call}\n`;
-        });
-        mermaid += '  end\n';
-    });
-
-    return mermaid;
+// 遍历 AST
+function walkAST(node, callback) {
+    callback(node);
+    for (let key in node) {
+        if (node[key] && typeof node[key] === 'object') {
+            walkAST(node[key], callback);
+        }
+    }
 }
 
 // 主函数
-function main() {
-    traverseDirectory(projectDir);
-    const mermaidGraph = generateMermaid();
-    console.log(mermaidGraph);
+async function main() {
+    const files = await readDirectory(directoryPath);
+    const allFunctions = [];
+
+    for (let file of files) {
+        const content = await fs.readFile(file, 'utf-8');
+        const functions = extractFunctions(content, file);
+        allFunctions.push(...functions);
+    }
+
+    console.log('用户定义的函数:');
+    console.log(allFunctions);
 }
 
-main();
+main().catch(console.error);

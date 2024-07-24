@@ -7,8 +7,14 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "acorn": "^8.0.0",
+    "@babel/parser": "^7.24.8",
+    "@vue/compiler-sfc": "^3.4.33",
+    "acorn": "^8.12.1",
     "acorn-walk": "^8.3.3",
-    "glob": "^11.0.0"
+    "escodegen": "^2.1.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^11.0.0",
+    "path": "^0.12.7",
+    "vue-template-compiler": "^2.7.16"
   }
 }
