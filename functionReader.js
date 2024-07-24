@@ -1,6 +1,12 @@
 const fs = require("fs");
 const acorn = require("acorn");
 const estraverse = require("estraverse");
+const path = require("path");
+
+// 系统级函数列表（可以根据需要扩展）
+const systemFunctions = new Set([
+  "fetch", "console", "setTimeout", "setInterval", "clearTimeout", "clearInterval", "Promise", "JSON", "Math"
+]);
 
 function extractFunctionCalls(filePath, targetFunctionName) {
   // 读取文件内容
@@ -25,13 +31,31 @@ function extractFunctionCalls(filePath, targetFunctionName) {
   }
 
   // 用于存储函数调用的数组
-  const functionCalls = [];
+  const functionCalls = {
+    system: [],
+    userDefined: [],
+    npm: []
+  };
+
+  const importedModules = new Set();
 
   // 解析并遍历每个 <script> 标签中的 JavaScript 代码
   scriptContent.forEach(script => {
     const ast = acorn.parse(script, {
       ecmaVersion: "latest",
       sourceType: "module"
+    });
+
+    // 收集 import 和 require 引入的模块
+    estraverse.traverse(ast, {
+      enter(node) {
+        if (node.type === 'ImportDeclaration') {
+          importedModules.add(path.basename(node.source.value));
+        } else if (node.type === 'VariableDeclarator' && node.init && node.init.type === 'CallExpression' &&
+          node.init.callee.name === 'require') {
+          importedModules.add(path.basename(node.init.arguments[0].value));
+        }
+      }
     });
 
     // 遍历 AST 查找目标函数并提取函数调用
@@ -54,18 +78,27 @@ function extractFunctionCalls(filePath, targetFunctionName) {
             enter(innerNode) {
               // 查找函数调用表达式
               if (innerNode.type === "CallExpression") {
+                let functionName;
                 if (innerNode.callee.type === "Identifier") {
                   // 普通函数调用
-                  functionCalls.push(innerNode.callee.name);
+                  functionName = innerNode.callee.name;
                 } else if (innerNode.callee.type === "MemberExpression") {
                   // 对象方法调用
                   if (
                     innerNode.callee.object.type === "Identifier" &&
                     innerNode.callee.property.type === "Identifier"
                   ) {
-                    functionCalls.push(
-                      `${innerNode.callee.object.name}.${innerNode.callee.property.name}`
-                    );
+                    functionName = `${innerNode.callee.object.name}.${innerNode.callee.property.name}`;
+                  }
+                }
+
+                if (functionName) {
+                  if (systemFunctions.has(functionName.split('.')[0])) {
+                    functionCalls.system.push(functionName);
+                  } else if (importedModules.has(functionName.split('.')[0])) {
+                    functionCalls.npm.push(functionName);
+                  } else {
+                    functionCalls.userDefined.push(functionName);
                   }
                 }
               }
@@ -94,3 +127,7 @@ console.log(
   "Vue File Function Calls:",
   extractFunctionCalls(vueFilePath, funcName2)
 );
+
+// 导出函数
+module.exports = { extractFunctionCalls };
+
