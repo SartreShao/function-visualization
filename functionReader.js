@@ -16,7 +16,11 @@ const systemFunctions = new Set([
   "Math"
 ]);
 
-function extractFunctionCalls(filePath, targetFunctionName) {
+function extractFunctionCalls(
+  filePath,
+  targetFunctionName,
+  baseDir = path.dirname(filePath)
+) {
   // 读取文件内容
   const code = fs.readFileSync(filePath, "utf8");
 
@@ -46,8 +50,8 @@ function extractFunctionCalls(filePath, targetFunctionName) {
     other: []
   };
 
-  const importedModules = new Set();
-  const userDefinedFunctions = new Set();
+  const importedModules = new Map();
+  const userDefinedFunctions = new Map();
   const userDefinedObjects = new Set();
 
   // 解析并遍历每个 <script> 标签中的 JavaScript 代码
@@ -62,24 +66,29 @@ function extractFunctionCalls(filePath, targetFunctionName) {
       enter(node) {
         if (node.type === "ImportDeclaration") {
           const sourceValue = node.source.value;
+          let resolvedPath;
           if (
             sourceValue.startsWith(".") ||
             sourceValue.startsWith("/") ||
             sourceValue.startsWith("@/")
           ) {
-            importedModules.add(path.basename(sourceValue));
+            resolvedPath = path.resolve(
+              baseDir,
+              sourceValue.replace(/^@\//, "")
+            );
+            importedModules.set(path.basename(sourceValue), resolvedPath);
             node.specifiers.forEach(specifier => {
               if (
                 specifier.type === "ImportSpecifier" ||
                 specifier.type === "ImportDefaultSpecifier"
               ) {
-                userDefinedFunctions.add(specifier.local.name);
+                userDefinedFunctions.set(specifier.local.name, resolvedPath);
               } else if (specifier.type === "ImportNamespaceSpecifier") {
                 userDefinedObjects.add(specifier.local.name);
               }
             });
           } else {
-            importedModules.add(sourceValue);
+            importedModules.set(sourceValue, null);
           }
         } else if (
           node.type === "VariableDeclarator" &&
@@ -88,24 +97,29 @@ function extractFunctionCalls(filePath, targetFunctionName) {
           node.init.callee.name === "require"
         ) {
           const sourceValue = node.init.arguments[0].value;
+          let resolvedPath;
           if (
             sourceValue.startsWith(".") ||
             sourceValue.startsWith("/") ||
             sourceValue.startsWith("@/")
           ) {
-            importedModules.add(path.basename(sourceValue));
+            resolvedPath = path.resolve(
+              baseDir,
+              sourceValue.replace(/^@\//, "")
+            );
+            importedModules.set(path.basename(sourceValue), resolvedPath);
             userDefinedObjects.add(node.id.name);
           } else {
-            importedModules.add(sourceValue);
+            importedModules.set(sourceValue, null);
           }
         } else if (node.type === "FunctionDeclaration" && node.id) {
-          userDefinedFunctions.add(node.id.name);
+          userDefinedFunctions.set(node.id.name, filePath);
         } else if (
           node.type === "VariableDeclarator" &&
           node.init &&
           node.init.type === "ArrowFunctionExpression"
         ) {
-          userDefinedFunctions.add(node.id.name);
+          userDefinedFunctions.set(node.id.name, filePath);
         } else if (
           node.type === "VariableDeclarator" &&
           node.init &&
@@ -154,13 +168,32 @@ function extractFunctionCalls(filePath, targetFunctionName) {
                   const [objectName, methodName] = functionName.split(".");
                   if (systemFunctions.has(objectName)) {
                     functionCalls.system.push(functionName);
-                  } else if (
-                    userDefinedFunctions.has(objectName) ||
-                    userDefinedObjects.has(objectName)
-                  ) {
-                    functionCalls.userDefined.push(functionName);
+                  } else if (userDefinedFunctions.has(objectName)) {
+                    functionCalls.userDefined.push({
+                      name: functionName,
+                      path: userDefinedFunctions.get(objectName)
+                    });
+                  } else if (userDefinedObjects.has(objectName)) {
+                    functionCalls.userDefined.push({
+                      name: functionName,
+                      path: filePath
+                    });
                   } else if (importedModules.has(objectName)) {
-                    functionCalls.npm.push(functionName);
+                    const modulePath = importedModules.get(objectName);
+                    if (modulePath) {
+                      const subFunctionCalls = extractFunctionCalls(
+                        modulePath,
+                        methodName,
+                        path.dirname(modulePath)
+                      );
+                      functionCalls.userDefined.push({
+                        name: functionName,
+                        path: modulePath,
+                        calls: subFunctionCalls
+                      });
+                    } else {
+                      functionCalls.npm.push(functionName);
+                    }
                   } else {
                     functionCalls.other.push(functionName);
                   }
@@ -200,9 +233,7 @@ console.log(
   "JS File Real Function Calls:",
   extractFunctionCalls(funcFilePath, funcName3)
 );
-console.log(
-  "S3 Function Calls:",
-  extractFunctionCalls(s3FilePath, funcName4)
-);
+console.log("S3 Function Calls:", extractFunctionCalls(s3FilePath, funcName4));
+
 // 导出函数
 module.exports = { extractFunctionCalls };
