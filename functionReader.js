@@ -34,10 +34,13 @@ function extractFunctionCalls(filePath, targetFunctionName) {
   const functionCalls = {
     system: [],
     userDefined: [],
-    npm: []
+    npm: [],
+    other: []
   };
 
   const importedModules = new Set();
+  const userDefinedFunctions = new Set();
+  const userDefinedObjects = new Set();
 
   // 解析并遍历每个 <script> 标签中的 JavaScript 代码
   scriptContent.forEach(script => {
@@ -46,14 +49,38 @@ function extractFunctionCalls(filePath, targetFunctionName) {
       sourceType: "module"
     });
 
-    // 收集 import 和 require 引入的模块
+    // 收集 import 和 require 引入的模块和解构的函数
     estraverse.traverse(ast, {
       enter(node) {
         if (node.type === 'ImportDeclaration') {
-          importedModules.add(path.basename(node.source.value));
+          const sourceValue = node.source.value;
+          if (sourceValue.startsWith('.') || sourceValue.startsWith('/') || sourceValue.startsWith('@/')) {
+            importedModules.add(path.basename(sourceValue));
+            node.specifiers.forEach(specifier => {
+              if (specifier.type === 'ImportSpecifier' || specifier.type === 'ImportDefaultSpecifier') {
+                userDefinedFunctions.add(specifier.local.name);
+              } else if (specifier.type === 'ImportNamespaceSpecifier') {
+                userDefinedObjects.add(specifier.local.name);
+              }
+            });
+          } else {
+            importedModules.add(sourceValue);
+          }
         } else if (node.type === 'VariableDeclarator' && node.init && node.init.type === 'CallExpression' &&
           node.init.callee.name === 'require') {
-          importedModules.add(path.basename(node.init.arguments[0].value));
+          const sourceValue = node.init.arguments[0].value;
+          if (sourceValue.startsWith('.') || sourceValue.startsWith('/') || sourceValue.startsWith('@/')) {
+            importedModules.add(path.basename(sourceValue));
+            userDefinedObjects.add(node.id.name);
+          } else {
+            importedModules.add(sourceValue);
+          }
+        } else if (node.type === "FunctionDeclaration" && node.id) {
+          userDefinedFunctions.add(node.id.name);
+        } else if (node.type === "VariableDeclarator" && node.init && node.init.type === "ArrowFunctionExpression") {
+          userDefinedFunctions.add(node.id.name);
+        } else if (node.type === "VariableDeclarator" && node.init && node.init.type === "ObjectExpression") {
+          userDefinedObjects.add(node.id.name);
         }
       }
     });
@@ -93,12 +120,15 @@ function extractFunctionCalls(filePath, targetFunctionName) {
                 }
 
                 if (functionName) {
-                  if (systemFunctions.has(functionName.split('.')[0])) {
+                  const [objectName, methodName] = functionName.split('.');
+                  if (systemFunctions.has(objectName)) {
                     functionCalls.system.push(functionName);
-                  } else if (importedModules.has(functionName.split('.')[0])) {
+                  } else if (userDefinedFunctions.has(objectName) || userDefinedObjects.has(objectName)) {
+                    functionCalls.userDefined.push(functionName);
+                  } else if (importedModules.has(objectName)) {
                     functionCalls.npm.push(functionName);
                   } else {
-                    functionCalls.userDefined.push(functionName);
+                    functionCalls.other.push(functionName);
                   }
                 }
               }
@@ -130,4 +160,3 @@ console.log(
 
 // 导出函数
 module.exports = { extractFunctionCalls };
-
