@@ -1,0 +1,13 @@
+{
+  "name": "function-call-graph",
+  "version": "1.0.0",
+  "description": "A tool to generate call graphs from JavaScript projects using Mermaid.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "acorn": "^8.0.0",
+    "acorn-walk": "^8.0.0"
+  }
+}
