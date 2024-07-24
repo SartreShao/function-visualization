@@ -5,7 +5,15 @@ const path = require("path");
 
 // 系统级函数列表（可以根据需要扩展）
 const systemFunctions = new Set([
-  "fetch", "console", "setTimeout", "setInterval", "clearTimeout", "clearInterval", "Promise", "JSON", "Math"
+  "fetch",
+  "console",
+  "setTimeout",
+  "setInterval",
+  "clearTimeout",
+  "clearInterval",
+  "Promise",
+  "JSON",
+  "Math"
 ]);
 
 function extractFunctionCalls(filePath, targetFunctionName) {
@@ -52,24 +60,39 @@ function extractFunctionCalls(filePath, targetFunctionName) {
     // 收集 import 和 require 引入的模块和解构的函数
     estraverse.traverse(ast, {
       enter(node) {
-        if (node.type === 'ImportDeclaration') {
+        if (node.type === "ImportDeclaration") {
           const sourceValue = node.source.value;
-          if (sourceValue.startsWith('.') || sourceValue.startsWith('/') || sourceValue.startsWith('@/')) {
+          if (
+            sourceValue.startsWith(".") ||
+            sourceValue.startsWith("/") ||
+            sourceValue.startsWith("@/")
+          ) {
             importedModules.add(path.basename(sourceValue));
             node.specifiers.forEach(specifier => {
-              if (specifier.type === 'ImportSpecifier' || specifier.type === 'ImportDefaultSpecifier') {
+              if (
+                specifier.type === "ImportSpecifier" ||
+                specifier.type === "ImportDefaultSpecifier"
+              ) {
                 userDefinedFunctions.add(specifier.local.name);
-              } else if (specifier.type === 'ImportNamespaceSpecifier') {
+              } else if (specifier.type === "ImportNamespaceSpecifier") {
                 userDefinedObjects.add(specifier.local.name);
               }
             });
           } else {
             importedModules.add(sourceValue);
           }
-        } else if (node.type === 'VariableDeclarator' && node.init && node.init.type === 'CallExpression' &&
-          node.init.callee.name === 'require') {
+        } else if (
+          node.type === "VariableDeclarator" &&
+          node.init &&
+          node.init.type === "CallExpression" &&
+          node.init.callee.name === "require"
+        ) {
           const sourceValue = node.init.arguments[0].value;
-          if (sourceValue.startsWith('.') || sourceValue.startsWith('/') || sourceValue.startsWith('@/')) {
+          if (
+            sourceValue.startsWith(".") ||
+            sourceValue.startsWith("/") ||
+            sourceValue.startsWith("@/")
+          ) {
             importedModules.add(path.basename(sourceValue));
             userDefinedObjects.add(node.id.name);
           } else {
@@ -77,9 +100,17 @@ function extractFunctionCalls(filePath, targetFunctionName) {
           }
         } else if (node.type === "FunctionDeclaration" && node.id) {
           userDefinedFunctions.add(node.id.name);
-        } else if (node.type === "VariableDeclarator" && node.init && node.init.type === "ArrowFunctionExpression") {
+        } else if (
+          node.type === "VariableDeclarator" &&
+          node.init &&
+          node.init.type === "ArrowFunctionExpression"
+        ) {
           userDefinedFunctions.add(node.id.name);
-        } else if (node.type === "VariableDeclarator" && node.init && node.init.type === "ObjectExpression") {
+        } else if (
+          node.type === "VariableDeclarator" &&
+          node.init &&
+          node.init.type === "ObjectExpression"
+        ) {
           userDefinedObjects.add(node.id.name);
         }
       }
@@ -120,10 +151,13 @@ function extractFunctionCalls(filePath, targetFunctionName) {
                 }
 
                 if (functionName) {
-                  const [objectName, methodName] = functionName.split('.');
+                  const [objectName, methodName] = functionName.split(".");
                   if (systemFunctions.has(objectName)) {
                     functionCalls.system.push(functionName);
-                  } else if (userDefinedFunctions.has(objectName) || userDefinedObjects.has(objectName)) {
+                  } else if (
+                    userDefinedFunctions.has(objectName) ||
+                    userDefinedObjects.has(objectName)
+                  ) {
                     functionCalls.userDefined.push(functionName);
                   } else if (importedModules.has(objectName)) {
                     functionCalls.npm.push(functionName);
@@ -146,8 +180,13 @@ function extractFunctionCalls(filePath, targetFunctionName) {
 const jsFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\api.js";
 const vueFilePath =
   "C:\\Code\\web\\easylink.cc\\src\\views\\home\\HomeView.vue";
-const funcName1 = "fetchIsWebToMpRedirectEnable";
+const funcFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\session.js";
+const s3FilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js";
+
+const funcName1 = "uploadFile";
 const funcName2 = "inputFileChanged";
+const funcName3 = "generateSessionId";
+const funcName4 = "multipartUploadFile";
 
 console.log(
   "JS File Function Calls:",
@@ -157,6 +196,13 @@ console.log(
   "Vue File Function Calls:",
   extractFunctionCalls(vueFilePath, funcName2)
 );
-
+console.log(
+  "JS File Real Function Calls:",
+  extractFunctionCalls(funcFilePath, funcName3)
+);
+console.log(
+  "S3 Function Calls:",
+  extractFunctionCalls(s3FilePath, funcName4)
+);
 // 导出函数
 module.exports = { extractFunctionCalls };
