@@ -111,10 +111,16 @@ async function main(directoryPath, ignoreFolders = []) {
     // 用于存储最终结果的对象
     const result = {};
 
+    // 创建一个柯里化的 getAllFunctionCalls 函数
+    const getAllFunctionCallsForProject = getAllFunctionCalls.bind(
+      null,
+      directoryPath
+    );
+
     // 遍历每个文件中的函数定义，获取并存储函数调用
     for (const func of allFunctions) {
       const { name, path: filePath } = func;
-      const functionCalls = getAllFunctionCalls(filePath, name);
+      const functionCalls = getAllFunctionCallsForProject(filePath, name);
 
       // 获取或生成函数的唯一 ID
       const functionId = getFunctionId(name, filePath, directoryPath);
