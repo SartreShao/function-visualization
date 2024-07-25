@@ -215,11 +215,13 @@ const vueFilePath =
   "C:\\Code\\web\\easylink.cc\\src\\views\\file\\FileView.vue";
 const funcFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\session.js";
 const s3FilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js";
+const errorPath = "C:\\Code\\web\\easylink.cc\\src\\views\\home\\HomeView.vue";
 
 const funcName1 = "uploadFile";
 const funcName2 = "mounted";
 const funcName3 = "generateSessionId";
 const funcName4 = "multipartUploadFile";
+const funcName5 = "inputFileChanged";
 
 console.log(
   "JS File Function Calls:",
@@ -234,6 +236,7 @@ console.log(
   getAllFunctionCalls(funcFilePath, funcName3)
 );
 console.log("S3 Function Calls:", getAllFunctionCalls(s3FilePath, funcName4));
+console.log("Error:", getAllFunctionCalls(errorPath, funcName5));
 
 // 导出函数
 module.exports = { getAllFunctionCalls };
