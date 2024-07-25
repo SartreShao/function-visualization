@@ -16,11 +16,7 @@ const systemFunctions = new Set([
   "Math"
 ]);
 
-function getAllFunctionCalls(
-  filePath,
-  targetFunctionName,
-  baseDir = path.dirname(filePath)
-) {
+function getAllFunctionCalls(projectRoot, filePath, targetFunctionName) {
   // 读取文件内容
   const code = fs.readFileSync(filePath, "utf8");
 
@@ -67,15 +63,29 @@ function getAllFunctionCalls(
         if (node.type === "ImportDeclaration") {
           const sourceValue = node.source.value;
           let resolvedPath;
-          if (
-            sourceValue.startsWith(".") ||
-            sourceValue.startsWith("/") ||
-            sourceValue.startsWith("@/")
-          ) {
+          if (sourceValue.startsWith("@/")) {
+            // 处理 @ 符号，替换为 src 目录
             resolvedPath = path.resolve(
-              baseDir,
-              sourceValue.replace(/^@\//, "")
+              projectRoot,
+              "src",
+              sourceValue.slice(2)
             );
+            importedModules.set(path.basename(sourceValue), resolvedPath);
+            node.specifiers.forEach(specifier => {
+              if (
+                specifier.type === "ImportSpecifier" ||
+                specifier.type === "ImportDefaultSpecifier"
+              ) {
+                userDefinedFunctions.set(specifier.local.name, resolvedPath);
+              } else if (specifier.type === "ImportNamespaceSpecifier") {
+                userDefinedObjects.add(specifier.local.name);
+              }
+            });
+          } else if (
+            sourceValue.startsWith(".") ||
+            sourceValue.startsWith("/")
+          ) {
+            resolvedPath = path.resolve(path.dirname(filePath), sourceValue);
             importedModules.set(path.basename(sourceValue), resolvedPath);
             node.specifiers.forEach(specifier => {
               if (
@@ -98,15 +108,20 @@ function getAllFunctionCalls(
         ) {
           const sourceValue = node.init.arguments[0].value;
           let resolvedPath;
-          if (
-            sourceValue.startsWith(".") ||
-            sourceValue.startsWith("/") ||
-            sourceValue.startsWith("@/")
-          ) {
+          if (sourceValue.startsWith("@/")) {
+            // 处理 @ 符号，替换为 src 目录
             resolvedPath = path.resolve(
-              baseDir,
-              sourceValue.replace(/^@\//, "")
+              projectRoot,
+              "src",
+              sourceValue.slice(2)
             );
+            importedModules.set(path.basename(sourceValue), resolvedPath);
+            userDefinedObjects.add(node.id.name);
+          } else if (
+            sourceValue.startsWith(".") ||
+            sourceValue.startsWith("/")
+          ) {
+            resolvedPath = path.resolve(path.dirname(filePath), sourceValue);
             importedModules.set(path.basename(sourceValue), resolvedPath);
             userDefinedObjects.add(node.id.name);
           } else {
@@ -182,9 +197,9 @@ function getAllFunctionCalls(
                     const modulePath = importedModules.get(objectName);
                     if (modulePath) {
                       const subFunctionCalls = getAllFunctionCalls(
+                        projectRoot,
                         modulePath,
-                        methodName,
-                        path.dirname(modulePath)
+                        methodName
                       );
                       functionCalls.userDefined.push({
                         name: functionName,
@@ -208,8 +223,8 @@ function getAllFunctionCalls(
 
   return functionCalls;
 }
-
 // 示例使用
+const projectRoot = "C:\\Code\\web\\easylink.cc"; // 项目根目录
 const jsFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\api.js";
 const vueFilePath =
   "C:\\Code\\web\\easylink.cc\\src\\views\\file\\FileView.vue";
@@ -225,18 +240,21 @@ const funcName5 = "inputFileChanged";
 
 console.log(
   "JS File Function Calls:",
-  getAllFunctionCalls(jsFilePath, funcName1)
+  getAllFunctionCalls(projectRoot, jsFilePath, funcName1)
 );
 console.log(
   "Vue File Function Calls:",
-  getAllFunctionCalls(vueFilePath, funcName2)
+  getAllFunctionCalls(projectRoot, vueFilePath, funcName2)
 );
 console.log(
   "JS File Real Function Calls:",
-  getAllFunctionCalls(funcFilePath, funcName3)
+  getAllFunctionCalls(projectRoot, funcFilePath, funcName3)
 );
-console.log("S3 Function Calls:", getAllFunctionCalls(s3FilePath, funcName4));
-console.log("Error:", getAllFunctionCalls(errorPath, funcName5));
+console.log(
+  "S3 Function Calls:",
+  getAllFunctionCalls(projectRoot, s3FilePath, funcName4)
+);
+console.log("Error:", getAllFunctionCalls(projectRoot, errorPath, funcName5));
 
 // 导出函数
 module.exports = { getAllFunctionCalls };
