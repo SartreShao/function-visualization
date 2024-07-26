@@ -19,6 +19,13 @@ const DIAGRAM_ID_FILENAME = "diagram-id.mmd";
 const DIAGRAM_READABLE_FILENAME = "diagram-readable.mmd";
 const DIAGRAM_FILTER_FILENAME = "diagram-filter.mmd";
 
+/**
+ * 解析模块路径和函数名
+ * @param {string} name - 函数名
+ * @param {string} filePath - 文件路径
+ * @param {string} directoryPath - 项目根路径
+ * @returns {{name: string, filePath: string}} - 解析后的模块路径和函数名
+ */
 const resolveModulePath = (name, filePath, directoryPath) => {
   const moduleNameMatch = name.match(/^(\w+)\.(\w+)$/);
   if (moduleNameMatch) {
@@ -34,6 +41,14 @@ const resolveModulePath = (name, filePath, directoryPath) => {
   return { name, filePath };
 };
 
+/**
+ * 获取或生成函数的唯一ID
+ * @param {Map} functionHashMap - 存储函数ID的Map
+ * @param {string} name - 函数名
+ * @param {string} filePath - 文件路径
+ * @param {string} directoryPath - 项目根路径
+ * @returns {string} - 函数的唯一ID
+ */
 const getFunctionId = (functionHashMap, name, filePath, directoryPath) => {
   const { name: resolvedName, filePath: resolvedFilePath } = resolveModulePath(
     name,
@@ -47,6 +62,13 @@ const getFunctionId = (functionHashMap, name, filePath, directoryPath) => {
   return functionHashMap.get(key);
 };
 
+/**
+ * 生成所有函数调用的JSON文件
+ * @param {string} directoryPath - 项目路径
+ * @param {string[]} ignoreFolders - 需要忽略的文件夹
+ * @param {string} allFuncCallsJsonFileName - 输出JSON文件名
+ * @returns {Object} - 生成的JSON对象
+ */
 const generateAllFuncCallsJson = async (
   directoryPath,
   ignoreFolders,
@@ -106,11 +128,17 @@ const generateAllFuncCallsJson = async (
 
   const outputPath = path.join(__dirname, allFuncCallsJsonFileName);
   await fs.writeFile(outputPath, JSON.stringify(result, null, 2), "utf-8");
-  console.log(`结果已写入到 ${outputPath}`);
+  console.log(`Results have been written to ${outputPath}`);
 
   return result;
 };
 
+/**
+ * 生成Mermaid图表
+ * @param {string} jsonFilePath - JSON文件路径
+ * @param {string} directoryPath - 项目根路径
+ * @returns {{idDiagram: string, readableDiagram: string}} - 生成的图表
+ */
 const generateDiagrams = async (jsonFilePath, directoryPath) => {
   const idDiagram = generateMermaidDiagramFromJson(jsonFilePath);
   const outputFilePathId = path.join(__dirname, DIAGRAM_ID_FILENAME);
@@ -134,6 +162,12 @@ const generateDiagrams = async (jsonFilePath, directoryPath) => {
   return { idDiagram, readableDiagram };
 };
 
+/**
+ * 生成过滤后的Mermaid图表
+ * @param {string} diagramFilePath - 图表文件路径
+ * @param {string} filterText - 过滤文本
+ * @returns {string|null} - 生成的过滤后的图表
+ */
 const generateFilteredDiagram = async (diagramFilePath, filterText) => {
   const edges = parseMermaidDiagram(diagramFilePath);
   if (edges.length === 0) {
@@ -151,11 +185,17 @@ const generateFilteredDiagram = async (diagramFilePath, filterText) => {
   const mermaidDiagram = generateMermaidDiagram(edges, callChain);
   const outputFilePath = path.join(__dirname, DIAGRAM_FILTER_FILENAME);
   await fs.writeFile(outputFilePath, mermaidDiagram, "utf-8");
-  console.log(`筛选结果已写入到 ${outputFilePath}`);
+  console.log(`Filtered results have been written to ${outputFilePath}`);
 
   return mermaidDiagram;
 };
 
+/**
+ * 主函数
+ * @param {string} directoryPath - 项目路径
+ * @param {string[]} ignoreFolders - 需要忽略的文件夹
+ * @param {string} filterText - 过滤文本
+ */
 const main = async (directoryPath, ignoreFolders, filterText) => {
   try {
     await generateAllFuncCallsJson(
