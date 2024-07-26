@@ -20,8 +20,26 @@ function findCallChain(result, functionName, visited, filePath) {
         visited.add(func.functionId);
         func.filePath = currentFilePath;
         callChain.push(func);
+        console.log(
+          `Found function (child): ${formatName(
+            currentFilePath,
+            func.functionName,
+            directoryPath
+          )} [ID: ${func.functionId}]`
+        );
         const userDefinedCalls = func.calls.userDefined;
         for (const call of userDefinedCalls) {
+          console.log(
+            `\tThrough function: ${formatName(
+              currentFilePath,
+              func.functionName,
+              directoryPath
+            )} [ID: ${func.functionId}] found function: ${formatName(
+              call.path,
+              call.name,
+              directoryPath
+            )}`
+          );
           callChain.push(
             ...findCallChain(result, call.name, visited, currentFilePath)
           );
@@ -50,6 +68,24 @@ function findParentCallChain(result, functionName, visited) {
             visited.add(func.functionId);
             func.filePath = currentFilePath;
             callChain.push(func);
+            console.log(
+              `Found function (parent): ${formatName(
+                currentFilePath,
+                func.functionName,
+                directoryPath
+              )} [ID: ${func.functionId}]`
+            );
+            console.log(
+              `\tThrough function: ${formatName(
+                call.path,
+                call.name,
+                directoryPath
+              )} found function: ${formatName(
+                currentFilePath,
+                func.functionName,
+                directoryPath
+              )} [ID: ${func.functionId}]`
+            );
             callChain.push(
               ...findParentCallChain(result, func.functionName, visited)
             );
@@ -85,7 +121,13 @@ function filter(result, filterText) {
           if (!filteredResult[chainFunc.filePath]) {
             filteredResult[chainFunc.filePath] = [];
           }
-          filteredResult[chainFunc.filePath].push(chainFunc);
+          if (
+            !filteredResult[chainFunc.filePath].some(
+              f => f.functionId === chainFunc.functionId
+            )
+          ) {
+            filteredResult[chainFunc.filePath].push(chainFunc);
+          }
         });
       }
     }
@@ -104,7 +146,13 @@ function filter(result, filterText) {
           if (!filteredResult[chainFunc.filePath]) {
             filteredResult[chainFunc.filePath] = [];
           }
-          filteredResult[chainFunc.filePath].push(chainFunc);
+          if (
+            !filteredResult[chainFunc.filePath].some(
+              f => f.functionId === chainFunc.functionId
+            )
+          ) {
+            filteredResult[chainFunc.filePath].push(chainFunc);
+          }
         });
       }
     }
