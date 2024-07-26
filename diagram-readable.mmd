@@ -1,21 +1,23 @@
-graph TD
-  app.js_getYesterday --> app.js_format
-  app.js_getEasyFile --> app.js_getISO8601
-  app.js_getMachine --> app.js_getISO8601
-  app.js_getAllMachine --> app.js_getMachine
-  app.js_getAllEasyFile --> app.js_getEasyFile
-  kodo.js_generateUploadToken --> kodo.js_generateUploadPolicy
-  transcode.js_kodo.getVideoInfo --> kodo.js_getPrivateObject
-  review.js_kodo.deleteObject --> kodo.js_getPrivateObject
-  review.js_review --> review.js_isFileBanned
-  review.js_review --> review.js_handleBannedFile
-  review.js_handleBannedFile --> review.js_getEasyFile
-  review.js_handleBannedFile --> review.js_kodo.deleteObject
-  sls.js_writeLog --> sls.js_json2contents
-  transcode.js_getVideoInfo --> transcode.js_kodo.getVideoInfo
-  transcode.js_transcode --> transcode.js_saveAsName
-  transcode.js_run --> transcode.js_getVideoInfo
-  transcode.js_run --> transcode.js_needToVideoTranscode
-  transcode.js_run --> transcode.js_getVideoWidthHeight
-  transcode.js_run --> transcode.js_needToAudioTranscode
-  transcode.js_run --> transcode.js_transcode
+graph TB
+  subgraph all-function
+    app.js_getYesterday --> app.js_format
+    app.js_getEasyFile --> app.js_getISO8601
+    app.js_getMachine --> app.js_getISO8601
+    app.js_getAllMachine --> app.js_getMachine
+    app.js_getAllEasyFile --> app.js_getEasyFile
+    kodo.js_generateUploadToken --> kodo.js_generateUploadPolicy
+    transcode.js_kodo.getVideoInfo --> kodo.js_getPrivateObject
+    review.js_kodo.deleteObject --> kodo.js_getPrivateObject
+    review.js_review --> review.js_isFileBanned
+    review.js_review --> review.js_handleBannedFile
+    review.js_handleBannedFile --> review.js_getEasyFile
+    review.js_handleBannedFile --> review.js_kodo.deleteObject
+    sls.js_writeLog --> sls.js_json2contents
+    transcode.js_getVideoInfo --> transcode.js_kodo.getVideoInfo
+    transcode.js_transcode --> transcode.js_saveAsName
+    transcode.js_run --> transcode.js_getVideoInfo
+    transcode.js_run --> transcode.js_needToVideoTranscode
+    transcode.js_run --> transcode.js_getVideoWidthHeight
+    transcode.js_run --> transcode.js_needToAudioTranscode
+    transcode.js_run --> transcode.js_transcode
+  end

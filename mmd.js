@@ -46,7 +46,7 @@ function generateReadableDiagram(idDiagramPath, jsonFilePath, directoryPath) {
     const jsonContent = fs.readFileSync(jsonFilePath, "utf-8");
     const data = JSON.parse(jsonContent);
     const lines = idDiagramContent.split("\n");
-    const readableLines = ["graph TD"];
+    const readableLines = ["graph TB", "  subgraph all-function"];
 
     const idToReadableMap = {};
 
@@ -77,9 +77,11 @@ function generateReadableDiagram(idDiagramPath, jsonFilePath, directoryPath) {
         const [fromId, toId] = line.trim().split(" --> ");
         const fromReadable = idToReadableMap[fromId] || fromId;
         const toReadable = idToReadableMap[toId] || toId;
-        readableLines.push(`  ${fromReadable} --> ${toReadable}`);
+        readableLines.push(`    ${fromReadable} --> ${toReadable}`);
       }
     });
+
+    readableLines.push("  end"); // 结束子图
 
     return readableLines.join("\n");
   } catch (error) {
