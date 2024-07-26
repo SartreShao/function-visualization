@@ -3,6 +3,10 @@ const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const { getAllDefinedFunctions } = require("./functionDefinitions");
 const { getAllFunctionCalls } = require("./functionCalls");
+const {
+  generateMermaidDiagramFromJson,
+  generateReadableDiagram
+} = require("./mmd");
 
 // 用于存储函数的哈希映射
 const functionHashMap = new Map();
@@ -55,7 +59,11 @@ function getFunctionId(name, filePath, directoryPath) {
  * @param {string} directoryPath - 项目的路径
  * @param {Array<string>} ignoreFolders - 忽略的文件夹
  */
-async function main(directoryPath, ignoreFolders = []) {
+async function main(
+  directoryPath,
+  ignoreFolders = [],
+  allFunctionCallsJsonFileName
+) {
   try {
     // 获取所有定义的函数
     const allFunctions = await getAllDefinedFunctions(
@@ -100,7 +108,7 @@ async function main(directoryPath, ignoreFolders = []) {
     }
 
     // 将最终的 JSON 结果写入文件
-    const outputPath = path.join(__dirname, "result.json");
+    const outputPath = path.join(__dirname, allFunctionCallsJsonFileName);
     fs.writeFileSync(outputPath, JSON.stringify(result, null, 2), "utf-8");
     console.log(`结果已写入到 ${outputPath}`);
   } catch (error) {
@@ -111,5 +119,5 @@ async function main(directoryPath, ignoreFolders = []) {
 // 示例使用
 const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
 const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
-
-main(directoryPath, ignoreFolders);
+const allFunctionCallsJsonFileName = "result.json";
+main(directoryPath, ignoreFolders, allFunctionCallsJsonFileName);
