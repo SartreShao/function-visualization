@@ -2,7 +2,7 @@
   "C:\\Code\\web\\easylink.cc\\src\\model\\api.js": [
     {
       "functionName": "fetchIsWebToMpRedirectEnable",
-      "functionId": "0d085d39-da26-463d-9b3f-006314127d7f",
+      "functionId": "f21d85b6-853e-4352-a7bf-ccb6b785214c",
       "calls": {
         "system": [
           "fetch"
@@ -11,12 +11,12 @@
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [],
@@ -27,7 +27,7 @@
     },
     {
       "functionName": "getUnlimitedQRCode",
-      "functionId": "9dcc40b1-228f-480e-aa6d-1ec73e8cbbea",
+      "functionId": "bd9b887c-abfd-4a37-8350-ce911f903512",
       "calls": {
         "system": [
           "fetch",
@@ -44,7 +44,7 @@
     },
     {
       "functionName": "getUrlScheme",
-      "functionId": "23480f0f-c02c-414f-a1d2-84dfcb10ed0b",
+      "functionId": "de202796-76f0-447c-925b-f1285de7bcc0",
       "calls": {
         "system": [
           "fetch"
@@ -53,12 +53,12 @@
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [],
@@ -69,24 +69,24 @@
     },
     {
       "functionName": "createEasyFile",
-      "functionId": "7d6e1281-6151-4c3e-983e-82f390d4903c",
+      "functionId": "e5d540ce-8590-4a26-a0e7-bf1680a9f200",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "useMid",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "75b40c1d-9303-4681-b085-046666f1ab76"
+            "id": "a1145911-f8ad-446a-89fa-85359969caf5"
           },
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [],
@@ -99,19 +99,19 @@
     },
     {
       "functionName": "isEasyFileKeyExist",
-      "functionId": "14c83938-e80a-4a02-bf09-3f50480bd2c1",
+      "functionId": "22af434a-b438-43d8-9870-9904682ddbaa",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [],
@@ -122,7 +122,7 @@
     },
     {
       "functionName": "generateRandomHex",
-      "functionId": "33109f4a-22f8-4720-a042-0fc979431d07",
+      "functionId": "3ece0bb2-3565-4364-9da9-45b1a17d3e23",
       "calls": {
         "system": [
           "Math.floor",
@@ -137,7 +137,7 @@
     },
     {
       "functionName": "generateRandomUniqueHex",
-      "functionId": "eb5d92cd-d741-4c1a-abee-d41e9229f01a",
+      "functionId": "572612cf-0a1c-4430-9f49-d940f2983f78",
       "calls": {
         "system": [
           "Math.floor",
@@ -147,17 +147,17 @@
           {
             "name": "generateRandomHex",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "33109f4a-22f8-4720-a042-0fc979431d07"
+            "id": "3ece0bb2-3565-4364-9da9-45b1a17d3e23"
           },
           {
             "name": "isEasyFileKeyExist",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "14c83938-e80a-4a02-bf09-3f50480bd2c1"
+            "id": "22af434a-b438-43d8-9870-9904682ddbaa"
           },
           {
             "name": "generateRandomHex",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "33109f4a-22f8-4720-a042-0fc979431d07"
+            "id": "3ece0bb2-3565-4364-9da9-45b1a17d3e23"
           }
         ],
         "npm": [],
@@ -168,19 +168,19 @@
     },
     {
       "functionName": "getEasyFile",
-      "functionId": "d1594170-c531-4276-a744-29872f4daf8c",
+      "functionId": "bed6ca2d-6512-433f-be3c-d970f1208c4d",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [],
@@ -189,19 +189,19 @@
     },
     {
       "functionName": "upload_s3",
-      "functionId": "0eb0c287-a4db-48db-bdc3-f08e1d61a362",
+      "functionId": "ff4c701f-5d70-4a04-ac5c-51c6eba76635",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "S3.uploadFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js",
-            "id": "54566c36-0dce-42c8-b975-6e4a6c863e2c"
+            "id": "6af6b6cd-2e6c-4979-a983-e7d93ac8a60a"
           },
           {
             "name": "createEasyFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "7d6e1281-6151-4c3e-983e-82f390d4903c"
+            "id": "e5d540ce-8590-4a26-a0e7-bf1680a9f200"
           }
         ],
         "npm": [],
@@ -210,19 +210,19 @@
     },
     {
       "functionName": "upload_kodo",
-      "functionId": "d8b6c356-ef5c-4896-9302-f3e4c1639d3b",
+      "functionId": "d80d52ff-83e2-4a9e-b703-17b3f9a8a05f",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Kodo.uploadFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js",
-            "id": "0398a58e-df44-4d3c-b726-328b22503d42"
+            "id": "67b1e551-c769-42ac-bd89-dce5ebafc2fa"
           },
           {
             "name": "createEasyFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "7d6e1281-6151-4c3e-983e-82f390d4903c"
+            "id": "e5d540ce-8590-4a26-a0e7-bf1680a9f200"
           }
         ],
         "npm": [],
@@ -231,69 +231,69 @@
     },
     {
       "functionName": "uploadFile",
-      "functionId": "14ae2ad8-7b6f-4c72-8b5f-42628d68957f",
+      "functionId": "fd8d9f10-35c5-4ec1-bbd9-b951e5009836",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "generateRandomUniqueHex",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "eb5d92cd-d741-4c1a-abee-d41e9229f01a"
+            "id": "572612cf-0a1c-4430-9f49-d940f2983f78"
           },
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "S3.uploadFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js",
-            "id": "54566c36-0dce-42c8-b975-6e4a6c863e2c"
+            "id": "6af6b6cd-2e6c-4979-a983-e7d93ac8a60a"
           },
           {
             "name": "createEasyFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "7d6e1281-6151-4c3e-983e-82f390d4903c"
+            "id": "e5d540ce-8590-4a26-a0e7-bf1680a9f200"
           },
           {
             "name": "Kodo.uploadFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js",
-            "id": "0398a58e-df44-4d3c-b726-328b22503d42"
+            "id": "67b1e551-c769-42ac-bd89-dce5ebafc2fa"
           },
           {
             "name": "createEasyFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "7d6e1281-6151-4c3e-983e-82f390d4903c"
+            "id": "e5d540ce-8590-4a26-a0e7-bf1680a9f200"
           },
           {
             "name": "upload_s3",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "0eb0c287-a4db-48db-bdc3-f08e1d61a362"
+            "id": "ff4c701f-5d70-4a04-ac5c-51c6eba76635"
           },
           {
             "name": "upload_kodo",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "d8b6c356-ef5c-4896-9302-f3e4c1639d3b"
+            "id": "d80d52ff-83e2-4a9e-b703-17b3f9a8a05f"
           },
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [],
@@ -302,29 +302,29 @@
     },
     {
       "functionName": "useMid",
-      "functionId": "75b40c1d-9303-4681-b085-046666f1ab76",
+      "functionId": "a1145911-f8ad-446a-89fa-85359969caf5",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [
@@ -340,24 +340,24 @@
   "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js": [
     {
       "functionName": "uploadFile",
-      "functionId": "0398a58e-df44-4d3c-b726-328b22503d42",
+      "functionId": "67b1e551-c769-42ac-bd89-dce5ebafc2fa",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "getUploadToken",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js",
-            "id": "444a71c0-a6af-40b6-b0fe-5cd42c8a2b6e"
+            "id": "4a0b767f-d657-4c3e-a97d-a813cbc0d3ff"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils\\index.js",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           },
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils\\index.js",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           }
         ],
         "npm": [],
@@ -371,19 +371,19 @@
     },
     {
       "functionName": "getUploadToken",
-      "functionId": "444a71c0-a6af-40b6-b0fe-5cd42c8a2b6e",
+      "functionId": "4a0b767f-d657-4c3e-a97d-a813cbc0d3ff",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils\\index.js",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils\\index.js",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [
@@ -394,19 +394,19 @@
     },
     {
       "functionName": "getCdnUrl",
-      "functionId": "aaea8e7f-ec54-4f33-a4ef-f7b0307fc195",
+      "functionId": "f8bbc254-2c96-4c3a-8456-cf49cdcc756f",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils\\index.js",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils\\index.js",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [
@@ -419,19 +419,19 @@
   "C:\\Code\\web\\easylink.cc\\src\\model\\oss.js": [
     {
       "functionName": "uploadFileByOss",
-      "functionId": "b8adbcea-4391-43e8-9123-c14e16783928",
+      "functionId": "d4498979-8597-4daf-8d2c-9d6aa3c0b61d",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Log.success",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "a3758920-bec7-4295-b3e9-d0cc6e0e67d3"
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [],
@@ -444,7 +444,7 @@
   "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js": [
     {
       "functionName": "multipartUploadFile",
-      "functionId": "abe86b2c-303b-47d4-ad1d-b5833b9af3e5",
+      "functionId": "7fb233cf-860b-425a-b9d8-da9ce2c32274",
       "calls": {
         "system": [
           "Math.min",
@@ -456,7 +456,7 @@
           {
             "name": "ReadFile.readFileAsync",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "246e7788-75f3-4114-ac9a-08a4d133aed4"
+            "id": "4dcbaf1f-f561-46ad-85ca-995470038002"
           }
         ],
         "npm": [],
@@ -473,7 +473,7 @@
     },
     {
       "functionName": "changeFileACL2Public",
-      "functionId": "3672abdd-4d73-48d6-9af4-09f1110bcc38",
+      "functionId": "00f325c6-4c55-475f-894d-d9dcc66a6c10",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -485,7 +485,7 @@
     },
     {
       "functionName": "getOssUrl",
-      "functionId": "7fd9a076-f858-4c47-a4f6-cc0ebc0654a6",
+      "functionId": "e72363cc-36d2-4808-9371-273380666f9f",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -497,24 +497,24 @@
     },
     {
       "functionName": "uploadFile",
-      "functionId": "54566c36-0dce-42c8-b975-6e4a6c863e2c",
+      "functionId": "6af6b6cd-2e6c-4979-a983-e7d93ac8a60a",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "multipartUploadFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js",
-            "id": "abe86b2c-303b-47d4-ad1d-b5833b9af3e5"
+            "id": "7fb233cf-860b-425a-b9d8-da9ce2c32274"
           },
           {
             "name": "changeFileACL2Public",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js",
-            "id": "3672abdd-4d73-48d6-9af4-09f1110bcc38"
+            "id": "00f325c6-4c55-475f-894d-d9dcc66a6c10"
           },
           {
             "name": "getOssUrl",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js",
-            "id": "7fd9a076-f858-4c47-a4f6-cc0ebc0654a6"
+            "id": "e72363cc-36d2-4808-9371-273380666f9f"
           }
         ],
         "npm": [],
@@ -525,7 +525,7 @@
   "C:\\Code\\web\\easylink.cc\\src\\model\\session.js": [
     {
       "functionName": "generateSessionId",
-      "functionId": "0a64e0eb-6679-4d40-8e1d-64c4c5fc282b",
+      "functionId": "66527cf4-8e1d-47b7-8c5d-94e35cbbbbd7",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -537,14 +537,14 @@
     },
     {
       "functionName": "getSessionId",
-      "functionId": "6b3c62b7-4380-48ec-97cc-ce368269f7d0",
+      "functionId": "993a74d3-a7b3-4a43-8520-c18c0b6dd014",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "generateSessionId",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\session.js",
-            "id": "0a64e0eb-6679-4d40-8e1d-64c4c5fc282b"
+            "id": "66527cf4-8e1d-47b7-8c5d-94e35cbbbbd7"
           }
         ],
         "npm": [],
@@ -555,49 +555,49 @@
   "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js": [
     {
       "functionName": "send",
-      "functionId": "727d4d73-9cda-4ed3-80ed-257ac6a812c8",
+      "functionId": "61b8af53-f734-4083-aba1-bbecccb5af62",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "url",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "d0a94061-ca7b-4592-884a-74efb58ec5fd"
+            "id": "de03fac4-424d-4a1d-9aae-7cd3aa0a5ff2"
           },
           {
             "name": "referrer",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "3759688c-5dc1-4adb-9443-41f38ad71ee5"
+            "id": "fdbe1fc8-e19a-4530-a893-610d0a0c76e1"
           },
           {
             "name": "platform",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "fed2ad93-c18b-49d6-8448-72631e6a83cb"
+            "id": "102d53da-96ad-4211-abd3-9ecb997deb7e"
           },
           {
             "name": "userAgent",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "a173f0c5-2b0d-446c-ba00-cbfd6ae1917e"
+            "id": "3b2dbbc3-45ec-40a0-af9d-e39e9d660977"
           },
           {
             "name": "Api.useMid",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "75b40c1d-9303-4681-b085-046666f1ab76"
+            "id": "a1145911-f8ad-446a-89fa-85359969caf5"
           },
           {
             "name": "timestamp",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "95479740-b206-4387-b3f0-0558e6777502"
+            "id": "55f344c0-8cb0-4bf5-9417-089184ac1a74"
           },
           {
             "name": "session",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "bdb264e5-37f7-4069-8fe3-d5cf169f056c"
+            "id": "9fb24a7e-3a05-474c-881b-99cf43a42eae"
           },
           {
             "name": "Log.failure",
             "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
-            "id": "0188950c-b61c-476b-81b3-3b5b782a75ab"
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
           }
         ],
         "npm": [],
@@ -608,14 +608,14 @@
     },
     {
       "functionName": "session",
-      "functionId": "bdb264e5-37f7-4069-8fe3-d5cf169f056c",
+      "functionId": "9fb24a7e-3a05-474c-881b-99cf43a42eae",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "getSessionId",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\session.js",
-            "id": "6b3c62b7-4380-48ec-97cc-ce368269f7d0"
+            "id": "993a74d3-a7b3-4a43-8520-c18c0b6dd014"
           }
         ],
         "npm": [],
@@ -624,7 +624,7 @@
     },
     {
       "functionName": "timestamp",
-      "functionId": "95479740-b206-4387-b3f0-0558e6777502",
+      "functionId": "55f344c0-8cb0-4bf5-9417-089184ac1a74",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -636,7 +636,7 @@
     },
     {
       "functionName": "url",
-      "functionId": "d0a94061-ca7b-4592-884a-74efb58ec5fd",
+      "functionId": "de03fac4-424d-4a1d-9aae-7cd3aa0a5ff2",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -646,7 +646,7 @@
     },
     {
       "functionName": "referrer",
-      "functionId": "3759688c-5dc1-4adb-9443-41f38ad71ee5",
+      "functionId": "fdbe1fc8-e19a-4530-a893-610d0a0c76e1",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -656,7 +656,7 @@
     },
     {
       "functionName": "platform",
-      "functionId": "fed2ad93-c18b-49d6-8448-72631e6a83cb",
+      "functionId": "102d53da-96ad-4211-abd3-9ecb997deb7e",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -666,7 +666,7 @@
     },
     {
       "functionName": "userAgent",
-      "functionId": "a173f0c5-2b0d-446c-ba00-cbfd6ae1917e",
+      "functionId": "3b2dbbc3-45ec-40a0-af9d-e39e9d660977",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -678,7 +678,7 @@
   "C:\\Code\\web\\easylink.cc\\src\\store\\global.js": [
     {
       "functionName": "fetchWebToMpRedirectEnable",
-      "functionId": "d6f9dbab-7675-4019-b832-51f704a638ee",
+      "functionId": "3efd8f28-71bb-4c8c-b6d5-011f597a965c",
       "calls": {
         "system": [
           "console.error"
@@ -687,7 +687,7 @@
           {
             "name": "Api.fetchIsWebToMpRedirectEnable",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "0d085d39-da26-463d-9b3f-006314127d7f"
+            "id": "f21d85b6-853e-4352-a7bf-ccb6b785214c"
           }
         ],
         "npm": [],
@@ -698,14 +698,14 @@
   "C:\\Code\\web\\easylink.cc\\src\\store\\index.js": [
     {
       "functionName": "useProvider",
-      "functionId": "cf307e41-3f90-4bdc-8f15-c3720dff8988",
+      "functionId": "2b435045-b551-4096-8d99-27aafced4830",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Api.useMid",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "75b40c1d-9303-4681-b085-046666f1ab76"
+            "id": "a1145911-f8ad-446a-89fa-85359969caf5"
           }
         ],
         "npm": [],
@@ -720,24 +720,24 @@
   "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\FileVM.js": [
     {
       "functionName": "getEasyFile",
-      "functionId": "892d0105-b27e-47b6-a348-d6b0125111eb",
+      "functionId": "3c5cdda6-664d-4fe3-80b4-924238d559b3",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Api.getEasyFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "d1594170-c531-4276-a744-29872f4daf8c"
+            "id": "bed6ca2d-6512-433f-be3c-d970f1208c4d"
           },
           {
             "name": "Kodo.getCdnUrl",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js",
-            "id": "aaea8e7f-ec54-4f33-a4ef-f7b0307fc195"
+            "id": "f8bbc254-2c96-4c3a-8456-cf49cdcc756f"
           },
           {
             "name": "Kodo.getCdnUrl",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js",
-            "id": "aaea8e7f-ec54-4f33-a4ef-f7b0307fc195"
+            "id": "f8bbc254-2c96-4c3a-8456-cf49cdcc756f"
           }
         ],
         "npm": [],
@@ -746,7 +746,7 @@
     },
     {
       "functionName": "isInWeChat",
-      "functionId": "4cef1d68-862f-4028-8394-87c7eed7e60e",
+      "functionId": "d3ed0389-84c2-4058-8b10-e2772c545247",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -758,7 +758,7 @@
     },
     {
       "functionName": "downloadFile",
-      "functionId": "1f91f10f-e4d6-406f-be3e-4f2641436d5c",
+      "functionId": "a5596384-4801-4e7d-9dba-afdfa79535e3",
       "calls": {
         "system": [
           "console.log",
@@ -768,7 +768,7 @@
           {
             "name": "isInWeChat",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\FileVM.js",
-            "id": "4cef1d68-862f-4028-8394-87c7eed7e60e"
+            "id": "d3ed0389-84c2-4058-8b10-e2772c545247"
           }
         ],
         "npm": [],
@@ -781,7 +781,7 @@
     },
     {
       "functionName": "isDownloadRequest",
-      "functionId": "64ff855e-0151-43cd-a1fb-65b115602574",
+      "functionId": "8c801a1f-9844-4bc9-87bd-264c52cae551",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -793,19 +793,19 @@
     },
     {
       "functionName": "openMiniProgram",
-      "functionId": "9809f41f-0e87-486e-acf8-4d3bf8c910e3",
+      "functionId": "ba150114-53f5-4d8f-8c1d-cad48a03feb1",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Api.getUrlScheme",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "23480f0f-c02c-414f-a1d2-84dfcb10ed0b"
+            "id": "de202796-76f0-447c-925b-f1285de7bcc0"
           },
           {
             "name": "Api.useMid",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
-            "id": "75b40c1d-9303-4681-b085-046666f1ab76"
+            "id": "a1145911-f8ad-446a-89fa-85359969caf5"
           }
         ],
         "npm": [],
@@ -818,7 +818,7 @@
   "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js": [
     {
       "functionName": "getResource",
-      "functionId": "64c460b9-f0f8-48da-96fd-e9d16af45fe7",
+      "functionId": "929d3c79-de93-4362-93bd-359e05df4ec9",
       "calls": {
         "system": [
           "fetch",
@@ -829,7 +829,7 @@
           {
             "name": "Kodo.getCdnUrl",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js",
-            "id": "aaea8e7f-ec54-4f33-a4ef-f7b0307fc195"
+            "id": "f8bbc254-2c96-4c3a-8456-cf49cdcc756f"
           }
         ],
         "npm": [],
@@ -843,14 +843,14 @@
     },
     {
       "functionName": "uploadFile",
-      "functionId": "e5847d7c-ea4a-4bb6-a276-4d53a8c32370",
+      "functionId": "d9401968-9f06-40b6-b585-c33ce391eea4",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Api.uploadFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api",
-            "id": "14ae2ad8-7b6f-4c72-8b5f-42628d68957f"
+            "id": "fd8d9f10-35c5-4ec1-bbd9-b951e5009836"
           }
         ],
         "npm": [],
@@ -859,14 +859,14 @@
     },
     {
       "functionName": "uploadFileList",
-      "functionId": "8ce1ea4d-7657-4aad-846c-d995fb4b8f9b",
+      "functionId": "556e6584-ef4f-4b6c-b451-28fdd8d88aee",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "uploadFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "e5847d7c-ea4a-4bb6-a276-4d53a8c32370"
+            "id": "d9401968-9f06-40b6-b585-c33ce391eea4"
           }
         ],
         "npm": [],
@@ -875,7 +875,7 @@
     },
     {
       "functionName": "getUploadButtonText",
-      "functionId": "e0178d8f-2733-4598-a708-71603d008e63",
+      "functionId": "4a86eb52-59f7-42a3-bbcc-f14fdf936b1e",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -885,7 +885,7 @@
     },
     {
       "functionName": "closeLinkListDialog",
-      "functionId": "ab709d67-1806-4726-90c4-4a4a2c84c1b1",
+      "functionId": "ee5df59b-cd5d-43ec-8419-87af46632de4",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -897,7 +897,7 @@
     },
     {
       "functionName": "copyAllUrl",
-      "functionId": "bfe4b7d2-9dd4-4393-b234-162a4e905c3f",
+      "functionId": "96494535-8049-4f8b-a91b-c74c0c562464",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -913,7 +913,7 @@
     },
     {
       "functionName": "copyUrl",
-      "functionId": "fae89618-a89c-4ec4-9291-bf34805c941d",
+      "functionId": "97a70a0c-f9a7-413b-aa8a-0c5f41445c52",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -928,14 +928,14 @@
     },
     {
       "functionName": "downloadQRCode",
-      "functionId": "f9ec2676-848c-4543-b368-6743a7ac15a8",
+      "functionId": "d1077841-0a92-4060-a2d6-a58ec73a6293",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "generateQRCode",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "fb43fa10-b170-4ed7-9df8-a0be36f4bf3b"
+            "id": "af6e034f-951d-40e1-871c-0d3aaab3533a"
           }
         ],
         "npm": [],
@@ -947,7 +947,7 @@
     },
     {
       "functionName": "addHyphenAndSpace",
-      "functionId": "39c436f8-a0f2-4ca9-8776-16d8afdb4871",
+      "functionId": "029cd79b-5782-4312-a4bd-c196eeec3a3d",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -961,7 +961,7 @@
     },
     {
       "functionName": "downloadAllQRCode",
-      "functionId": "d94a5a02-f151-4cab-9148-374533e4a321",
+      "functionId": "fa7b37ae-b0c1-47ec-9731-8bcc098c4cfb",
       "calls": {
         "system": [
           "Promise.all"
@@ -970,17 +970,17 @@
           {
             "name": "generateQRCode",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "fb43fa10-b170-4ed7-9df8-a0be36f4bf3b"
+            "id": "af6e034f-951d-40e1-871c-0d3aaab3533a"
           },
           {
             "name": "createZipFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "a28fedf7-2dd5-4115-bda4-3859ac486f59"
+            "id": "4070df7b-7270-4c9f-8f7c-ad93862134c5"
           },
           {
             "name": "createDownloadLink",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "4bd78d9b-a86b-4951-91c2-5773d31429c3"
+            "id": "0c1380f6-9064-4dea-bbbc-a004ed20609f"
           }
         ],
         "npm": [],
@@ -992,7 +992,7 @@
     },
     {
       "functionName": "generateMpQRCode",
-      "functionId": "9836a1b5-4d31-4578-9024-a2eb853be378",
+      "functionId": "544cc987-219b-4277-bf8c-0dd31349a701",
       "calls": {
         "system": [
           "console.log",
@@ -1002,12 +1002,12 @@
           {
             "name": "Api.getUnlimitedQRCode",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api",
-            "id": "9dcc40b1-228f-480e-aa6d-1ec73e8cbbea"
+            "id": "bd9b887c-abfd-4a37-8350-ce911f903512"
           },
           {
             "name": "addHyphenAndSpace",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "39c436f8-a0f2-4ca9-8776-16d8afdb4871"
+            "id": "029cd79b-5782-4312-a4bd-c196eeec3a3d"
           }
         ],
         "npm": [],
@@ -1025,14 +1025,14 @@
     },
     {
       "functionName": "generateQRCode",
-      "functionId": "fb43fa10-b170-4ed7-9df8-a0be36f4bf3b",
+      "functionId": "af6e034f-951d-40e1-871c-0d3aaab3533a",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "generateWebQRCode",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "1a32779c-64cd-47c4-8d9a-0196a9a7469d"
+            "id": "9db1b5fa-4d99-429d-88a0-a76329ecce04"
           }
         ],
         "npm": [],
@@ -1041,7 +1041,7 @@
     },
     {
       "functionName": "generateWebQRCode",
-      "functionId": "1a32779c-64cd-47c4-8d9a-0196a9a7469d",
+      "functionId": "9db1b5fa-4d99-429d-88a0-a76329ecce04",
       "calls": {
         "system": [
           "console.log"
@@ -1050,7 +1050,7 @@
           {
             "name": "addHyphenAndSpace",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "39c436f8-a0f2-4ca9-8776-16d8afdb4871"
+            "id": "029cd79b-5782-4312-a4bd-c196eeec3a3d"
           }
         ],
         "npm": [],
@@ -1069,14 +1069,14 @@
     },
     {
       "functionName": "createDownloadLink",
-      "functionId": "4bd78d9b-a86b-4951-91c2-5773d31429c3",
+      "functionId": "0c1380f6-9064-4dea-bbbc-a004ed20609f",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "addHyphenAndSpace",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
-            "id": "39c436f8-a0f2-4ca9-8776-16d8afdb4871"
+            "id": "029cd79b-5782-4312-a4bd-c196eeec3a3d"
           }
         ],
         "npm": [],
@@ -1088,7 +1088,7 @@
     },
     {
       "functionName": "createZipFile",
-      "functionId": "a28fedf7-2dd5-4115-bda4-3859ac486f59",
+      "functionId": "4070df7b-7270-4c9f-8f7c-ad93862134c5",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -1105,7 +1105,7 @@
   "C:\\Code\\web\\easylink.cc\\src\\views\\file\\FileView.vue": [
     {
       "functionName": "formatBytes",
-      "functionId": "8f2922d4-af08-4b40-b4ac-47a83ba9a0c0",
+      "functionId": "ec7bfa60-250f-4bb9-bfa5-d4d13699cd99",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -1115,19 +1115,19 @@
     },
     {
       "functionName": "clickOpenMiniprogramBtn",
-      "functionId": "de3ddaec-c2f1-41bc-a2d7-b0a94827f3c5",
+      "functionId": "97a9c62c-8b40-420a-8e9a-8367e2c72a45",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "FileVM.openMiniProgram",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\index",
-            "id": "a9805e02-9367-45b9-b15e-dd865921389b"
+            "id": "164fb5e0-5468-48c2-b1b1-6409dfb7ce0a"
           }
         ],
         "npm": [],
@@ -1136,19 +1136,19 @@
     },
     {
       "functionName": "clickDownloadFile",
-      "functionId": "489610aa-b4b7-4b47-af08-50478d22d599",
+      "functionId": "c20aa576-96f0-4dd2-b4a7-bd17a93d81a3",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "FileVM.downloadFile",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\index",
-            "id": "030ef378-827a-4cf0-b4ab-871b20c4e50d"
+            "id": "2ee275d1-fc1d-4b09-b4ff-97cc91f3207e"
           }
         ],
         "npm": [],
@@ -1157,49 +1157,49 @@
     },
     {
       "functionName": "mounted",
-      "functionId": "6cd3edab-ff9e-4091-b995-08c60d60f476",
+      "functionId": "c4c96927-9a24-4387-91c8-57eeebd0638b",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.platform",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "fed2ad93-c18b-49d6-8448-72631e6a83cb"
+            "id": "102d53da-96ad-4211-abd3-9ecb997deb7e"
           },
           {
             "name": "HomeVM.getResource",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\index",
-            "id": "ca7acac7-9c03-468e-855a-1054548e9311"
+            "id": "48e994d0-60c6-4b06-a475-5694a317aa1b"
           },
           {
             "name": "HomeVM.getResource",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\index",
-            "id": "ca7acac7-9c03-468e-855a-1054548e9311"
+            "id": "48e994d0-60c6-4b06-a475-5694a317aa1b"
           },
           {
             "name": "FileVM.isDownloadRequest",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\index",
-            "id": "82d5da48-71f1-4969-bcfe-fe0a4600bb0d"
+            "id": "947f6953-ff57-4d1a-aaa2-a8918031a5eb"
           },
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "FileVM.openMiniProgram",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\index",
-            "id": "a9805e02-9367-45b9-b15e-dd865921389b"
+            "id": "164fb5e0-5468-48c2-b1b1-6409dfb7ce0a"
           },
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           }
         ],
         "npm": [],
@@ -1212,7 +1212,7 @@
   "C:\\Code\\web\\easylink.cc\\src\\views\\home\\HomeView.vue": [
     {
       "functionName": "clickLogo",
-      "functionId": "2642d523-f3bf-4ec1-ac7b-327e14f8d04e",
+      "functionId": "a6dc0102-46e7-4b6f-bdaf-72f443006839",
       "calls": {
         "system": [],
         "userDefined": [],
@@ -1222,14 +1222,14 @@
     },
     {
       "functionName": "clickAddFileButton",
-      "functionId": "9cba2848-989c-4735-8d06-67d0b2c3b07b",
+      "functionId": "9e4c49e4-0d7e-4ecc-9d6f-c222812487b0",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           }
         ],
         "npm": [],
@@ -1238,19 +1238,19 @@
     },
     {
       "functionName": "inputFileChanged",
-      "functionId": "ddf83e01-5903-4bfa-a229-be5f816bc6dc",
+      "functionId": "d15936e3-06df-4144-947d-c7f786068b83",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "HomeVM.uploadFileList",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\index",
-            "id": "352ede79-7d1b-4675-bdee-89bc96f0d16c"
+            "id": "07fa653a-ca78-4286-98d4-35a9c5e78739"
           }
         ],
         "npm": [],
@@ -1259,19 +1259,19 @@
     },
     {
       "functionName": "mounted",
-      "functionId": "1848713f-8cbc-423a-b8f7-0f3b6610e0ab",
+      "functionId": "e1b85b02-9669-449b-b2aa-2e999fbe3f5c",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "HomeVM.getResource",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\index",
-            "id": "ca7acac7-9c03-468e-855a-1054548e9311"
+            "id": "48e994d0-60c6-4b06-a475-5694a317aa1b"
           },
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           }
         ],
         "npm": [],
@@ -1282,14 +1282,14 @@
   "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\LinkItem.vue": [
     {
       "functionName": "clickUrl",
-      "functionId": "efb790f4-a95c-4912-9840-c47e2cbf9d21",
+      "functionId": "29003ee1-a65e-44b5-a550-5f748646dd14",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           }
         ],
         "npm": [],
@@ -1300,19 +1300,19 @@
     },
     {
       "functionName": "clickCopyUrl",
-      "functionId": "b3d6701a-02fb-4a73-b3e7-9e0e1633ee32",
+      "functionId": "7a3834f7-f9b7-4620-a2ac-3e11f9ad11b7",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "HomeVM.copyUrl",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM",
-            "id": "2a82bfff-36d7-4cec-b24a-0cefe347485b"
+            "id": "e2522b47-b801-44dd-b14b-a5889926bb4d"
           }
         ],
         "npm": [],
@@ -1321,19 +1321,19 @@
     },
     {
       "functionName": "clickDownloadQRCode",
-      "functionId": "05f14162-184e-411b-bbdc-7f060004c960",
+      "functionId": "26929145-28c3-4c23-a46b-1db7668e9c42",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "HomeVM.downloadQRCode",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM",
-            "id": "98366c9a-9b6a-4a87-80e8-d1340db4d959"
+            "id": "01a3a026-b745-47d5-b569-cddd19782b06"
           }
         ],
         "npm": [],
@@ -1344,19 +1344,19 @@
   "C:\\Code\\web\\easylink.cc\\src\\views\\home\\components\\LinkListDialog.vue": [
     {
       "functionName": "closeDialog",
-      "functionId": "cb382c4d-e204-4b69-bf0d-d65e5b6cafa1",
+      "functionId": "76ff5ecd-dbca-48b2-988c-8ed2f0f7e488",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "HomeVM.closeLinkListDialog",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM",
-            "id": "55c43c76-2c1c-4836-866b-e92d7ec555be"
+            "id": "d91a3f89-3c5d-4d68-b566-06e754d15966"
           }
         ],
         "npm": [],
@@ -1365,19 +1365,19 @@
     },
     {
       "functionName": "copyAllUrl",
-      "functionId": "c960fc20-e0f9-44d8-9d2b-49d72e40391e",
+      "functionId": "78399923-b6ff-4bdf-b998-92ab1914b453",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "HomeVM.copyAllUrl",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM",
-            "id": "34e3b9b0-e9fb-4ce1-8d2d-d3d8e5d10248"
+            "id": "f632d3f8-2ba3-4183-bd75-2fb03a70cd76"
           }
         ],
         "npm": [],
@@ -1386,19 +1386,19 @@
     },
     {
       "functionName": "downloadAllQRCode",
-      "functionId": "508c6275-60f4-4bc3-9697-79750ac5c742",
+      "functionId": "a4f73178-6a6d-443d-8050-652864353b8b",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Tracking.send",
             "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
-            "id": "727d4d73-9cda-4ed3-80ed-257ac6a812c8"
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
           },
           {
             "name": "HomeVM.downloadAllQRCode",
             "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM",
-            "id": "7ce784ba-2cd6-473b-bce2-75aa357fadd0"
+            "id": "c2bb9132-2f36-4b28-ab0d-d3718aac198d"
           }
         ],
         "npm": [],

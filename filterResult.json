@@ -1,0 +1,207 @@
+{
+  "C:\\Code\\web\\easylink.cc\\src\\model\\api.js": [
+    {
+      "functionName": "createEasyFile",
+      "functionId": "e5d540ce-8590-4a26-a0e7-bf1680a9f200",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "useMid",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
+            "id": "a1145911-f8ad-446a-89fa-85359969caf5"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "easyFile.set",
+          "easyFile.save",
+          "easyFile.toFullJSON"
+        ]
+      },
+      "filePath": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+    },
+    {
+      "functionName": "useMid",
+      "functionId": "a1145911-f8ad-446a-89fa-85359969caf5",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
+          }
+        ],
+        "npm": [
+          "axios.post"
+        ],
+        "other": [
+          "localStorage.getItem",
+          "localStorage.setItem"
+        ]
+      },
+      "filePath": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+    },
+    {
+      "functionName": "upload_s3",
+      "functionId": "ff4c701f-5d70-4a04-ac5c-51c6eba76635",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "S3.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js",
+            "id": "6af6b6cd-2e6c-4979-a983-e7d93ac8a60a"
+          },
+          {
+            "name": "createEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
+            "id": "e5d540ce-8590-4a26-a0e7-bf1680a9f200"
+          }
+        ],
+        "npm": [],
+        "other": []
+      },
+      "filePath": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+    },
+    {
+      "functionName": "uploadFile",
+      "functionId": "fd8d9f10-35c5-4ec1-bbd9-b951e5009836",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "generateRandomUniqueHex",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
+            "id": "572612cf-0a1c-4430-9f49-d940f2983f78"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
+          },
+          {
+            "name": "S3.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js",
+            "id": "6af6b6cd-2e6c-4979-a983-e7d93ac8a60a"
+          },
+          {
+            "name": "createEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
+            "id": "e5d540ce-8590-4a26-a0e7-bf1680a9f200"
+          },
+          {
+            "name": "Kodo.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js",
+            "id": "67b1e551-c769-42ac-bd89-dce5ebafc2fa"
+          },
+          {
+            "name": "createEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
+            "id": "e5d540ce-8590-4a26-a0e7-bf1680a9f200"
+          },
+          {
+            "name": "upload_s3",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
+            "id": "ff4c701f-5d70-4a04-ac5c-51c6eba76635"
+          },
+          {
+            "name": "upload_kodo",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
+            "id": "d80d52ff-83e2-4a9e-b703-17b3f9a8a05f"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\tracking.js",
+            "id": "61b8af53-f734-4083-aba1-bbecccb5af62"
+          },
+          {
+            "name": "Log.success",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "2e6ccdeb-76ba-4dbd-8c69-25eef64f7c4b"
+          },
+          {
+            "name": "Log.failure",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\utils",
+            "id": "8958b5a8-31b4-48ce-86a7-aa9a28c3c2c6"
+          }
+        ],
+        "npm": [],
+        "other": []
+      },
+      "filePath": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+    },
+    {
+      "functionName": "upload_kodo",
+      "functionId": "d80d52ff-83e2-4a9e-b703-17b3f9a8a05f",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Kodo.uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\kodo.js",
+            "id": "67b1e551-c769-42ac-bd89-dce5ebafc2fa"
+          },
+          {
+            "name": "createEasyFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js",
+            "id": "e5d540ce-8590-4a26-a0e7-bf1680a9f200"
+          }
+        ],
+        "npm": [],
+        "other": []
+      },
+      "filePath": "C:\\Code\\web\\easylink.cc\\src\\model\\api.js"
+    }
+  ],
+  "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js": [
+    {
+      "functionName": "uploadFileList",
+      "functionId": "556e6584-ef4f-4b6c-b451-28fdd8d88aee",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "uploadFile",
+            "path": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js",
+            "id": "d9401968-9f06-40b6-b585-c33ce391eea4"
+          }
+        ],
+        "npm": [],
+        "other": []
+      },
+      "filePath": "C:\\Code\\web\\easylink.cc\\src\\viewmodels\\HomeVM.js"
+    }
+  ]
+}
