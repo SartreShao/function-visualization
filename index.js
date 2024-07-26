@@ -67,19 +67,24 @@ const generateAllFuncCallsJson = async (
   ignoreFolders,
   allFuncCallsJsonFileName
 ) => {
+  console.log("Starting to get all defined functions...");
   const allFunctions = await getAllDefinedFunctions(
     directoryPath,
     ignoreFolders
   );
+  console.log("All defined functions retrieved:", allFunctions.length);
+
   const functionHashMap = new Map();
 
   const processFunction = async func => {
     const { name, path: filePath } = func;
+    console.log(`Processing function: ${name} in ${filePath}`);
     const functionCalls = await getAllFunctionCalls(
       directoryPath,
       filePath,
       name
     );
+    console.log(`Function calls for ${name} retrieved.`);
     const functionId = getFunctionId(functionHashMap, name, filePath);
 
     return {
@@ -100,9 +105,11 @@ const generateAllFuncCallsJson = async (
     };
   };
 
+  console.log("Starting to process all functions...");
   const processedFunctions = await Promise.all(
     allFunctions.map(processFunction)
   );
+  console.log("All functions processed.");
 
   const result = processedFunctions.reduce(
     (acc, { filePath, functionData }) => {
@@ -129,6 +136,7 @@ const generateAllFuncCallsJson = async (
  * @returns {{idDiagram: string, readableDiagram: string}} - 生成的图表
  */
 const generateDiagrams = async (jsonFilePath, directoryPath) => {
+  console.log("Starting to generate Mermaid diagrams...");
   const idDiagram = generateMermaidDiagramFromJson(jsonFilePath);
   const outputFilePathId = path.join(__dirname, DIAGRAM_ID_FILENAME);
   await fs.writeFile(outputFilePathId, idDiagram, "utf-8");
@@ -158,12 +166,14 @@ const generateDiagrams = async (jsonFilePath, directoryPath) => {
  * @returns {string|null} - 生成的过滤后的图表
  */
 const generateFilteredDiagram = async (diagramFilePath, filterText) => {
+  console.log("Starting to parse Mermaid diagram...");
   const edges = parseMermaidDiagram(diagramFilePath);
   if (edges.length === 0) {
     console.error("No edges found in the diagram file.");
     return null;
   }
 
+  console.log("Starting to extract call chain...");
   const callChain = extractCallChain(edges, filterText);
   if (callChain.length === 0) {
     console.warn(
@@ -187,6 +197,7 @@ const generateFilteredDiagram = async (diagramFilePath, filterText) => {
  */
 const main = async (directoryPath, ignoreFolders, filterText) => {
   try {
+    console.log("Starting main process...");
     await generateAllFuncCallsJson(
       directoryPath,
       ignoreFolders,
@@ -196,14 +207,15 @@ const main = async (directoryPath, ignoreFolders, filterText) => {
     await generateDiagrams(jsonFilePath, directoryPath);
     const diagramFilePath = path.join(__dirname, DIAGRAM_READABLE_FILENAME);
     await generateFilteredDiagram(diagramFilePath, filterText);
+    console.log("Main process completed.");
   } catch (error) {
     console.error("Error:", error.message);
   }
 };
 
 // 示例使用
-const directoryPath = "C:/Code/web/easylink.cc";
-const ignoreFolders = ["node_modules", "dist"];
+const directoryPath = "C:/Code/server/easylink.server";
+const ignoreFolders = ["node_modules", "dist", "public"];
 const filterText = "easyfile";
 
 // 执行主函数
