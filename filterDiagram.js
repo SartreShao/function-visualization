@@ -105,15 +105,17 @@ function extractCallChain(edges, filterText) {
  * 生成新的 Mermaid 图表描述
  * @param {Array} edges - 函数调用关系数组
  * @param {Array} callChain - 提取的调用链
+ * @param {string} filterText - 筛选文本
  * @returns {string} - Mermaid 图表描述
  */
-function generateMermaidDiagram(edges, callChain) {
-  const lines = ["graph TD"];
+function generateMermaidDiagram(edges, callChain, filterText) {
+  const lines = ["graph TB", `  subgraph ${filterText}`];
   for (const edge of edges) {
     if (callChain.includes(edge.from) && callChain.includes(edge.to)) {
-      lines.push(`  ${edge.from} --> ${edge.to}`);
+      lines.push(`    ${edge.from} --> ${edge.to}`);
     }
   }
+  lines.push("  end");
   return lines.join("\n");
 }
 

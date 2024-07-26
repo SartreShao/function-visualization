@@ -16,8 +16,8 @@ const {
 // 常量定义
 const ALL_FUNC_CALLS_JSON_FILENAME = "result.json";
 const DIAGRAM_ID_FILENAME = "diagram-id.mmd";
-const DIAGRAM_READABLE_FILENAME = "diagram-readable.mmd";
-const DIAGRAM_FILTER_FILENAME = "diagram-filter.mmd";
+const DIAGRAM_READABLE_FILENAME = "diagram-all-function.mmd";
+const DIAGRAM_FILTER_FILENAME = "diagram-filter-function.mmd";
 
 /**
  * 解析模块路径和函数名
@@ -181,7 +181,7 @@ const generateFilteredDiagram = async (diagramFilePath, filterText) => {
     );
   }
 
-  const mermaidDiagram = generateMermaidDiagram(edges, callChain);
+  const mermaidDiagram = generateMermaidDiagram(edges, callChain, filterText);
   const outputFilePath = path.join(__dirname, DIAGRAM_FILTER_FILENAME);
   await fs.writeFile(outputFilePath, mermaidDiagram, "utf-8");
   console.log(`Filtered results have been written to ${outputFilePath}`);

@@ -1,0 +1,9 @@
+graph TB
+  subgraph easyfile
+    app.js_getEasyFile --> app.js_getISO8601
+    app.js_getAllEasyFile --> app.js_getEasyFile
+    review.js_kodo.deleteObject --> kodo.js_getPrivateObject
+    review.js_review --> review.js_handleBannedFile
+    review.js_handleBannedFile --> review.js_getEasyFile
+    review.js_handleBannedFile --> review.js_kodo.deleteObject
+  end
