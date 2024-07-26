@@ -2,8 +2,14 @@ graph TD
   src_model_api.js_createEasyFile --> src_model_api.js_Api.useMid
   src_model_api.js_createEasyFile --> src_utils_Log.success
   src_model_api.js_createEasyFile --> src_utils_Log.failure
+  src_model_api.js_isEasyFileKeyExist --> src_utils_Log.success
+  src_model_api.js_isEasyFileKeyExist --> src_utils_Log.failure
+  src_model_api.js_generateRandomUniqueHex --> src_model_api.js_isEasyFileKeyExist
+  src_model_api.js_Api.getEasyFile --> src_utils_Log.success
+  src_model_api.js_Api.getEasyFile --> src_utils_Log.failure
   src_model_api.js_upload_s3 --> src_model_api.js_createEasyFile
   src_model_api.js_upload_kodo --> src_model_api.js_createEasyFile
+  src_model_api_Api.uploadFile --> src_model_api.js_generateRandomUniqueHex
   src_model_api_Api.uploadFile --> src_utils_Log.success
   src_model_api_Api.uploadFile --> src_model_api.js_createEasyFile
   src_model_api_Api.uploadFile --> src_model_api.js_upload_s3
@@ -11,5 +17,10 @@ graph TD
   src_model_api_Api.uploadFile --> src_utils_Log.failure
   src_model_api.js_Api.useMid --> src_utils_Log.success
   src_model_api.js_Api.useMid --> src_utils_Log.failure
+  src_model_kodo.js_Kodo.getCdnUrl --> src_utils_index.js_Log.success
+  src_model_kodo.js_Kodo.getCdnUrl --> src_utils_index.js_Log.failure
+  src_viewmodels_FileVM.js_getEasyFile --> src_model_api.js_Api.getEasyFile
+  src_viewmodels_FileVM.js_getEasyFile --> src_model_kodo.js_Kodo.getCdnUrl
+  src_viewmodels_HomeVM.js_getResource --> src_model_kodo.js_Kodo.getCdnUrl
   src_viewmodels_HomeVM.js_uploadFile --> src_model_api_Api.uploadFile
   src_viewmodels_HomeVM.js_uploadFileList --> src_viewmodels_HomeVM.js_uploadFile

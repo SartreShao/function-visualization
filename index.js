@@ -23,19 +23,14 @@ const DIAGRAM_FILTER_FILENAME = "diagram-filter.mmd";
  * 解析模块路径和函数名
  * @param {string} name - 函数名
  * @param {string} filePath - 文件路径
- * @param {string} directoryPath - 项目根路径
  * @returns {{name: string, filePath: string}} - 解析后的模块路径和函数名
  */
-const resolveModulePath = (name, filePath, directoryPath) => {
+const resolveModulePath = (name, filePath) => {
   const moduleNameMatch = name.match(/^(\w+)\.(\w+)$/);
   if (moduleNameMatch) {
     const [, moduleName, functionName] = moduleNameMatch;
-    const modulePath = path.join(
-      directoryPath,
-      "src",
-      "model",
-      `${moduleName.toLowerCase()}.js`
-    );
+    const moduleDir = path.dirname(filePath);
+    const modulePath = path.join(moduleDir, `${moduleName.toLowerCase()}.js`);
     return { name: functionName, filePath: modulePath };
   }
   return { name, filePath };
@@ -46,14 +41,12 @@ const resolveModulePath = (name, filePath, directoryPath) => {
  * @param {Map} functionHashMap - 存储函数ID的Map
  * @param {string} name - 函数名
  * @param {string} filePath - 文件路径
- * @param {string} directoryPath - 项目根路径
  * @returns {string} - 函数的唯一ID
  */
-const getFunctionId = (functionHashMap, name, filePath, directoryPath) => {
+const getFunctionId = (functionHashMap, name, filePath) => {
   const { name: resolvedName, filePath: resolvedFilePath } = resolveModulePath(
     name,
-    filePath,
-    directoryPath
+    filePath
   );
   const key = `${resolvedName}@${resolvedFilePath}`;
   if (!functionHashMap.has(key)) {
@@ -80,15 +73,14 @@ const generateAllFuncCallsJson = async (
   );
   const functionHashMap = new Map();
 
-  const processFunction = func => {
+  const processFunction = async func => {
     const { name, path: filePath } = func;
-    const functionCalls = getAllFunctionCalls(directoryPath, filePath, name);
-    const functionId = getFunctionId(
-      functionHashMap,
-      name,
+    const functionCalls = await getAllFunctionCalls(
+      directoryPath,
       filePath,
-      directoryPath
+      name
     );
+    const functionId = getFunctionId(functionHashMap, name, filePath);
 
     return {
       filePath,
@@ -99,12 +91,7 @@ const generateAllFuncCallsJson = async (
           system: functionCalls.system,
           userDefined: functionCalls.userDefined.map(call => ({
             ...call,
-            id: getFunctionId(
-              functionHashMap,
-              call.name,
-              call.path,
-              directoryPath
-            )
+            id: getFunctionId(functionHashMap, call.name, call.path)
           })),
           npm: functionCalls.npm,
           other: functionCalls.other
@@ -113,7 +100,9 @@ const generateAllFuncCallsJson = async (
     };
   };
 
-  const processedFunctions = allFunctions.map(processFunction);
+  const processedFunctions = await Promise.all(
+    allFunctions.map(processFunction)
+  );
 
   const result = processedFunctions.reduce(
     (acc, { filePath, functionData }) => {
@@ -215,7 +204,7 @@ const main = async (directoryPath, ignoreFolders, filterText) => {
 // 示例使用
 const directoryPath = "C:/Code/web/easylink.cc";
 const ignoreFolders = ["node_modules", "dist"];
-const filterText = "createEasyFile";
+const filterText = "easyfile";
 
 // 执行主函数
 main(directoryPath, ignoreFolders, filterText);

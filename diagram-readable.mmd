@@ -28,12 +28,12 @@ graph TD
   src_model_api.js_Api.useMid --> src_utils_Log.success
   src_model_api.js_Api.useMid --> src_utils_Log.failure
   src_model_kodo.js_uploadFile --> src_model_kodo.js_getUploadToken
-  src_model_kodo.js_uploadFile --> src_utils_Log.failure
-  src_model_kodo.js_uploadFile --> src_utils_Log.success
-  src_model_kodo.js_getUploadToken --> src_utils_Log.success
-  src_model_kodo.js_getUploadToken --> src_utils_Log.failure
-  src_model_kodo.js_Kodo.getCdnUrl --> src_utils_Log.success
-  src_model_kodo.js_Kodo.getCdnUrl --> src_utils_Log.failure
+  src_model_kodo.js_uploadFile --> src_utils_index.js_Log.failure
+  src_model_kodo.js_uploadFile --> src_utils_index.js_Log.success
+  src_model_kodo.js_getUploadToken --> src_utils_index.js_Log.success
+  src_model_kodo.js_getUploadToken --> src_utils_index.js_Log.failure
+  src_model_kodo.js_Kodo.getCdnUrl --> src_utils_index.js_Log.success
+  src_model_kodo.js_Kodo.getCdnUrl --> src_utils_index.js_Log.failure
   src_model_oss.js_uploadFileByOss --> src_utils_Log.success
   src_model_oss.js_uploadFileByOss --> src_utils_Log.failure
   src_model_s3.js_multipartUploadFile --> src_utils_ReadFile.readFileAsync
