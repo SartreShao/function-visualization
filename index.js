@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const { getAllDefinedFunctions } = require("./functionDefinitions");
@@ -19,18 +19,7 @@ const DIAGRAM_ID_FILENAME = "diagram-id.mmd";
 const DIAGRAM_READABLE_FILENAME = "diagram-readable.mmd";
 const DIAGRAM_FILTER_FILENAME = "diagram-filter.mmd";
 
-// 用于存储函数的哈希映射
-const functionHashMap = new Map();
-
-/**
- * 获取模块路径和函数名
- * @param {string} name - 函数名
- * @param {string} filePath - 文件路径
- * @param {string} directoryPath - 项目根路径
- * @returns {{name: string, filePath: string}} - 模块路径和函数名
- */
-function resolveModulePath(name, filePath, directoryPath) {
-  // 检查函数名是否包含模块名称
+const resolveModulePath = (name, filePath, directoryPath) => {
   const moduleNameMatch = name.match(/^(\w+)\.(\w+)$/);
   if (moduleNameMatch) {
     const [, moduleName, functionName] = moduleNameMatch;
@@ -43,16 +32,9 @@ function resolveModulePath(name, filePath, directoryPath) {
     return { name: functionName, filePath: modulePath };
   }
   return { name, filePath };
-}
+};
 
-/**
- * 获取函数的唯一 ID，如果不存在则生成并存储
- * @param {string} name - 函数名
- * @param {string} filePath - 文件路径
- * @param {string} directoryPath - 项目根路径
- * @returns {string} - 函数的唯一 ID
- */
-function getFunctionId(name, filePath, directoryPath) {
+const getFunctionId = (functionHashMap, name, filePath, directoryPath) => {
   const { name: resolvedName, filePath: resolvedFilePath } = resolveModulePath(
     name,
     filePath,
@@ -63,131 +45,137 @@ function getFunctionId(name, filePath, directoryPath) {
     functionHashMap.set(key, uuidv4());
   }
   return functionHashMap.get(key);
-}
+};
 
-/**
- * 主函数，获取并打印指定文件夹中每个文件定义的函数的函数调用
- * @param {string} directoryPath - 项目的路径
- * @param {Array<string>} ignoreFolders - 忽略的文件夹
- */
-async function generateAllFuncCallsJson(
+const generateAllFuncCallsJson = async (
   directoryPath,
-  ignoreFolders = [],
+  ignoreFolders,
   allFuncCallsJsonFileName
-) {
-  try {
-    // 获取所有定义的函数
-    const allFunctions = await getAllDefinedFunctions(
-      directoryPath,
-      ignoreFolders
-    );
+) => {
+  const allFunctions = await getAllDefinedFunctions(
+    directoryPath,
+    ignoreFolders
+  );
+  const functionHashMap = new Map();
 
-    // 用于存储最终结果的对象
-    const result = {};
-
-    // 创建一个柯里化的 getAllFunctionCalls 函数
-    const getAllFunctionCallsForProject = getAllFunctionCalls.bind(
-      null,
+  const processFunction = func => {
+    const { name, path: filePath } = func;
+    const functionCalls = getAllFunctionCalls(directoryPath, filePath, name);
+    const functionId = getFunctionId(
+      functionHashMap,
+      name,
+      filePath,
       directoryPath
     );
 
-    // 遍历每个文件中的函数定义，获取并存储函数调用
-    for (const func of allFunctions) {
-      const { name, path: filePath } = func;
-      const functionCalls = getAllFunctionCallsForProject(filePath, name);
-
-      // 获取或生成函数的唯一 ID
-      const functionId = getFunctionId(name, filePath, directoryPath);
-
-      // 将结果存储到 result 对象中
-      if (!result[filePath]) {
-        result[filePath] = [];
-      }
-      result[filePath].push({
+    return {
+      filePath,
+      functionData: {
         functionName: name,
         functionId: functionId,
         calls: {
           system: functionCalls.system,
           userDefined: functionCalls.userDefined.map(call => ({
             ...call,
-            id: getFunctionId(call.name, call.path, directoryPath)
+            id: getFunctionId(
+              functionHashMap,
+              call.name,
+              call.path,
+              directoryPath
+            )
           })),
           npm: functionCalls.npm,
           other: functionCalls.other
         }
-      });
-    }
+      }
+    };
+  };
 
-    // 将最终的 JSON 结果写入文件
-    const outputPath = path.join(__dirname, allFuncCallsJsonFileName);
-    fs.writeFileSync(outputPath, JSON.stringify(result, null, 2), "utf-8");
-    console.log(`结果已写入到 ${outputPath}`);
-  } catch (error) {
-    console.error("Error:", error.message);
+  const processedFunctions = allFunctions.map(processFunction);
+
+  const result = processedFunctions.reduce(
+    (acc, { filePath, functionData }) => {
+      if (!acc[filePath]) {
+        acc[filePath] = [];
+      }
+      acc[filePath].push(functionData);
+      return acc;
+    },
+    {}
+  );
+
+  const outputPath = path.join(__dirname, allFuncCallsJsonFileName);
+  await fs.writeFile(outputPath, JSON.stringify(result, null, 2), "utf-8");
+  console.log(`结果已写入到 ${outputPath}`);
+
+  return result;
+};
+
+const generateDiagrams = async (jsonFilePath, directoryPath) => {
+  const idDiagram = generateMermaidDiagramFromJson(jsonFilePath);
+  const outputFilePathId = path.join(__dirname, DIAGRAM_ID_FILENAME);
+  await fs.writeFile(outputFilePathId, idDiagram, "utf-8");
+  console.log(`Mermaid ID diagram has been written to ${outputFilePathId}`);
+
+  const readableDiagram = generateReadableDiagram(
+    outputFilePathId,
+    jsonFilePath,
+    directoryPath
+  );
+  const outputFilePathReadable = path.join(
+    __dirname,
+    DIAGRAM_READABLE_FILENAME
+  );
+  await fs.writeFile(outputFilePathReadable, readableDiagram, "utf-8");
+  console.log(
+    `Mermaid readable diagram has been written to ${outputFilePathReadable}`
+  );
+
+  return { idDiagram, readableDiagram };
+};
+
+const generateFilteredDiagram = async (diagramFilePath, filterText) => {
+  const edges = parseMermaidDiagram(diagramFilePath);
+  if (edges.length === 0) {
+    console.error("No edges found in the diagram file.");
+    return null;
   }
-}
 
-// 主函数
-async function main(directoryPath, ignoreFolders, filterText) {
+  const callChain = extractCallChain(edges, filterText);
+  if (callChain.length === 0) {
+    console.warn(
+      `No functions matching the filter text "${filterText}" were found.`
+    );
+  }
+
+  const mermaidDiagram = generateMermaidDiagram(edges, callChain);
+  const outputFilePath = path.join(__dirname, DIAGRAM_FILTER_FILENAME);
+  await fs.writeFile(outputFilePath, mermaidDiagram, "utf-8");
+  console.log(`筛选结果已写入到 ${outputFilePath}`);
+
+  return mermaidDiagram;
+};
+
+const main = async (directoryPath, ignoreFolders, filterText) => {
   try {
-    // 生成所有函数调用的 JSON 文件
     await generateAllFuncCallsJson(
       directoryPath,
       ignoreFolders,
       ALL_FUNC_CALLS_JSON_FILENAME
     );
-
-    // 生成所有函数的 Mermaid 图表
     const jsonFilePath = path.join(__dirname, ALL_FUNC_CALLS_JSON_FILENAME);
-    const idDiagram = generateMermaidDiagramFromJson(jsonFilePath);
-    const outputFilePathId = path.join(__dirname, DIAGRAM_ID_FILENAME);
-    fs.writeFileSync(outputFilePathId, idDiagram, "utf-8");
-    console.log(`Mermaid ID diagram has been written to ${outputFilePathId}`);
-
-    // 生成 diagram-readable.mmd
-    const readableDiagram = generateReadableDiagram(
-      outputFilePathId,
-      jsonFilePath,
-      directoryPath
-    );
-    const outputFilePathReadable = path.join(
-      __dirname,
-      DIAGRAM_READABLE_FILENAME
-    );
-    fs.writeFileSync(outputFilePathReadable, readableDiagram, "utf-8");
-    console.log(
-      `Mermaid readable diagram has been written to ${outputFilePathReadable}`
-    );
-
-    // 生成筛选结果
+    await generateDiagrams(jsonFilePath, directoryPath);
     const diagramFilePath = path.join(__dirname, DIAGRAM_READABLE_FILENAME);
-    const edges = parseMermaidDiagram(diagramFilePath);
-    if (edges.length === 0) {
-      console.error("No edges found in the diagram file.");
-      return;
-    }
-
-    const callChain = extractCallChain(edges, filterText);
-    if (callChain.length === 0) {
-      console.warn(
-        `No functions matching the filter text "${filterText}" were found.`
-      );
-    }
-    const mermaidDiagram = generateMermaidDiagram(edges, callChain);
-
-    // 将筛选结果写入 filterDiagram.mmd 文件
-    const outputFilePath = path.join(__dirname, DIAGRAM_FILTER_FILENAME);
-    fs.writeFileSync(outputFilePath, mermaidDiagram, "utf-8");
-    console.log(`筛选结果已写入到 ${outputFilePath}`);
+    await generateFilteredDiagram(diagramFilePath, filterText);
   } catch (error) {
     console.error("Error:", error.message);
   }
-}
+};
 
 // 示例使用
-const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
-const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
-const filterText = "createEasyFile"; // 替换为你的筛选文本
+const directoryPath = "C:/Code/web/easylink.cc";
+const ignoreFolders = ["node_modules", "dist"];
+const filterText = "createEasyFile";
 
 // 执行主函数
 main(directoryPath, ignoreFolders, filterText);
