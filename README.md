@@ -2,7 +2,7 @@
 
 This project is designed to analyze function calls within a JavaScript project and generate visual diagrams of the function call hierarchy using Mermaid.js.
 
-**Note: Currently, this tool only supports .js and .vue files
+**Note: Currently, this tool only supports .js and .vue files**
 
 ## Features
 
