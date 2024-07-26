@@ -16,7 +16,7 @@ This project is designed to analyze function calls within a JavaScript project a
 
 1. Clone the repository:
 
-   git clone https://github.com/yourusername/function-call-analyzer.git
+   git clone https://github.com/SartreShao/function-visualization.git
    cd function-call-analyzer
 
 2. Install dependencies:
