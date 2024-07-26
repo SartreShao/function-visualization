@@ -7,6 +7,11 @@ const {
   generateMermaidDiagramFromJson,
   generateReadableDiagram
 } = require("./mmd");
+const {
+  parseMermaidDiagram,
+  extractCallChain,
+  generateMermaidDiagram
+} = require("./filterDiagram");
 
 // 用于存储函数的哈希映射
 const functionHashMap = new Map();
@@ -59,10 +64,10 @@ function getFunctionId(name, filePath, directoryPath) {
  * @param {string} directoryPath - 项目的路径
  * @param {Array<string>} ignoreFolders - 忽略的文件夹
  */
-async function main(
+async function generateAllFuncCallsJson(
   directoryPath,
   ignoreFolders = [],
-  allFunctionCallsJsonFileName
+  allFuncCallsJsonFileName
 ) {
   try {
     // 获取所有定义的函数
@@ -108,7 +113,7 @@ async function main(
     }
 
     // 将最终的 JSON 结果写入文件
-    const outputPath = path.join(__dirname, allFunctionCallsJsonFileName);
+    const outputPath = path.join(__dirname, allFuncCallsJsonFileName);
     fs.writeFileSync(outputPath, JSON.stringify(result, null, 2), "utf-8");
     console.log(`结果已写入到 ${outputPath}`);
   } catch (error) {
@@ -119,5 +124,56 @@ async function main(
 // 示例使用
 const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
 const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
-const allFunctionCallsJsonFileName = "result.json";
-main(directoryPath, ignoreFolders, allFunctionCallsJsonFileName);
+const allFuncCallsJsonFileName = "result.json";
+const diagramIdFileName = "diagram-id.mmd";
+const diagramReadableFileName = "diagram-readable.mmd";
+const filterText = "createEasyFile"; // 替换为你的筛选文本
+const diagramFilterFileName = "diagram-filter.mmd";
+
+// 生成所有函数调用的 JSON 文件
+generateAllFuncCallsJson(
+  directoryPath,
+  ignoreFolders,
+  allFuncCallsJsonFileName
+);
+
+// 生成所有函数的 Mermaid 图表
+// 将生成的 Mermaid 图表描述写入 diagram-id.mmd 文件
+const jsonFilePath = path.join(__dirname, allFuncCallsJsonFileName);
+const idDiagram = generateMermaidDiagramFromJson(jsonFilePath);
+const outputFilePathId = path.join(__dirname, diagramIdFileName);
+fs.writeFileSync(outputFilePathId, idDiagram, "utf-8");
+console.log(`Mermaid ID diagram has been written to ${outputFilePathId}`);
+
+// 生成 diagram-readable.mmd
+const readableDiagram = generateReadableDiagram(
+  outputFilePathId,
+  jsonFilePath,
+  directoryPath
+);
+const outputFilePathReadable = path.join(__dirname, diagramReadableFileName);
+fs.writeFileSync(outputFilePathReadable, readableDiagram, "utf-8");
+console.log(
+  `Mermaid readable diagram has been written to ${outputFilePathReadable}`
+);
+
+// 生成筛选结果
+// 示例使用
+const diagramFilePath = path.join(__dirname, diagramReadableFileName);
+const edges = parseMermaidDiagram(diagramFilePath);
+if (edges.length === 0) {
+  console.error("No edges found in the diagram file.");
+  process.exit(1);
+}
+
+const callChain = extractCallChain(edges, filterText);
+if (callChain.length === 0) {
+  console.warn(
+    `No functions matching the filter text "${filterText}" were found.`
+  );
+}
+const mermaidDiagram = generateMermaidDiagram(edges, callChain);
+// 将筛选结果写入 filterDiagram.mmd 文件
+const outputFilePath = path.join(__dirname, diagramFilterFileName);
+fs.writeFileSync(outputFilePath, mermaidDiagram, "utf-8");
+console.log(`筛选结果已写入到 ${outputFilePath}`);

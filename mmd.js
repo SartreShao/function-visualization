@@ -91,28 +91,6 @@ function generateReadableDiagram(idDiagramPath, jsonFilePath, directoryPath) {
   }
 }
 
-// 示例使用
-const jsonFilePath = path.join(__dirname, "result.json");
-const directoryPath = "C:/Code/web/easylink.cc"; // 公共路径
-const idDiagram = generateMermaidDiagramFromJson(jsonFilePath);
-
-// 将生成的 Mermaid 图表描述写入 diagram-id.mmd 文件
-const outputFilePathId = path.join(__dirname, "diagram-id.mmd");
-fs.writeFileSync(outputFilePathId, idDiagram, "utf-8");
-console.log(`Mermaid ID diagram has been written to ${outputFilePathId}`);
-
-// 生成 diagram-readable.mmd
-const readableDiagram = generateReadableDiagram(
-  outputFilePathId,
-  jsonFilePath,
-  directoryPath
-);
-const outputFilePathReadable = path.join(__dirname, "diagram-readable.mmd");
-fs.writeFileSync(outputFilePathReadable, readableDiagram, "utf-8");
-console.log(
-  `Mermaid readable diagram has been written to ${outputFilePathReadable}`
-);
-
 // 导出函数（如果需要在其他模块中使用）
 module.exports = {
   generateMermaidDiagramFromJson,

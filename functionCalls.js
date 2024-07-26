@@ -223,38 +223,6 @@ function getAllFunctionCalls(projectRoot, filePath, targetFunctionName) {
 
   return functionCalls;
 }
-// 示例使用
-const projectRoot = "C:\\Code\\web\\easylink.cc"; // 项目根目录
-const jsFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\api.js";
-const vueFilePath =
-  "C:\\Code\\web\\easylink.cc\\src\\views\\file\\FileView.vue";
-const funcFilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\session.js";
-const s3FilePath = "C:\\Code\\web\\easylink.cc\\src\\model\\s3.js";
-const errorPath = "C:\\Code\\web\\easylink.cc\\src\\views\\home\\HomeView.vue";
-
-const funcName1 = "uploadFile";
-const funcName2 = "mounted";
-const funcName3 = "generateSessionId";
-const funcName4 = "multipartUploadFile";
-const funcName5 = "inputFileChanged";
-
-console.log(
-  "JS File Function Calls:",
-  getAllFunctionCalls(projectRoot, jsFilePath, funcName1)
-);
-console.log(
-  "Vue File Function Calls:",
-  getAllFunctionCalls(projectRoot, vueFilePath, funcName2)
-);
-console.log(
-  "JS File Real Function Calls:",
-  getAllFunctionCalls(projectRoot, funcFilePath, funcName3)
-);
-console.log(
-  "S3 Function Calls:",
-  getAllFunctionCalls(projectRoot, s3FilePath, funcName4)
-);
-console.log("Error:", getAllFunctionCalls(projectRoot, errorPath, funcName5));
 
 // 导出函数
 module.exports = { getAllFunctionCalls };

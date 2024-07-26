@@ -98,15 +98,5 @@ async function getAllDefinedFunctions(directoryPath, ignoreFolders = []) {
   return allFunctions;
 }
 
-// 示例使用
-const directoryPath = "C:/Code/web/easylink.cc"; // 替换为你的项目路径
-const ignoreFolders = ["node_modules", "dist"]; // 忽略的文件夹
-
-getAllDefinedFunctions(directoryPath, ignoreFolders)
-  .then(functions => {
-    console.log("所有函数定义:");
-    console.log(functions);
-  })
-  .catch(console.error);
 
 module.exports = { getAllDefinedFunctions };

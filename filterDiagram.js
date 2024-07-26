@@ -117,29 +117,6 @@ function generateMermaidDiagram(edges, callChain) {
   return lines.join("\n");
 }
 
-// 示例使用
-const diagramFilePath = path.join(__dirname, "diagram-readable.mmd");
-const edges = parseMermaidDiagram(diagramFilePath);
-
-if (edges.length === 0) {
-  console.error("No edges found in the diagram file.");
-  process.exit(1);
-}
-
-const filterText = "createEasyFile"; // 替换为你的筛选文本
-const callChain = extractCallChain(edges, filterText);
-
-if (callChain.length === 0) {
-  console.warn(`No functions matching the filter text "${filterText}" were found.`);
-}
-
-const mermaidDiagram = generateMermaidDiagram(edges, callChain);
-
-// 将筛选结果写入 filterDiagram.mmd 文件
-const outputFilePath = path.join(__dirname, "filterDiagram.mmd");
-fs.writeFileSync(outputFilePath, mermaidDiagram, "utf-8");
-console.log(`筛选结果已写入到 ${outputFilePath}`);
-
 // 导出函数（如果需要在其他模块中使用）
 module.exports = {
   parseMermaidDiagram,
