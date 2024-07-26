@@ -38,8 +38,9 @@ function generateMermaidDiagramFromJson(jsonFilePath) {
  * 根据 diagram-id.mmd 和 result.json 生成 diagram-readable.mmd
  * @param {string} idDiagramPath - diagram-id.mmd 文件路径
  * @param {string} jsonFilePath - result.json 文件路径
+ * @param {string} directoryPath - 要去除的公共路径
  */
-function generateReadableDiagram(idDiagramPath, jsonFilePath) {
+function generateReadableDiagram(idDiagramPath, jsonFilePath, directoryPath) {
   try {
     const idDiagramContent = fs.readFileSync(idDiagramPath, "utf-8");
     const jsonContent = fs.readFileSync(jsonFilePath, "utf-8");
@@ -51,31 +52,32 @@ function generateReadableDiagram(idDiagramPath, jsonFilePath) {
 
     // 构建 ID 到 Readable 名称的映射
     Object.keys(data).forEach(filePath => {
+      const relativeFilePath = path
+        .relative(directoryPath, filePath)
+        .replace(/\\/g, "_");
       data[filePath].forEach(func => {
         const id = func.functionId;
-        const readableName = `${filePath.replace(/\//g, "_")}_${
-          func.functionName
-        }`;
+        const readableName = `${relativeFilePath}_${func.functionName}`;
         idToReadableMap[id] = readableName;
         func.calls.userDefined.forEach(call => {
           const callId = call.id;
-          const callReadableName = `${call.path.replace(/\//g, "_")}_${
-            call.name
-          }`;
+          const callRelativePath = path
+            .relative(directoryPath, call.path)
+            .replace(/\\/g, "_");
+          const callReadableName = `${callRelativePath}_${call.name}`;
           idToReadableMap[callId] = callReadableName;
         });
       });
     });
 
     // 根据映射生成可读的图表描述
-    lines.forEach(line => {
+    lines.slice(1).forEach(line => {
+      // 跳过第一行
       if (line.startsWith("  ")) {
         const [fromId, toId] = line.trim().split(" --> ");
         const fromReadable = idToReadableMap[fromId] || fromId;
         const toReadable = idToReadableMap[toId] || toId;
         readableLines.push(`  ${fromReadable} --> ${toReadable}`);
-      } else {
-        readableLines.push(line);
       }
     });
 
@@ -91,6 +93,7 @@ function generateReadableDiagram(idDiagramPath, jsonFilePath) {
 
 // 示例使用
 const jsonFilePath = path.join(__dirname, "result.json");
+const directoryPath = "C:/Code/web/easylink.cc"; // 公共路径
 const idDiagram = generateMermaidDiagramFromJson(jsonFilePath);
 
 // 将生成的 Mermaid 图表描述写入 diagram-id.mmd 文件
@@ -99,7 +102,11 @@ fs.writeFileSync(outputFilePathId, idDiagram, "utf-8");
 console.log(`Mermaid ID diagram has been written to ${outputFilePathId}`);
 
 // 生成 diagram-readable.mmd
-const readableDiagram = generateReadableDiagram(outputFilePathId, jsonFilePath);
+const readableDiagram = generateReadableDiagram(
+  outputFilePathId,
+  jsonFilePath,
+  directoryPath
+);
 const outputFilePathReadable = path.join(__dirname, "diagram-readable.mmd");
 fs.writeFileSync(outputFilePathReadable, readableDiagram, "utf-8");
 console.log(
