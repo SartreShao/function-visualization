@@ -51,51 +51,6 @@ function getFunctionId(name, filePath, directoryPath) {
 }
 
 /**
- * 生成格式化名称
- * @param {string} filePath - 文件路径
- * @param {string} functionName - 函数名
- * @param {string} directoryPath - 项目根路径
- * @returns {string} - 格式化名称
- */
-function formatName(filePath, functionName, directoryPath) {
-  const relativePath = path.relative(directoryPath, filePath);
-  const formattedPath = relativePath.replace(/\\/g, "_").replace(/\//g, "_");
-  return `${formattedPath}_${functionName}`;
-}
-
-/**
- * 生成 Mermaid 图的内容
- * @param {Object} result - 函数调用结果对象
- * @param {string} directoryPath - 项目根路径
- * @returns {string} - Mermaid 图的内容
- */
-function generateMermaidContent(result, directoryPath) {
-  const lines = ["graph TD"];
-
-  for (const [filePath, functions] of Object.entries(result)) {
-    for (const func of functions) {
-      const { functionName, calls } = func;
-      const formattedFunctionName = formatName(
-        filePath,
-        functionName,
-        directoryPath
-      );
-
-      calls.userDefined.forEach(call => {
-        const formattedCallName = formatName(
-          call.path,
-          call.name,
-          directoryPath
-        );
-        lines.push(`  ${formattedFunctionName} --> ${formattedCallName}`);
-      });
-    }
-  }
-
-  return lines.join("\n");
-}
-
-/**
  * 主函数，获取并打印指定文件夹中每个文件定义的函数的函数调用
  * @param {string} directoryPath - 项目的路径
  * @param {Array<string>} ignoreFolders - 忽略的文件夹
@@ -148,12 +103,6 @@ async function main(directoryPath, ignoreFolders = []) {
     const outputPath = path.join(__dirname, "result.json");
     fs.writeFileSync(outputPath, JSON.stringify(result, null, 2), "utf-8");
     console.log(`结果已写入到 ${outputPath}`);
-
-    // 生成 Mermaid 图内容并写入文件
-    const mermaidContent = generateMermaidContent(result, directoryPath);
-    const mermaidOutputPath = path.join(__dirname, "diagram.mmd");
-    fs.writeFileSync(mermaidOutputPath, mermaidContent, "utf-8");
-    console.log(`Mermaid 图已写入到 ${mermaidOutputPath}`);
   } catch (error) {
     console.error("Error:", error.message);
   }
