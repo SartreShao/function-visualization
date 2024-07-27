@@ -4,6 +4,11 @@ This project is designed to analyze function calls within a JavaScript project a
 
 **Note: Currently, this tool only supports .js and .vue files**
 
+## DEMO
+<video controls>
+  <source src="https://lc-gluttony.s3.amazonaws.com/xy6ZvNM2ptnV/oCqlB2nwWBu9Fpw9RcpjQzgTiLRFbPHu/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4" type="video/mp4">
+</video>
+
 ## Features
 
 - Extracts all user defined functions from the project.
