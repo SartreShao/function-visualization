@@ -26,23 +26,22 @@ This project is designed to analyze function calls within a JavaScript project a
 ## Usage
 
 1. Update the `main` function parameters in `index.js`:
-
-   // Please replace with the project directory you need to analyze
+```
+  // replace with the project directory you need to analyze
   const directoryPath = "C:/Code/server/easylink.server";
 
-  // Please replace with the folders in the project directory that need to be ignored 
-  // this is important, otherwise the function relationship graph will include functions from folders like node_modules
-  // even if the calculation won't crash your computer, the resulting diagram will be difficult for humans to view
+  // replace with the folders in the project directory that need to be ignored 
   const ignoreFolders = ["node_modules", "dist", "public"];
 
-  // Please replace with the name of the function you need to analyze
+  // replace with the name of the function you need to analyze
   // case insensitive, it doesn't even need to be the complete function name, just a part of the function name
   const filterText = "easyfile";
-
+```
 
 2. Run the script:
-
+```
    npm start
+```
 
 3. The results will be generated in the following files:
    - `diagram-all-function.mmd`: A call graph of all user-defined functions in the specified folder.
