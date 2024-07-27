@@ -1,15 +1,15 @@
-# Function Call Analyzer
+# About Project
 
-This project is designed to analyze function calls within a JavaScript project and generate visual diagrams of the function call hierarchy using Mermaid.js.
+This project is designed to analyze function calls within a JavaScript project and generate visual diagrams of the function call hierarchy using Mermaid.
 
 **Note: Currently, this tool only supports .js and .vue files**
 
 ## Features
 
-- Extracts all defined functions from the project.
+- Extracts all user defined functions from the project.
 - Analyzes function calls within the project.
 - Generates JSON files containing function call data.
-- Creates visual diagrams using Mermaid.js.
+- Creates visual diagrams using Mermaid.
 - Filters diagrams based on specified criteria.
 
 ## Installation
@@ -17,7 +17,7 @@ This project is designed to analyze function calls within a JavaScript project a
 1. Clone the repository:
 
    git clone https://github.com/SartreShao/function-visualization.git
-   cd function-call-analyzer
+   cd function-visualization
 
 2. Install dependencies:
 
@@ -51,7 +51,3 @@ This project is designed to analyze function calls within a JavaScript project a
    - `result.json`: JSON file containing all function calls.
    - `diagram-id.mmd`: Mermaid diagram with function IDs.
 
-
-## License
-
-This project is licensed under the MIT License.
