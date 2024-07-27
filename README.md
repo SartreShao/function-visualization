@@ -5,8 +5,15 @@ This project is designed to analyze function calls within a JavaScript project a
 **Note: Currently, this tool only supports .js and .vue files**
 
 ## DEMO
+### How to use 
 https://github.com/user-attachments/assets/e77e5d07-b2f5-45ce-9aaa-22bf99cf7eae
 
+### Generated function call graph
+all-fucntions-call-graph:
+![微信图片_20240727123249](https://github.com/user-attachments/assets/2bc3dca8-343f-4487-b474-02a60aa65e63)
+
+functions-call-graph-with-filter:
+<img width="3340" alt="微信图片_20240727123228" src="https://github.com/user-attachments/assets/45739fa2-7565-4253-a164-6d3fa6a76e8b">
 
 
 ## Features
