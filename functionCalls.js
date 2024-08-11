@@ -5,15 +5,74 @@ const path = require("path");
 
 // 系统级函数列表（可以根据需要扩展）
 const systemFunctions = new Set([
-  "fetch",
-  "console",
-  "setTimeout",
-  "setInterval",
-  "clearTimeout",
-  "clearInterval",
-  "Promise",
-  "JSON",
-  "Math"
+  // 全局对象
+  "globalThis", "window", "self", "global",
+
+  // 值属性
+  "Infinity", "NaN", "undefined",
+
+  // 函数属性
+  "eval", "isFinite", "isNaN", "parseFloat", "parseInt",
+  "decodeURI", "decodeURIComponent", "encodeURI", "encodeURIComponent",
+
+  // 基本对象
+  "Object", "Function", "Boolean", "Symbol",
+
+  // 错误对象
+  "Error", "AggregateError", "EvalError", "RangeError", "ReferenceError", "SyntaxError", "TypeError", "URIError",
+
+  // 数字和日期对象
+  "Number", "BigInt", "Math", "Date",
+
+  // 字符串
+  "String", "RegExp",
+
+  // 可索引的集合对象
+  "Array", "Int8Array", "Uint8Array", "Uint8ClampedArray", "Int16Array", "Uint16Array",
+  "Int32Array", "Uint32Array", "Float32Array", "Float64Array", "BigInt64Array", "BigUint64Array",
+
+  // 使用键的集合对象
+  "Map", "Set", "WeakMap", "WeakSet",
+
+  // 结构化数据
+  "ArrayBuffer", "SharedArrayBuffer", "Atomics", "DataView", "JSON",
+
+  // 控制抽象对象
+  "Promise", "Generator", "GeneratorFunction", "AsyncFunction",
+
+  // 反射
+  "Reflect", "Proxy",
+
+  // 国际化
+  "Intl",
+
+  // WebAssembly
+  "WebAssembly",
+
+  // 其他
+  "console", "fetch", "setTimeout", "clearTimeout", "setInterval", "clearInterval",
+  "requestAnimationFrame", "cancelAnimationFrame", "queueMicrotask",
+  "btoa", "atob", "performance",
+
+  // DOM 相关
+  "document", "history", "location", "navigator", "screen", "localStorage", "sessionStorage",
+
+  // Web API
+  "XMLHttpRequest", "Blob", "File", "FileReader", "URL", "URLSearchParams",
+  "WebSocket", "Worker", "ServiceWorker", "Notification", "Crypto",
+
+  // 事件
+  "Event", "CustomEvent", "EventTarget",
+
+  // 多媒体
+  "Image", "Audio", "Video", "Canvas", "CanvasRenderingContext2D", "WebGL",
+
+  // 其他常用 API
+  "setTimeout", "setInterval", "clearTimeout", "clearInterval",
+  "requestAnimationFrame", "cancelAnimationFrame",
+  "fetch", "XMLHttpRequest",
+  "localStorage", "sessionStorage",
+  "console"
 ]);
 
 function getAllFunctionCalls(projectRoot, filePath, targetFunctionName) {
