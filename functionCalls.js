@@ -70,22 +70,15 @@ function getAllFunctionCalls(projectRoot, filePath, targetFunctionName) {
               "src",
               sourceValue.slice(2)
             );
-            importedModules.set(path.basename(sourceValue), resolvedPath);
-            node.specifiers.forEach(specifier => {
-              if (
-                specifier.type === "ImportSpecifier" ||
-                specifier.type === "ImportDefaultSpecifier"
-              ) {
-                userDefinedFunctions.set(specifier.local.name, resolvedPath);
-              } else if (specifier.type === "ImportNamespaceSpecifier") {
-                userDefinedObjects.add(specifier.local.name);
-              }
-            });
-          } else if (
-            sourceValue.startsWith(".") ||
-            sourceValue.startsWith("/")
-          ) {
+          } else if (sourceValue.startsWith(".") || sourceValue.startsWith("/")) {
+            // 处理相对路径（包括 ../ 和 ./）和绝对路径
             resolvedPath = path.resolve(path.dirname(filePath), sourceValue);
+          } else {
+            // 处理 npm 包
+            resolvedPath = null;
+          }
+
+          if (resolvedPath) {
             importedModules.set(path.basename(sourceValue), resolvedPath);
             node.specifiers.forEach(specifier => {
               if (
@@ -115,13 +108,15 @@ function getAllFunctionCalls(projectRoot, filePath, targetFunctionName) {
               "src",
               sourceValue.slice(2)
             );
-            importedModules.set(path.basename(sourceValue), resolvedPath);
-            userDefinedObjects.add(node.id.name);
-          } else if (
-            sourceValue.startsWith(".") ||
-            sourceValue.startsWith("/")
-          ) {
+          } else if (sourceValue.startsWith(".") || sourceValue.startsWith("/")) {
+            // 处理相对路径（包括 ../ 和 ./）和绝对路径
             resolvedPath = path.resolve(path.dirname(filePath), sourceValue);
+          } else {
+            // 处理 npm 包
+            resolvedPath = null;
+          }
+
+          if (resolvedPath) {
             importedModules.set(path.basename(sourceValue), resolvedPath);
             userDefinedObjects.add(node.id.name);
           } else {
