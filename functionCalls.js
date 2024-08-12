@@ -1,26 +1,54 @@
+// 导入必要的模块
 const fs = require("fs");
 const acorn = require("acorn");
 const estraverse = require("estraverse");
 const path = require("path");
-const { systemFunctions } = require("./config"); // 假设我们将系统函数列表移到了配置文件中
+const { systemFunctions } = require("./config"); // 导入系统函数列表
 
+/**
+ * 读取文件内容
+ * @param {string} filePath - 文件路径
+ * @returns {string} 文件内容
+ */
 const readFileContent = filePath => fs.readFileSync(filePath, "utf8");
 
+/**
+ * 从Vue文件中提取<script>标签内容
+ * @param {string} code - Vue文件内容
+ * @returns {string[]} 提取的脚本内容数组
+ */
 const extractScriptContent = code => {
   const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/gi;
   return Array.from(code.matchAll(scriptRegex), match => match[1]);
 };
 
+/**
+ * 解析文件内容，处理.vue和.js文件
+ * @param {string} filePath - 文件路径
+ * @returns {string[]} 解析后的脚本内容数组
+ */
 const parseFileContent = filePath => {
   const code = readFileContent(filePath);
   return filePath.endsWith(".vue") ? extractScriptContent(code) : [code];
 };
 
+/**
+ * 将脚本内容解析为AST
+ * @param {string} script - 脚本内容
+ * @returns {Object} AST对象
+ */
 const parseAST = script => acorn.parse(script, {
   ecmaVersion: "latest",
   sourceType: "module"
 });
 
+/**
+ * 解析模块路径
+ * @param {string} sourceValue - 源值
+ * @param {string} projectRoot - 项目根目录
+ * @param {string} filePath - 当前文件路径
+ * @returns {string|null} 解析后的模块路径
+ */
 const resolveModulePath = (sourceValue, projectRoot, filePath) => {
   if (sourceValue.startsWith("@/")) {
     return path.resolve(projectRoot, "src", sourceValue.slice(2));
@@ -30,6 +58,13 @@ const resolveModulePath = (sourceValue, projectRoot, filePath) => {
   return null;
 };
 
+/**
+ * 收集导入和声明信息
+ * @param {Object} ast - AST对象
+ * @param {string} projectRoot - 项目根目录
+ * @param {string} filePath - 当前文件路径
+ * @returns {Object} 收集到的导入和声明信息
+ */
 const collectImportsAndDeclarations = (ast, projectRoot, filePath) => {
   const importedModules = new Map();
   const userDefinedFunctions = new Map();
@@ -37,6 +72,7 @@ const collectImportsAndDeclarations = (ast, projectRoot, filePath) => {
 
   estraverse.traverse(ast, {
     enter(node) {
+      // 处理导入声明
       if (node.type === "ImportDeclaration") {
         const resolvedPath = resolveModulePath(node.source.value, projectRoot, filePath);
         if (resolvedPath) {
@@ -51,7 +87,9 @@ const collectImportsAndDeclarations = (ast, projectRoot, filePath) => {
         } else {
           importedModules.set(node.source.value, null);
         }
-      } else if (node.type === "VariableDeclarator" && node.init && 
+      } 
+      // 处理require调用
+      else if (node.type === "VariableDeclarator" && node.init && 
                  node.init.type === "CallExpression" && node.init.callee.name === "require") {
         const resolvedPath = resolveModulePath(node.init.arguments[0].value, projectRoot, filePath);
         if (resolvedPath) {
@@ -60,12 +98,18 @@ const collectImportsAndDeclarations = (ast, projectRoot, filePath) => {
         } else {
           importedModules.set(node.init.arguments[0].value, null);
         }
-      } else if (node.type === "FunctionDeclaration" && node.id) {
+      } 
+      // 处理函数声明
+      else if (node.type === "FunctionDeclaration" && node.id) {
         userDefinedFunctions.set(node.id.name, filePath);
-      } else if (node.type === "VariableDeclarator" && node.init && 
+      } 
+      // 处理箭头函数
+      else if (node.type === "VariableDeclarator" && node.init && 
                  node.init.type === "ArrowFunctionExpression") {
         userDefinedFunctions.set(node.id.name, filePath);
-      } else if (node.type === "VariableDeclarator" && node.init && 
+      } 
+      // 处理对象声明
+      else if (node.type === "VariableDeclarator" && node.init && 
                  node.init.type === "ObjectExpression") {
         userDefinedObjects.add(node.id.name);
       }
@@ -75,9 +119,19 @@ const collectImportsAndDeclarations = (ast, projectRoot, filePath) => {
   return { importedModules, userDefinedFunctions, userDefinedObjects };
 };
 
+/**
+ * 分析函数调用
+ * @param {Object} ast - AST对象
+ * @param {string} targetFunctionName - 目标函数名
+ * @param {Object} context - 上下文信息
+ * @param {string} projectRoot - 项目根目录
+ * @param {string} filePath - 当前文件路径
+ * @returns {Object} 函数调用分析结果
+ */
 const analyzeFunctionCalls = (ast, targetFunctionName, context, projectRoot, filePath) => {
   const functionCalls = { system: [], userDefined: [], npm: [], other: [] };
 
+  // 处理单个函数调用
   const processFunctionCall = (functionName) => {
     const [objectName, methodName] = functionName.split(".");
     if (systemFunctions.has(objectName)) {
@@ -111,11 +165,13 @@ const analyzeFunctionCalls = (ast, targetFunctionName, context, projectRoot, fil
 
   estraverse.traverse(ast, {
     enter(node) {
+      // 查找目标函数
       if ((node.type === "VariableDeclarator" && node.id.name === targetFunctionName && 
            node.init && node.init.type === "ArrowFunctionExpression") || 
           (node.type === "FunctionDeclaration" && node.id && node.id.name === targetFunctionName)) {
         const functionBody = node.init ? node.init.body : node.body;
 
+        // 遍历函数体
         estraverse.traverse(functionBody, {
           enter(innerNode) {
             if (innerNode.type === "CallExpression") {
@@ -141,6 +197,13 @@ const analyzeFunctionCalls = (ast, targetFunctionName, context, projectRoot, fil
   return functionCalls;
 };
 
+/**
+ * 获取所有函数调用
+ * @param {string} projectRoot - 项目根目录
+ * @param {string} filePath - 文件路径
+ * @param {string} targetFunctionName - 目标函数名
+ * @returns {Object} 所有函数调用的分析结果
+ */
 const getAllFunctionCalls = (projectRoot, filePath, targetFunctionName) => {
   const scriptContents = parseFileContent(filePath);
   const functionCalls = { system: [], userDefined: [], npm: [], other: [] };
@@ -158,4 +221,5 @@ const getAllFunctionCalls = (projectRoot, filePath, targetFunctionName) => {
   return functionCalls;
 };
 
+// 导出主函数
 module.exports = { getAllFunctionCalls };
