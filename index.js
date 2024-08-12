@@ -214,7 +214,8 @@ const main = async (directoryPath, ignoreFolders, filterText) => {
 };
 
 // 示例使用
-const directoryPath = "C:/Code/server/easylink.service";
+const directoryPath =
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram";
 const ignoreFolders = ["node_modules", "dist", "public"];
 const filterText = "";
 

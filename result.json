@@ -1,1352 +1,1067 @@
 {
-  "C:\\Code\\server\\easylink.service\\middlewares\\errorHandler.js": [
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/App.vue": [
     {
-      "functionName": "errorHandler",
-      "functionId": "18a0fc5f-7d59-49cc-9456-19c3fc8ebb5a",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "Log.errorHandlerLog",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "82a6b76f-c71c-42a3-896d-468238029109"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "res.status"
-        ]
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\model\\api\\lcApi.js": [
-    {
-      "functionName": "getEasyFiles",
-      "functionId": "3ea42627-a99e-49f4-87ac-e9a21833f3da",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "operator.toUpperCase",
-          "query.equalTo",
-          "query.equalTo",
-          "query.equalTo",
-          "query.equalTo",
-          "queries.push",
-          "queries.push",
-          "queries.push",
-          "queries.push",
-          "query.find",
-          "results.map",
-          "result.toFullJSON"
-        ]
-      }
-    },
-    {
-      "functionName": "updateEasyfile",
-      "functionId": "9d97bd57-3014-4a75-ac15-1efa97a80582",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "query.equalTo",
-          "query.first",
-          "result.set",
-          "result.save",
-          "updatedResult.toFullJSON",
-          "updatedResult.toFullJSON"
-        ]
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js": [
-    {
-      "functionName": "generateUploadPolicy",
-      "functionId": "83fd7c13-94f3-4ac6-b9d2-80dce6fcb420",
-      "calls": {
-        "system": [],
-        "userDefined": [],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "generateUploadToken",
-      "functionId": "08e19346-1d69-462e-b948-24386a15661e",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "generateUploadPolicy",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "83fd7c13-94f3-4ac6-b9d2-80dce6fcb420"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getQiniuCdnData",
-      "functionId": "fc070bf1-fc35-4135-886f-bf69cf92f32f",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "date.toISOString",
-          "cdnManager.getFluxData",
-          "reject",
-          "resolve",
-          "reject"
-        ]
-      }
-    },
-    {
-      "functionName": "getFileStatus",
-      "functionId": "658e7c22-1563-4440-b793-a21b5ac6f8e5",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "bucketManager.stat",
-          "reject",
-          "resolve",
-          "reject"
-        ]
-      }
-    },
-    {
-      "functionName": "getPrivateObject",
-      "functionId": "b9406039-aab7-4ee7-8143-b367b5146948",
-      "calls": {
-        "system": [],
-        "userDefined": [],
-        "npm": [],
-        "other": [
-          "parseInt",
-          "Date.now",
-          "bucketManager.privateDownloadUrl"
-        ]
-      }
-    },
-    {
-      "functionName": "refreshCdnCache",
-      "functionId": "dc1f6e48-fc70-4648-83c0-74f935b7f15c",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "getPrivateObject",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "b9406039-aab7-4ee7-8143-b367b5146948"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "cdnManager.refreshUrls",
-          "reject",
-          "resolve",
-          "reject"
-        ]
-      }
-    },
-    {
-      "functionName": "deleteObject",
-      "functionId": "75586253-8d95-41c3-b1d9-89c9554b41cb",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "refreshCdnCache",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "dc1f6e48-fc70-4648-83c0-74f935b7f15c"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "bucketManager.delete",
-          "reject",
-          "resolve",
-          "reject",
-          "reject"
-        ]
-      }
-    },
-    {
-      "functionName": "getVideoInfo",
-      "functionId": "ebe5ff0f-c4b9-42cf-9dc2-30675033145c",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "getPrivateObject",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "b9406039-aab7-4ee7-8143-b367b5146948"
-          }
-        ],
-        "npm": [
-          "axios.get"
-        ],
-        "other": [
-          "encodeURIComponent"
-        ]
-      }
-    },
-    {
-      "functionName": "saveAsName",
-      "functionId": "ecfcdedd-4220-4b5a-bfa6-7f88a368a927",
-      "calls": {
-        "system": [],
-        "userDefined": [],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "transcode",
-      "functionId": "ce4b48bb-b7b5-4e82-8e8c-e36c69066e91",
+      "functionName": "generateUUID",
+      "functionId": "e9742f13-9079-45cc-ba3f-f11daaeb89ad",
       "calls": {
         "system": [
-          "console.log",
-          "console.log",
-          "console.log",
+          "Math.random"
+        ],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "v.toString"
+        ]
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/components/FileActionPanel/FileActionPanel.vue": [
+    {
+      "functionName": "getDownloadText",
+      "functionId": "90b49cd5-2e9e-4bd2-ba70-422832e67add",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/components/ImageView/ImageView.vue": [
+    {
+      "functionName": "onImageLoaded",
+      "functionId": "77570caa-5739-449a-8cf4-d1e38bc7837d",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickImageLoader",
+      "functionId": "cc0d190f-1b99-43de-ba8d-e6a9ff9daa00",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "FileVM.previewImage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "b57d1ef9-68b5-4045-82a0-73433090b39b"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "props.trackClickEvent"
+        ]
+      }
+    },
+    {
+      "functionName": "downloadFile",
+      "functionId": "96400d46-d04f-4943-9851-31f72f294754",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "props.clickDownloadBtn"
+        ]
+      }
+    },
+    {
+      "functionName": "enterFullScreen",
+      "functionId": "ecdbfd7c-21f8-4a1a-94cc-45de49d12d06",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "props.clickEnterFullScreen"
+        ]
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/components/PdfView/PdfView.vue": [
+    {
+      "functionName": "openPdfFile",
+      "functionId": "6afac8c3-3ca7-4fcc-99ad-0c5a27612050",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "FileVM.openPdfFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "092bb0b8-5207-4d41-8fbe-4fa8b459f284"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "props.trackOpenPdfEvent"
+        ]
+      }
+    },
+    {
+      "functionName": "downloadFile",
+      "functionId": "594854cb-6612-432e-ba43-267fe633ce6c",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "props.clickDownloadBtn"
+        ]
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/components/UnSupportedView/UnSupportedView.vue": [
+    {
+      "functionName": "openFile",
+      "functionId": "c3ab02f8-8e18-4ff7-b89d-a79d667d2473",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "FileVM.saveFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "33ccc27d-ea93-4751-b850-9df0bebad463"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "props.trackClickDownloadBtn",
+          "props.trackClickCopyDownloadBtn"
+        ]
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/components/VideoView/VideoView.vue": [
+    {
+      "functionName": "onVideoMetadataLoaded",
+      "functionId": "04e9c02a-8f89-4c4f-9e91-9e487b34b220",
+      "calls": {
+        "system": [
           "console.log"
         ],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "onVideoPlayed",
+      "functionId": "16c400d4-97f2-447c-88a4-59e97fec1a60",
+      "calls": {
+        "system": [
+          "console.log"
+        ],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "props.trackVideoPlayedEvent"
+        ]
+      }
+    },
+    {
+      "functionName": "downloadFile",
+      "functionId": "61acd93b-3899-4a06-9d02-af18dd834e44",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "props.clickDownloadBtn"
+        ]
+      }
+    },
+    {
+      "functionName": "enterFullScreen",
+      "functionId": "f91421d7-ef35-486f-9674-704797131507",
+      "calls": {
+        "system": [
+          "console.log"
+        ],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "props.clickEnterFullScreen"
+        ]
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/main.js": [
+    {
+      "functionName": "createApp",
+      "functionId": "d9a20b0e-9a6c-4268-bf92-636d152f53be",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "createSSRApp"
+        ]
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js": [
+    {
+      "functionName": "createReport",
+      "functionId": "8f444e74-5dc7-425b-b7ba-d47366c63324",
+      "calls": {
+        "system": [],
         "userDefined": [
           {
-            "name": "saveAsName",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "ecfcdedd-4220-4b5a-bfa6-7f88a368a927"
+            "name": "getWxUserList",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "c3495a50-1f4f-42c5-85e4-fb71b83a0342"
           },
           {
-            "name": "saveAsName",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "ecfcdedd-4220-4b5a-bfa6-7f88a368a927"
+            "name": "Log.success",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "36d83c0c-b241-4264-b303-79ec640abdbd"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
           }
         ],
         "npm": [],
         "other": [
-          "openManager.pfop",
+          "uni.request",
+          "resolve",
           "reject",
+          "reject"
+        ]
+      }
+    },
+    {
+      "functionName": "getWxUserList",
+      "functionId": "c3495a50-1f4f-42c5-85e4-fb71b83a0342",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "36d83c0c-b241-4264-b303-79ec640abdbd"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "uni.request",
+          "resolve",
+          "reject",
+          "reject"
+        ]
+      }
+    },
+    {
+      "functionName": "createMachineWxUser",
+      "functionId": "8c48b65f-106d-4554-83a3-3adb8a1baf58",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "36d83c0c-b241-4264-b303-79ec640abdbd"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "uni.request",
+          "resolve",
+          "reject",
+          "reject"
+        ]
+      }
+    },
+    {
+      "functionName": "createWxUser",
+      "functionId": "129943cf-6cb7-45b4-82e7-388fc17e586f",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "36d83c0c-b241-4264-b303-79ec640abdbd"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "uni.request",
+          "resolve",
+          "reject",
+          "reject"
+        ]
+      }
+    },
+    {
+      "functionName": "getEasyFile",
+      "functionId": "afa11c7c-bf9d-46b8-9f30-97686743ffd6",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "36d83c0c-b241-4264-b303-79ec640abdbd"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "uni.request",
+          "key.replace",
+          "resolve",
+          "reject",
+          "reject"
+        ]
+      }
+    },
+    {
+      "functionName": "isEasyFileExist",
+      "functionId": "5ec075cf-72d0-41a6-b3a5-6312e56381d8",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Log.success",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "36d83c0c-b241-4264-b303-79ec640abdbd"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          },
+          {
+            "name": "Log.failure",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "uni.request",
           "resolve",
           "reject"
         ]
       }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js": [
+    },
     {
-      "functionName": "getSlsInstance",
-      "functionId": "e1c8b4c7-4320-4812-88f5-2c2f62e3ed1e",
+      "functionName": "wxLogin",
+      "functionId": "94de2e7b-e42b-481c-a009-a48b02233848",
       "calls": {
         "system": [],
         "userDefined": [],
         "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "json2contents",
-      "functionId": "dea214b6-ec51-43e2-9568-f252e5bdfbc2",
-      "calls": {
-        "system": [
-          "JSON.stringify"
-        ],
-        "userDefined": [],
-        "npm": [],
         "other": [
-          "contents.push"
-        ]
-      }
-    },
-    {
-      "functionName": "writeLog",
-      "functionId": "dd483900-5ad4-4475-b1c8-3ef8c2cc98da",
-      "calls": {
-        "system": [
-          "JSON.stringify",
-          "Math.floor"
-        ],
-        "userDefined": [
-          {
-            "name": "json2contents",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "dea214b6-ec51-43e2-9568-f252e5bdfbc2"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "contents.push",
-          "sls.putLogs",
+          "uni.login",
+          "resolve",
           "reject",
-          "resolve"
+          "reject"
         ]
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\model\\api\\wechatApi.js": [
-    {
-      "functionName": "getAccessToken",
-      "functionId": "2a7d0965-9e8b-4b6a-8ba4-d67f629e6df9",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [
-          "axios.request"
-        ],
-        "other": []
-      }
-    },
-    {
-      "functionName": "generateScheme",
-      "functionId": "f8f94923-7115-4494-88bb-669fff47dc47",
-      "calls": {
-        "system": [
-          "JSON.stringify"
-        ],
-        "userDefined": [
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [
-          "axios.request"
-        ],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getUnlimitedQRCode",
-      "functionId": "ed086c74-d2c6-4ada-9f9b-598116ca8f34",
-      "calls": {
-        "system": [
-          "JSON.stringify"
-        ],
-        "userDefined": [
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [
-          "axios.request"
-        ],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getPublisherAdposGeneralData",
-      "functionId": "743cf18d-0a02-428c-8323-cd4f649483a2",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [
-          "axios.request"
-        ],
-        "other": []
       }
     },
     {
       "functionName": "getUserInfo",
-      "functionId": "072d11a2-0d4b-445b-9bf8-3881c912bc9d",
+      "functionId": "5705bb49-c5be-4880-8d4b-c05b47f5c11d",
       "calls": {
         "system": [],
         "userDefined": [
           {
             "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "36d83c0c-b241-4264-b303-79ec640abdbd"
           },
           {
             "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [
-          "axios.get"
-        ],
-        "other": []
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\model\\db\\easyfileDAO.js": [
-    {
-      "functionName": "insertEasyfile",
-      "functionId": "19231f5a-f4ba-495e-9605-76d52606edd3",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
           }
         ],
         "npm": [],
         "other": [
-          "uuidv4"
-        ]
-      }
-    },
-    {
-      "functionName": "getEasyfiles",
-      "functionId": "baf22f13-0123-4943-a731-511c94512797",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "conditions.join",
-          "operator.toUpperCase"
-        ]
-      }
-    },
-    {
-      "functionName": "updateEasyfile",
-      "functionId": "dfe73cf9-216b-451b-9d82-9417c7bbfd6a",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "Object.keys",
-          "Object.values"
+          "uni.request",
+          "resolve",
+          "reject"
         ]
       }
     }
   ],
-  "C:\\Code\\server\\easylink.service\\model\\db\\globalDAO.js": [
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/kodo.js": [
     {
-      "functionName": "getGlobalValue",
-      "functionId": "65edad29-0b95-44b4-afc4-17e267aba334",
+      "functionName": "getCdnUrl",
+      "functionId": "3910d833-1721-4495-954a-c8b6041cf586",
       "calls": {
         "system": [],
         "userDefined": [
           {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
             "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "36d83c0c-b241-4264-b303-79ec640abdbd"
           },
           {
             "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "setGlobalValue",
-      "functionId": "6f37187a-c5c7-48c2-baf7-ec73cddd035a",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\model\\db\\machineDAO.js": [
-    {
-      "functionName": "insertMachine",
-      "functionId": "94f3e766-1464-4b71-8048-ed7285418665",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4054ddd6-f154-4ac2-8f0b-714c37e5bc8d"
           }
         ],
         "npm": [],
         "other": [
-          "uuidv4"
+          "uni.request",
+          "resolve",
+          "reject"
         ]
       }
     }
   ],
-  "C:\\Code\\server\\easylink.service\\model\\db\\machineWxUserDAO.js": [
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js": [
     {
-      "functionName": "insertMachineWxUser",
-      "functionId": "f67c4c41-485e-4297-a1e5-3a7fcf0af526",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "uuidv4"
-        ]
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\model\\db\\reportDAO.js": [
-    {
-      "functionName": "insertReport",
-      "functionId": "74c4565a-ac95-4d20-a1e7-92856aeb7459",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "uuidv4"
-        ]
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\model\\db\\wxUserDAO.js": [
-    {
-      "functionName": "insertWxUser",
-      "functionId": "549ebc5f-3a61-43d7-aab2-cc65625f3255",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "uuidv4",
-          "columns.slice",
-          "values.map",
-          "columns.join"
-        ]
-      }
-    },
-    {
-      "functionName": "findWxUsersByUnionid",
-      "functionId": "8e9ca69c-f7f9-490a-973a-38d665c4e653",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "pool.query",
-            "path": "C:\\Code\\server\\easylink.service\\config\\database.js",
-            "id": "fc7130fa-632b-4f39-9203-414bc34cf929"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\services\\easyfileService.js": [
-    {
-      "functionName": "convertToSnakeCase",
-      "functionId": "adb26817-1b49-4b80-980c-71b34aa25385",
-      "calls": {
-        "system": [],
-        "userDefined": [],
-        "npm": [],
-        "other": [
-          "key.replace"
-        ]
-      }
-    },
-    {
-      "functionName": "convertToCamelCase",
-      "functionId": "fdc64453-0bb5-471f-a787-8048bb0183df",
-      "calls": {
-        "system": [],
-        "userDefined": [],
-        "npm": [],
-        "other": [
-          "key.replace",
-          "letter.toUpperCase"
-        ]
-      }
-    },
-    {
-      "functionName": "createEasyfile",
-      "functionId": "75a920b4-a326-41c2-9c5b-7d6895801d12",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "EasyfileDAO.insertEasyfile",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\easyfileDAO.js",
-            "id": "f345d228-9d40-4076-a09e-5057c2321f6a"
-          },
-          {
-            "name": "QiniuService.runTranscode",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "fee999a4-c23c-4b3d-8209-e812867068fa"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getEasyFiles",
-      "functionId": "2026932f-504c-48f3-a1be-f52ff631cdbd",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "EasyfileDAO.getEasyfiles",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\easyfileDAO.js",
-            "id": "e7897edb-ce43-4e7d-b061-619643a193a7"
-          },
-          {
-            "name": "LcApi.getEasyFiles",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\lcApi.js",
-            "id": "24199746-c353-4cb3-90bb-1b2587f4b6bd"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": [
-          "lcEasyFiles.map"
-        ]
-      }
-    },
-    {
-      "functionName": "updateEasyfile",
-      "functionId": "940e7daa-7c17-440d-b717-89783f26a0f5",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "convertToSnakeCase",
-            "path": "C:\\Code\\server\\easylink.service\\services\\easyfileService.js",
-            "id": "adb26817-1b49-4b80-980c-71b34aa25385"
-          },
-          {
-            "name": "EasyfileDAO.updateEasyfile",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\easyfileDAO.js",
-            "id": "b3371068-92ab-4237-af09-987ad0fc42d3"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "convertToCamelCase",
-            "path": "C:\\Code\\server\\easylink.service\\services\\easyfileService.js",
-            "id": "fdc64453-0bb5-471f-a787-8048bb0183df"
-          },
-          {
-            "name": "LcApi.updateEasyfile",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\lcApi.js",
-            "id": "52931c32-88de-41b8-8235-74deb87693b4"
-          },
-          {
-            "name": "convertToSnakeCase",
-            "path": "C:\\Code\\server\\easylink.service\\services\\easyfileService.js",
-            "id": "adb26817-1b49-4b80-980c-71b34aa25385"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\services\\machineService.js": [
-    {
-      "functionName": "createMachine",
-      "functionId": "90791def-3ade-44f7-be10-9698b243a574",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "MachineDAO.insertMachine",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\machineDAO.js",
-            "id": "5b236805-222d-404b-827e-d931398e54b0"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\services\\machineWxUserService.js": [
-    {
-      "functionName": "createMachineWxUser",
-      "functionId": "b88015c1-3ec6-498b-8a56-be29a7260e6e",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "MachineWxUserDAO.insertMachineWxUser",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\machineWxUserDAO.js",
-            "id": "564aa78d-0625-40d5-a578-0f6f0857824f"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\services\\qiniuService.js": [
-    {
-      "functionName": "needToTranscode",
-      "functionId": "a1f635cb-3270-4b76-99ab-fec48b02e066",
-      "calls": {
-        "system": [],
-        "userDefined": [],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getVideoWidthHeight",
-      "functionId": "38f39e67-86bb-4fa9-9f1f-058158e9539b",
+      "functionName": "send",
+      "functionId": "329a38dd-2ed3-4e67-bcb9-6967123ebd19",
       "calls": {
         "system": [
-          "Math.round",
-          "Math.round",
-          "Math.round",
-          "Math.round"
-        ],
-        "userDefined": [],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "runTranscode",
-      "functionId": "7d098db4-a470-4c1c-9454-cd49c023d26c",
-      "calls": {
-        "system": [
+          "Date.now",
           "console.log",
           "console.error"
         ],
         "userDefined": [
           {
-            "name": "SlsApi.getSlsInstance",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "af34e074-881c-4afb-9cd4-687008b23f07"
+            "name": "useMid",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "007af7dc-00f8-4a23-aafa-7e13402a691b"
           },
           {
-            "name": "QiniuApi.getVideoInfo",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "444d2524-2f7c-47e0-b6d5-3c23cb5660c7"
+            "name": "useUserInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "11e20b25-89b4-408e-934a-b581767a0a7f"
           },
           {
-            "name": "SlsApi.writeLog",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "eef93599-a213-4d8b-a4e8-578afb6f9025"
+            "name": "useUserInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "11e20b25-89b4-408e-934a-b581767a0a7f"
           },
           {
-            "name": "needToTranscode",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "a1f635cb-3270-4b76-99ab-fec48b02e066"
+            "name": "useSessionId",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "d058eecb-88a6-4a26-ade9-88299c989ad6"
           },
           {
-            "name": "EasyfileService.updateEasyfile",
-            "path": "C:\\Code\\server\\easylink.service\\services\\easyfileService.js",
-            "id": "702103ff-1c26-48b8-930b-17dd26060d7a"
+            "name": "useSubSessionId",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "ac27e769-86a4-4b7d-b28a-4a9dc06a9e6c"
           },
           {
-            "name": "needToTranscode",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "a1f635cb-3270-4b76-99ab-fec48b02e066"
+            "name": "useSystemInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "593443d0-4b01-4910-9ed1-f8720ae3bd86"
           },
           {
-            "name": "getVideoWidthHeight",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "38f39e67-86bb-4fa9-9f1f-058158e9539b"
+            "name": "useScene",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "a362b299-1751-492a-8403-3db4878219e3"
           },
           {
-            "name": "QiniuApi.transcode",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "9b0eb575-31af-441c-8ee1-0add1b24244c"
+            "name": "useRootUnionId",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "d753a1a7-26d9-42a8-afc4-f9d7cc785a7b"
           },
           {
-            "name": "SlsApi.writeLog",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "eef93599-a213-4d8b-a4e8-578afb6f9025"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "fetchQiniuCdnDataToSls",
-      "functionId": "f1fb179b-9a76-4b9d-9b95-692627eb1a9c",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "QiniuApi.getQiniuCdnData",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "f56a6acd-2445-4f0c-bb9b-03c3ea07087a"
+            "name": "useShareDepth",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "6904942d-86ae-4d73-ae2c-e2cec606d617"
           },
           {
-            "name": "SlsApi.getSlsInstance",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "af34e074-881c-4afb-9cd4-687008b23f07"
-          },
-          {
-            "name": "SlsApi.writeLog",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "eef93599-a213-4d8b-a4e8-578afb6f9025"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
+            "name": "usePreUnionId",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "00f88f4a-2a6d-4ccb-b4f5-3257bec3acd0"
           }
         ],
         "npm": [],
         "other": [
-          "yesterday.setDate",
-          "yesterday.getDate"
+          "tracker.send"
         ]
       }
     },
     {
-      "functionName": "getUploadToken",
-      "functionId": "6baed5c7-076e-4229-90ed-df66cf966e6b",
+      "functionName": "useSystemInfo",
+      "functionId": "593443d0-4b01-4910-9ed1-f8720ae3bd86",
       "calls": {
         "system": [],
         "userDefined": [
           {
-            "name": "QiniuApi.generateUploadToken",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "34736ea0-1158-4b70-af03-619e47981a4f"
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
           },
           {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "review",
-      "functionId": "1d254bf9-09da-4799-be1c-257cfa1542cc",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "isKodoObjectBanned",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "91687a2b-e4e3-48de-934d-cf94def6d7b9"
-          },
-          {
-            "name": "banEasyFile",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "5c0160ff-3073-429f-a362-aa5af25171d5"
-          },
-          {
-            "name": "QiniuApi.deleteObject",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "4d2e582d-bf99-44ea-91f6-bd8e3b006109"
-          },
-          {
-            "name": "SlsApi.getSlsInstance",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "af34e074-881c-4afb-9cd4-687008b23f07"
-          },
-          {
-            "name": "SlsApi.writeLog",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "eef93599-a213-4d8b-a4e8-578afb6f9025"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "isKodoObjectBanned",
-      "functionId": "91687a2b-e4e3-48de-934d-cf94def6d7b9",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "QiniuApi.getFileStatus",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "4a63d70e-9ff8-40d6-bc76-999b294da5a0"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "banEasyFile",
-      "functionId": "5c0160ff-3073-429f-a362-aa5af25171d5",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "EasyfileService.getEasyFiles",
-            "path": "C:\\Code\\server\\easylink.service\\services\\easyfileService.js",
-            "id": "4eda1222-d23f-4f16-b129-275e28ab08a0"
-          },
-          {
-            "name": "EasyfileService.updateEasyfile",
-            "path": "C:\\Code\\server\\easylink.service\\services\\easyfileService.js",
-            "id": "702103ff-1c26-48b8-930b-17dd26060d7a"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "handleTranscodeNotify",
-      "functionId": "cfc2af56-750a-45a8-bc0b-87f34f0e74a0",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "SlsApi.getSlsInstance",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "af34e074-881c-4afb-9cd4-687008b23f07"
-          },
-          {
-            "name": "QiniuApi.deleteObject",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "4d2e582d-bf99-44ea-91f6-bd8e3b006109"
-          },
-          {
-            "name": "EasyfileService.updateEasyfile",
-            "path": "C:\\Code\\server\\easylink.service\\services\\easyfileService.js",
-            "id": "702103ff-1c26-48b8-930b-17dd26060d7a"
-          },
-          {
-            "name": "QiniuApi.getVideoInfo",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "444d2524-2f7c-47e0-b6d5-3c23cb5660c7"
-          },
-          {
-            "name": "SlsApi.writeLog",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "eef93599-a213-4d8b-a4e8-578afb6f9025"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getPrivateObjectUrl",
-      "functionId": "81a54c4f-c9c7-4789-8794-3ded5e971266",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "QiniuApi.getPrivateObject",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\qiniuApi.js",
-            "id": "7ba326a0-24c1-47d3-91d9-e0580d5d7279"
-          },
-          {
-            "name": "review",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "1d254bf9-09da-4799-be1c-257cfa1542cc"
-          },
-          {
-            "name": "isTranscodedKey",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "9e76a02b-e89d-4547-ac9b-4393af9ea000"
-          },
-          {
-            "name": "EasyfileService.getEasyFiles",
-            "path": "C:\\Code\\server\\easylink.service\\services\\easyfileService.js",
-            "id": "4eda1222-d23f-4f16-b129-275e28ab08a0"
-          },
-          {
-            "name": "runTranscode",
-            "path": "C:\\Code\\server\\easylink.service\\services\\qiniuService.js",
-            "id": "7d098db4-a470-4c1c-9454-cd49c023d26c"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
+            "name": "File.setStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "c897a7fb-00c6-494c-89e9-3a1dd469cdbb"
           }
         ],
         "npm": [],
         "other": [
-          "decodeURIComponent"
+          "resolve",
+          "uni.getSystemInfoAsync",
+          "resolve",
+          "reject"
         ]
       }
     },
     {
-      "functionName": "isTranscodedKey",
-      "functionId": "9e76a02b-e89d-4547-ac9b-4393af9ea000",
+      "functionName": "useShareDepth",
+      "functionId": "6904942d-86ae-4d73-ae2c-e2cec606d617",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "usePreUnionId",
+      "functionId": "00f88f4a-2a6d-4ccb-b4f5-3257bec3acd0",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "useRootUnionId",
+      "functionId": "d753a1a7-26d9-42a8-afc4-f9d7cc785a7b",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          },
+          {
+            "name": "useUserInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "11e20b25-89b4-408e-934a-b581767a0a7f"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "useScene",
+      "functionId": "a362b299-1751-492a-8403-3db4878219e3",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "useMid",
+      "functionId": "007af7dc-00f8-4a23-aafa-7e13402a691b",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "useSessionId",
+      "functionId": "d058eecb-88a6-4a26-ade9-88299c989ad6",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "useSubSessionId",
+      "functionId": "ac27e769-86a4-4b7d-b28a-4a9dc06a9e6c",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "useUserInfo",
+      "functionId": "11e20b25-89b4-408e-934a-b581767a0a7f",
+      "calls": {
+        "system": [
+          "console.error"
+        ],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          },
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          },
+          {
+            "name": "Api.wxLogin",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "94de2e7b-e42b-481c-a009-a48b02233848"
+          },
+          {
+            "name": "Api.getUserInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "5705bb49-c5be-4880-8d4b-c05b47f5c11d"
+          },
+          {
+            "name": "File.setStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "c897a7fb-00c6-494c-89e9-3a1dd469cdbb"
+          },
+          {
+            "name": "File.setStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "c897a7fb-00c6-494c-89e9-3a1dd469cdbb"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "useWxUserId",
+      "functionId": "5bb83c30-731c-471f-a798-cdaab6cf20a9",
+      "calls": {
+        "system": [
+          "console.error"
+        ],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          },
+          {
+            "name": "useUserInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "11e20b25-89b4-408e-934a-b581767a0a7f"
+          },
+          {
+            "name": "Api.getWxUserList",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "c3495a50-1f4f-42c5-85e4-fb71b83a0342"
+          },
+          {
+            "name": "File.setStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "c897a7fb-00c6-494c-89e9-3a1dd469cdbb"
+          },
+          {
+            "name": "Api.createWxUser",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "129943cf-6cb7-45b4-82e7-388fc17e586f"
+          },
+          {
+            "name": "File.setStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "c897a7fb-00c6-494c-89e9-3a1dd469cdbb"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/pages/file/file.vue": [
+    {
+      "functionName": "trackClickImageView",
+      "functionId": "8ece5a8a-406a-4c73-b407-dd636efffe44",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "trackClickDownloadBtn",
+      "functionId": "4f049b94-9d12-46ee-96ea-1ca5e2748c62",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "trackClickCopyDownloadBtn",
+      "functionId": "66fbd550-38fd-4e79-b755-4693a17502fb",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "debounce",
+      "functionId": "4b5f4bba-f6ff-4c22-b588-245da330c84a",
+      "calls": {
+        "system": [
+          "clearTimeout",
+          "setTimeout"
+        ],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "func.apply"
+        ]
+      }
+    },
+    {
+      "functionName": "trackVideoPlayed",
+      "functionId": "42a0a31d-e3c2-4195-9b90-e980a6f4659b",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "debouncedSendTracking"
+        ]
+      }
+    },
+    {
+      "functionName": "trackOpenPdf",
+      "functionId": "975dfe1d-9dcd-4a92-aaf0-3d9131b26912",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "fileType",
+      "functionId": "ca3d9c81-adb4-40e2-9d6a-8164c62a4087",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickDownloadBtn",
+      "functionId": "d2fa99ea-afac-4a6b-8461-acfbdf82350f",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "fileType",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/pages/file/file.vue",
+            "id": "ca3d9c81-adb4-40e2-9d6a-8164c62a4087"
+          },
+          {
+            "name": "FileVM.saveFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "33ccc27d-ea93-4751-b850-9df0bebad463"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickEnterFullScreen",
+      "functionId": "5b346a4e-a7a6-4f84-9752-4ee796d263ef",
+      "calls": {
+        "system": [
+          "console.log"
+        ],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "FileVM.previewImage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "b57d1ef9-68b5-4045-82a0-73433090b39b"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickBackBtn",
+      "functionId": "f365e3bf-aa85-406f-ae68-b51d7ffce736",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "uni.redirectTo"
+        ]
+      }
+    },
+    {
+      "functionName": "clickReportBtn",
+      "functionId": "d7a32ebd-fe7c-40f4-892a-5f0611266a95",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "FileVM.clickReportBtn",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "25a4376d-ac6b-4e77-90e9-f6e412aa4ca7"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/pages/index/index.vue": [
+    {
+      "functionName": "clickUploadBtn",
+      "functionId": "1f442533-b95e-43e9-b46f-fe54dcf296e4",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "IndexVM.uploadFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "9f212eb5-4648-4e9d-a7ac-f3ae4e5ec79d"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "onFileInputFocus",
+      "functionId": "24337d1f-090b-4c31-b13c-43debefbdc13",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickBackToLastFile",
+      "functionId": "23727a27-cfec-44eb-a4b0-cfc97941b5f9",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "IndexVM.backToCurrentFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "dd26018c-1cd1-4d14-9075-4ae26545b20e"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "clickClearCurrentFile",
+      "functionId": "4657144a-1de9-4ca5-819a-f154f24d3bcf",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "IndexVM.clearCurrentFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "ab6bb00e-563d-4d1f-a84a-dc1ce5f65b4c"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "onFileInputComfirm",
+      "functionId": "a1419b5e-cca6-425b-b62d-e2e10158d1eb",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "IndexVM.accessFileFromLink",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/index.js",
+            "id": "aaef4821-2f44-43d9-97ac-d04a5bab7941"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    }
+  ],
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/FileVM.js": [
+    {
+      "functionName": "getPageState",
+      "functionId": "7b783715-fd2d-4bc7-987b-51a230fb8153",
       "calls": {
         "system": [
           "console.log",
@@ -1355,258 +1070,55 @@
         "userDefined": [],
         "npm": [],
         "other": [
-          "pattern.test"
-        ]
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\services\\reportService.js": [
-    {
-      "functionName": "createReport",
-      "functionId": "3d1e0de9-72b7-44b9-9665-1b2fbe724ad3",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "ReportDAO.insertReport",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\reportDAO.js",
-            "id": "11b45296-ff07-4382-956b-bcb8b6e4a81b"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    }
-  ],
-  "C:\\Code\\server\\easylink.service\\services\\wechatService.js": [
-    {
-      "functionName": "fetchMpUrlSchemeAndStore",
-      "functionId": "59f21157-b05a-4495-83e5-086fd54be7ee",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "GlobalDAO.getGlobalValue",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\globalDAO.js",
-            "id": "250ccc9d-962d-420d-a424-cfe2328040ad"
-          },
-          {
-            "name": "WechatApi.generateScheme",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\wechatApi.js",
-            "id": "70efa47f-6726-4c37-8019-fccefdc6a76a"
-          },
-          {
-            "name": "GlobalDAO.setGlobalValue",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\globalDAO.js",
-            "id": "0c197fc9-b2c0-4ed0-bea6-e4acad8d6a9e"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getMpRedirectSwitchFromStore",
-      "functionId": "6ef533d5-2f83-4d0e-b649-db5a080cfa05",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "GlobalDAO.getGlobalValue",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\globalDAO.js",
-            "id": "250ccc9d-962d-420d-a424-cfe2328040ad"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getMpUrlSchemeFromStore",
-      "functionId": "b057989b-aa0e-4b4a-a616-8f44e3c9c080",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "GlobalDAO.getGlobalValue",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\globalDAO.js",
-            "id": "250ccc9d-962d-420d-a424-cfe2328040ad"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "getMpAccessTokenFromStore",
-      "functionId": "96d82614-5bad-47da-9b1d-5d4a776fbde3",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "GlobalDAO.getGlobalValue",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\globalDAO.js",
-            "id": "250ccc9d-962d-420d-a424-cfe2328040ad"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "fetchMpAccessTokenAndStore",
-      "functionId": "52c3cd95-7041-4321-9ce3-c6739eb4e47b",
-      "calls": {
-        "system": [],
-        "userDefined": [
-          {
-            "name": "WechatApi.getAccessToken",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\wechatApi.js",
-            "id": "1cbdef72-3511-4b4d-be1d-948680a7fade"
-          },
-          {
-            "name": "GlobalDAO.setGlobalValue",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\globalDAO.js",
-            "id": "0c197fc9-b2c0-4ed0-bea6-e4acad8d6a9e"
-          },
-          {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
-          }
-        ],
-        "npm": [],
-        "other": []
-      }
-    },
-    {
-      "functionName": "format",
-      "functionId": "bb7d02b5-2c64-43d3-bcb7-f9f6111509fc",
-      "calls": {
-        "system": [],
-        "userDefined": [],
-        "npm": [],
-        "other": [
-          "date.getFullYear",
-          "date.getMonth",
-          "date.getDate"
+          "supportImageContentType.includes",
+          "supportVideoContentType.includes",
+          "supportPdfContentType.includes"
         ]
       }
     },
     {
-      "functionName": "getYesterday",
-      "functionId": "c17409a0-f504-417f-a383-94fd40789b1f",
+      "functionName": "clickReportBtn",
+      "functionId": "716c0731-b975-4551-a661-412e068e1a12",
       "calls": {
         "system": [],
         "userDefined": [
           {
-            "name": "format",
-            "path": "C:\\Code\\server\\easylink.service\\services\\wechatService.js",
-            "id": "bb7d02b5-2c64-43d3-bcb7-f9f6111509fc"
+            "name": "UX.showModal",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "21a55bf0-8758-4ab3-a1a3-a85d0772707b"
+          },
+          {
+            "name": "Api.createReport",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "8f444e74-5dc7-425b-b7ba-d47366c63324"
+          },
+          {
+            "name": "Tracking.useUserInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "11e20b25-89b4-408e-934a-b581767a0a7f"
           }
         ],
         "npm": [],
-        "other": [
-          "yesterday.setDate",
-          "today.getDate",
-          "date.getFullYear",
-          "date.getMonth",
-          "date.getDate"
-        ]
+        "other": []
       }
     },
     {
-      "functionName": "fetchMpAdDataToSls",
-      "functionId": "dc7a0883-f54e-4ad1-94b0-79c6a498bdb5",
+      "functionName": "loadFileToScreen",
+      "functionId": "a270391a-1025-4a1f-9f06-43b8fa5e5e67",
       "calls": {
         "system": [
-          "Promise.all"
+          "console.log"
         ],
         "userDefined": [
           {
-            "name": "getYesterday",
-            "path": "C:\\Code\\server\\easylink.service\\services\\wechatService.js",
-            "id": "c17409a0-f504-417f-a383-94fd40789b1f"
+            "name": "Api.getEasyFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "afa11c7c-bf9d-46b8-9f30-97686743ffd6"
           },
           {
-            "name": "GlobalDAO.getGlobalValue",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\globalDAO.js",
-            "id": "250ccc9d-962d-420d-a424-cfe2328040ad"
-          },
-          {
-            "name": "WechatApi.getPublisherAdposGeneralData",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\wechatApi.js",
-            "id": "cd791397-0fde-425d-8606-8820582c0acd"
-          },
-          {
-            "name": "SlsApi.getSlsInstance",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "af34e074-881c-4afb-9cd4-687008b23f07"
-          },
-          {
-            "name": "SlsApi.writeLog",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\slsApi.js",
-            "id": "eef93599-a213-4d8b-a4e8-578afb6f9025"
-          },
-          {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
+            "name": "Kodo.getCdnUrl",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/kodo.js",
+            "id": "3910d833-1721-4495-954a-c8b6041cf586"
           }
         ],
         "npm": [],
@@ -1614,25 +1126,35 @@
       }
     },
     {
-      "functionName": "getUserInfo",
-      "functionId": "60fc8082-827f-4ea4-b3e7-2cc4ea2c7f06",
+      "functionName": "openPdfFile",
+      "functionId": "36b122ca-22dd-459f-90a7-7d285359f93d",
       "calls": {
         "system": [],
         "userDefined": [
           {
-            "name": "WechatApi.getUserInfo",
-            "path": "C:\\Code\\server\\easylink.service\\model\\api\\wechatApi.js",
-            "id": "d2a7703e-2f7e-4caa-9490-50ff2804ab43"
+            "name": "UX.showLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "3cf1d0a5-1ed4-411a-a3bf-39a9e43de893"
           },
           {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
+            "name": "File.downloadFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "6bc9f76e-88c0-4c72-9c4d-9c971593db7c"
           },
           {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
+            "name": "File.openDocument",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2eb9f0c1-9e8f-4e91-94f8-75faf2d9cbcc"
+          },
+          {
+            "name": "UX.hideLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2ce51a24-02ae-43ec-b6ae-05724ef50251"
+          },
+          {
+            "name": "UX.hideLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2ce51a24-02ae-43ec-b6ae-05724ef50251"
           }
         ],
         "npm": [],
@@ -1640,51 +1162,99 @@
       }
     },
     {
-      "functionName": "createWxUser",
-      "functionId": "6c655c0b-6df7-415e-b605-c6281294322b",
+      "functionName": "saveFile",
+      "functionId": "cdaa2b61-01b5-42e4-812a-650794cafea0",
       "calls": {
-        "system": [],
+        "system": [
+          "console.log"
+        ],
         "userDefined": [
           {
-            "name": "WxUserDAO.insertWxUser",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\wxUserDAO.js",
-            "id": "2713bae4-61e8-46dc-a1c5-acbe3ba86efc"
+            "name": "UX.showModal",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "21a55bf0-8758-4ab3-a1a3-a85d0772707b"
           },
           {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
+            "name": "UX.showLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "3cf1d0a5-1ed4-411a-a3bf-39a9e43de893"
           },
           {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
+            "name": "UX.setClipboardData",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "b3a3f988-6b72-4403-8fbd-917902edd539"
+          },
+          {
+            "name": "UX.hideLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2ce51a24-02ae-43ec-b6ae-05724ef50251"
+          },
+          {
+            "name": "UX.showToast",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4fc7f5be-386c-4304-9f63-a93d69ba5aad"
+          },
+          {
+            "name": "UX.showToast",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4fc7f5be-386c-4304-9f63-a93d69ba5aad"
+          },
+          {
+            "name": "UX.hideLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2ce51a24-02ae-43ec-b6ae-05724ef50251"
           }
         ],
+        "npm": [],
+        "other": [
+          "copyDownloadLinkCallback"
+        ]
+      }
+    },
+    {
+      "functionName": "previewImage",
+      "functionId": "a3f81c42-14ce-4d2c-b8c3-c51a59502cbe",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "uni.previewImage"
+        ]
+      }
+    },
+    {
+      "functionName": "formatBytes",
+      "functionId": "048844ae-2acb-482a-a5ed-d0bdae0e2ae7",
+      "calls": {
+        "system": [],
+        "userDefined": [],
         "npm": [],
         "other": []
       }
     },
     {
-      "functionName": "getWxUsersByUnionid",
-      "functionId": "380d2a36-48d4-4e14-99a4-506e688aea13",
+      "functionName": "shareFilePage",
+      "functionId": "2738ae64-ab56-40dd-b67a-4a987ad6103b",
       "calls": {
-        "system": [],
+        "system": [
+          "Number"
+        ],
         "userDefined": [
           {
-            "name": "WxUserDAO.findWxUsersByUnionid",
-            "path": "C:\\Code\\server\\easylink.service\\model\\db\\wxUserDAO.js",
-            "id": "18ad2fe8-a538-436d-883e-e4bab0a38ef5"
+            "name": "Tracking.useRootUnionId",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "d753a1a7-26d9-42a8-afc4-f9d7cc785a7b"
           },
           {
-            "name": "Log.success",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "a5ab4cf4-e7ee-43e2-80c5-aeb48a032801"
+            "name": "Tracking.useUserInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "11e20b25-89b4-408e-934a-b581767a0a7f"
           },
           {
-            "name": "Log.failure",
-            "path": "C:\\Code\\server\\easylink.service\\utils\\Log.js",
-            "id": "58cae183-da4a-47ae-81f7-b610fdc891cd"
+            "name": "Tracking.useShareDepth",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "6904942d-86ae-4d73-ae2c-e2cec606d617"
           }
         ],
         "npm": [],
@@ -1692,21 +1262,241 @@
       }
     }
   ],
-  "C:\\Code\\server\\easylink.service\\utils\\Log.js": [
+  "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/viewmodel/IndexVM.js": [
     {
-      "functionName": "getCallerInfo",
-      "functionId": "80966f40-4d87-4345-8b73-26d045dbc9d9",
+      "functionName": "createMachineWxUser",
+      "functionId": "13654da4-c25d-49dc-8e57-d9813b58b7d2",
+      "calls": {
+        "system": [
+          "console.log"
+        ],
+        "userDefined": [
+          {
+            "name": "Tracking.useWxUserId",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "5bb83c30-731c-471f-a798-cdaab6cf20a9"
+          },
+          {
+            "name": "Api.createMachineWxUser",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "8c48b65f-106d-4554-83a3-3adb8a1baf58"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "getBackgroundImage",
+      "functionId": "124db8ce-416b-4678-ba4c-fa2e1a0227ae",
+      "calls": {
+        "system": [
+          "console.log",
+          "console.log"
+        ],
+        "userDefined": [
+          {
+            "name": "File.getStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4c8635c6-afda-480a-ba9f-4d9416b79934"
+          },
+          {
+            "name": "File.readFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "04485d6d-1d73-47d4-af52-c42a7beacaf6"
+          },
+          {
+            "name": "Kodo.getCdnUrl",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/kodo.js",
+            "id": "3910d833-1721-4495-954a-c8b6041cf586"
+          },
+          {
+            "name": "File.downloadFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "6bc9f76e-88c0-4c72-9c4d-9c971593db7c"
+          },
+          {
+            "name": "File.saveFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "bc0b6090-b46e-4d0c-a467-87af03972013"
+          },
+          {
+            "name": "File.setStorage",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "c897a7fb-00c6-494c-89e9-3a1dd469cdbb"
+          },
+          {
+            "name": "File.readFile",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "04485d6d-1d73-47d4-af52-c42a7beacaf6"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "accessFileFromLink",
+      "functionId": "bff5c9b3-74ca-4c15-b82b-b3ed48e888f4",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "UX.showLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "3cf1d0a5-1ed4-411a-a3bf-39a9e43de893"
+          },
+          {
+            "name": "Api.isEasyFileExist",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/api.js",
+            "id": "5ec075cf-72d0-41a6-b3a5-6312e56381d8"
+          },
+          {
+            "name": "UX.hideLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2ce51a24-02ae-43ec-b6ae-05724ef50251"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "UX.showToast",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4fc7f5be-386c-4304-9f63-a93d69ba5aad"
+          },
+          {
+            "name": "UX.hideLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2ce51a24-02ae-43ec-b6ae-05724ef50251"
+          },
+          {
+            "name": "UX.showToast",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4fc7f5be-386c-4304-9f63-a93d69ba5aad"
+          }
+        ],
+        "npm": [],
+        "other": [
+          "uni.setStorageSync",
+          "uni.navigateTo"
+        ]
+      }
+    },
+    {
+      "functionName": "backToCurrentFile",
+      "functionId": "955363f1-404d-4125-a30b-b107d669adcb",
       "calls": {
         "system": [],
         "userDefined": [],
-        "npm": [
-          "path.basename"
-        ],
+        "npm": [],
         "other": [
-          "callerfile.getFileName",
-          "callerfile.getFunctionName",
-          "callerfile.getFileName"
+          "uni.navigateTo"
         ]
+      }
+    },
+    {
+      "functionName": "getCurrentFile",
+      "functionId": "235b865c-0e29-40ee-a1df-42c9b487e3e1",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "uni.getStorageSync"
+        ]
+      }
+    },
+    {
+      "functionName": "clearCurrentFile",
+      "functionId": "21d57d23-3d8d-4bf5-a867-2d7ef609612a",
+      "calls": {
+        "system": [],
+        "userDefined": [],
+        "npm": [],
+        "other": [
+          "uni.setStorageSync"
+        ]
+      }
+    },
+    {
+      "functionName": "uploadFile",
+      "functionId": "17bf5694-7b59-483c-8a5d-3201f63d703f",
+      "calls": {
+        "system": [],
+        "userDefined": [
+          {
+            "name": "UX.showModal",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "21a55bf0-8758-4ab3-a1a3-a85d0772707b"
+          },
+          {
+            "name": "UX.showLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "3cf1d0a5-1ed4-411a-a3bf-39a9e43de893"
+          },
+          {
+            "name": "UX.setClipboardData",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "b3a3f988-6b72-4403-8fbd-917902edd539"
+          },
+          {
+            "name": "UX.hideLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2ce51a24-02ae-43ec-b6ae-05724ef50251"
+          },
+          {
+            "name": "UX.showToast",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "4fc7f5be-386c-4304-9f63-a93d69ba5aad"
+          },
+          {
+            "name": "Tracking.send",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "329a38dd-2ed3-4e67-bcb9-6967123ebd19"
+          },
+          {
+            "name": "UX.hideLoading",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/utils/index.js",
+            "id": "2ce51a24-02ae-43ec-b6ae-05724ef50251"
+          }
+        ],
+        "npm": [],
+        "other": []
+      }
+    },
+    {
+      "functionName": "shareIndexPage",
+      "functionId": "68bcc9f3-1ec0-4afd-b110-e23a0c5efc76",
+      "calls": {
+        "system": [
+          "Number"
+        ],
+        "userDefined": [
+          {
+            "name": "Tracking.useRootUnionId",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "d753a1a7-26d9-42a8-afc4-f9d7cc785a7b"
+          },
+          {
+            "name": "Tracking.useUserInfo",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "11e20b25-89b4-408e-934a-b581767a0a7f"
+          },
+          {
+            "name": "Tracking.useShareDepth",
+            "path": "/Users/shaolizhi/Public/Code/miniprogram/easylink.miniprogram/src/model/tracking.js",
+            "id": "6904942d-86ae-4d73-ae2c-e2cec606d617"
+          }
+        ],
+        "npm": [],
+        "other": []
       }
     }
   ]
